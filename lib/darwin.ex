@@ -1,228 +1,120 @@
 defmodule Darwin do
   require Logger
-
-  def get_abst(module) do
-    filename = "_build/dev/lib/darwin/ebin/" <> Atom.to_string(module) <> ".beam"
-    filename_charlist = String.to_charlist(filename)
-
-    {:ok, {_, [{:abstract_code, {_, abs_code}}]}} =
-      :beam_lib.chunks(filename_charlist, [:abstract_code])
-
-    _reconstructed =
-      abs_code
-      |> :erl_syntax.form_list()
-      |> :erl_prettypr.format()
-      |> to_string()
-
-    :beam_disasm.file(filename_charlist)
-  end
+  alias Darwin.ErlUtils
+  alias Darwin.Mutator.Context
+  alias Darwin.Mutator.Helpers
 
   # Arithmetic operator replacement (AOR)
-  # Logical connector replacement (LCR)
-  # Relational operator replacement (ROR)
-  # Unary operator insertion (UOR)
-  # Statement block removal (SBR)
-
-  @strict_binary_boolean_operators [
-    :or,
-    :and
-  ]
-
-  @permissive_binary_boolean_operators [
-    :||,
-    :&&
-  ]
-
-  # @comparison_operators [
-  #   :==,
-  #   :!=,
-  #   :>,
-  #   :>=,
-  #   :<,
-  #   :<=
-  # ]
-
-  @arithmetic_operators [
+  @arithmetic_operator_atoms [
     :+,
     :-,
     :*,
     :/
   ]
 
-  @integer_mutations [
-    -1,
-    0,
-    1,
-    2
+  @arithmetic_operators [
+    {:+, {Helpers, :arith_add}},
+    {:-, {Helpers, :arith_sub}},
+    {:*, {Helpers, :arith_mul}},
+    {:/, {Helpers, :arith_div}}
+  ]
+  # Logical connector replacement (LCR)
+
+  # Relational operator replacement (ROR)
+  @logical_connector_atoms [
+    :>,
+    :>=,
+    :==,
+    :"/=",
+    :<=,
+    :<
   ]
 
-  @float_mutations [
-    -1.0,
-    0.0,
-    1.0,
-    1.4
+  # @logical_connector_constants [
+  #   true,
+  #   false,
+  #   nil
+  # ]
+
+  @logical_connectors [
+    {:>, {Helpers, :relation_greater_than}},
+    {:>=, {Helpers, :relation_greater_than}},
+    {:==, {Helpers, :relation_greater_than}},
+    {:"/=", {Helpers, :relation_greater_than}},
+    {:<=, {Helpers, :relation_greater_than}},
+    {:<, {Helpers, :relation_greater_than}}
   ]
 
-  @boolean_mutations [
-    nil,
-    true,
-    false
-  ]
+  # Unary operator insertion (UOR)
 
-  def fragment_for_operator_mutation(
-        index,
-        alternatives,
-        {operator, meta, _args} = _original
-      ) do
-    mutations =
-      Enum.filter(alternatives, fn atom ->
-        atom != operator
-      end)
+  # Statement block removal (SBR)
 
-    var_a = Macro.var(:a, __MODULE__)
-    var_b = Macro.var(:b, __MODULE__)
+  def line_number_from_meta(line_nr) when is_integer(line_nr), do: line_nr
+  def line_number_from_meta(meta) when is_list(meta), do: Keyword.get(meta, :location)
 
-    clauses_for_mutated_code =
-      for {op, i} <- Enum.with_index(mutations, 0) do
-        quote do
-          unquote(index + i) ->
-            # Should we use the `meta` context here?
-            # Or should we use the empty list instead?
-            unquote({op, meta, [var_a, var_b]})
-        end
+  def mutate_binary_operator(ctx, alternatives, operator, left, right) do
+    mutations = Enum.filter(alternatives, fn {op, _mod_fun} -> op != operator end)
+    {_operator, {module, function}} = Enum.find(alternatives, fn {op, _} -> op == operator end)
+    arg1 = {:var, 0, :_darwin_a@1}
+    arg2 = {:var, 0, :_darwin_b@1}
+
+    expressions =
+      for {_, {mod, fun}} <- mutations do
+        apply(mod, fun, [arg1, arg2])
       end
 
-    clause_for_original_code =
-      quote do
-        _other ->
-          unquote({operator, meta, [var_a, var_b]})
-      end
+    original = apply(module, function, [arg1, arg2])
 
-    clauses = List.flatten(clauses_for_mutated_code ++ [clause_for_original_code])
+    {case_statement, ctx} =
+      Helpers.make_case(ctx, 0, Helpers.get_active_mutation(), expressions, original)
 
-    fragment =
-      quote do
-        fn unquote(var_a), unquote(var_b) ->
-          unquote({:case, [], [quote(do: Darwin.ActiveMutation.get()), [do: clauses]]})
-        end
-      end
+    fun = Helpers.fun([{:clause, 0, [arg1, arg2], [], [case_statement]}])
+    result = Helpers.call(fun, [left, right])
 
-    new_index = index + length(mutations)
-    {fragment, new_index}
+    {result, ctx}
   end
 
-  def binary_operator_mutation(
-        index,
-        alternatives,
-        _constants,
-        {_op, meta, [left, right]} = original
-      ) do
-    {fragment, index} = fragment_for_operator_mutation(index, alternatives, original)
-    {mutated_left, index} = mutations_for(index, left)
-    {mutated_right, index} = mutations_for(index, right)
-    call = {:., [], [fragment]}
-    result = {call, meta, [mutated_left, mutated_right]}
-
-    {result, index}
+  def do_mutate(%Context{} = ctx, {:op, _meta, operator, left, right})
+      when operator in @arithmetic_operator_atoms do
+    mutate_binary_operator(ctx, @arithmetic_operators, operator, left, right)
   end
 
-  def if_statement_mutation(index, {:if, meta, [condition, branches]} = _if_statement) do
-    new_condition =
-      quote do
-        case Darwin.ActiveMutation.get() do
-          unquote(index) -> true
-          unquote(index + 1) -> false
-          unquote(index + 2) -> !unquote(condition)
-          _other -> unquote(condition)
-        end
-      end
-
-    new_if_statement = {:if, meta, [new_condition, branches]}
-
-    {new_if_statement, index + 3}
+  def do_mutate(%Context{} = ctx, {:op, _meta, operator, left, right})
+      when operator in @logical_connector_atoms do
+    mutate_binary_operator(ctx, @logical_connectors, operator, left, right)
   end
 
-  def literal_mutation(index, original, alternatives) do
-    mutations = List.delete(alternatives, original)
-
-    clause_for_original_code =
-      quote do
-        _other -> unquote(original)
-      end
-
-    clauses_for_mutated_code =
-      for {mutation, i} <- Enum.with_index(mutations, 0) do
-        quote do
-          unquote(index + i) -> unquote(mutation)
-        end
-      end
-
-    clauses = List.flatten(clauses_for_mutated_code ++ [clause_for_original_code])
-
-    fragment = {:case, [], [quote(do: Darwin.ActiveMutation.get()), [do: clauses]]}
-
-    new_index = index + length(mutations)
-    {fragment, new_index}
+  def do_mutate(ctx, ast) do
+    {ast, ctx}
   end
 
-  def mutations_for(index, {op, _meta, [_left, _right]} = original)
-      when op in @arithmetic_operators do
-    binary_operator_mutation(index, @arithmetic_operators, [], original)
+  def mutate(input_ast) do
+    ctx = Context.new()
+    {output_ast, _ctx} = do_mutate(ctx, input_ast)
+
+    Logger.debug(fn -> log_mutation(input_ast, output_ast) end)
+
+    output_ast
   end
 
-  def mutations_for(index, {op, _meta, [_left, _right]} = original)
-      when op in @strict_binary_boolean_operators do
-    binary_operator_mutation(index, @strict_binary_boolean_operators, [], original)
+  def abstract_code(module) do
+    file = :code.which(module)
+    result = :beam_lib.chunks(file, [:abstract_code])
+    {:ok, {_, [{:abstract_code, {_, abstract_code}}]}} = result
+    abstract_code
   end
 
-  def mutations_for(index, {op, _meta, [_left, _right]} = original)
-      when op in @permissive_binary_boolean_operators do
-    binary_operator_mutation(index, @permissive_binary_boolean_operators, [], original)
+  defp log_mutation(input_ast, output_ast) do
+    input = ErlUtils.pprint(input_ast)
+    output = ErlUtils.pprint(output_ast)
+
+    [
+      "Darwin.mutate/1",
+      "\n>>> Input:\n",
+      input,
+      "\n\n>>> Output:\n",
+      output,
+      "\n"
+    ]
   end
-
-  def mutations_for(index, {:if, _meta, [_condition, _branches]} = if_statement) do
-    if_statement_mutation(index, if_statement)
-  end
-
-  def mutations_for(index, n) when is_integer(n) do
-    literal_mutation(index, n, @integer_mutations)
-  end
-
-  def mutations_for(index, f) when is_float(f) do
-    literal_mutation(index, f, @float_mutations)
-  end
-
-  def mutations_for(index, b) when b in @boolean_mutations do
-    literal_mutation(index, b, @boolean_mutations)
-  end
-
-  def mutations_for(index, other), do: {other, index}
-
-  def mutate(expression) do
-    {mutated, _index} = mutations_for(0, expression)
-
-    Logger.debug(fn ->
-      debug =
-        mutated
-        |> Macro.to_string()
-        |> Code.format_string!()
-
-      ["\n", debug]
-    end)
-
-    mutated
-  end
-
-  def format(expression) do
-    expression
-    |> Macro.to_string()
-    |> Code.format_string!()
-    |> Kernel.++(["\n"])
-    |> List.to_string()
-  end
-
-  # def perform_strict_boolean_operator_replacement(index, {op, _meta, [_left, _right]} = original)
-  #     when op in @strict_boolean_binary_operators do
-  #   binary_operator_mutation(index, @strict_boolean_binary_operators, original)
-  # end
 end

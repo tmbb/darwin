@@ -1,99 +1,108 @@
 defmodule DarwinTest do
   use ExUnit.Case
+  alias Darwin.ErlUtils
   doctest Darwin
 
-  # Strict boolean operators
+  def mutate(bin) do
+    bin
+    |> ErlUtils.expression!()
+    |> Darwin.mutate()
+    |> ErlUtils.pprint()
+  end
 
-  test "operator: ||" do
-    assert quote(do: x || y) |> Darwin.mutate() |> Darwin.format() == """
-           (fn a, b ->
-              case(Darwin.ActiveMutation.get()) do
-                0 ->
-                  a && b
+  # Arithmetic operator replacement
 
-                _other ->
-                  a || b
-              end
-            end).(x, y)
+  test "operator: +" do
+    assert mutate("a + b.") == """
+           fun (_darwin_a@1, _darwin_b@1) ->
+                   case
+                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
+                       of
+                     1 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     2 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     3 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     _ ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
+                                                                      _darwin_b@1)
+                   end
+           end(a, b)
            """
   end
 
-  test "operator: &&" do
-    assert quote(do: x && y) |> Darwin.mutate() |> Darwin.format() == """
-           (fn a, b ->
-              case(Darwin.ActiveMutation.get()) do
-                0 ->
-                  a || b
-
-                _other ->
-                  a && b
-              end
-            end).(x, y)
+  test "operator: -" do
+    assert mutate("a - b.") == """
+           fun (_darwin_a@1, _darwin_b@1) ->
+                   case
+                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
+                       of
+                     1 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     2 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     3 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     _ ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
+                                                                      _darwin_b@1)
+                   end
+           end(a, b)
            """
   end
 
-  # Permissive boolean operators
-
-  test "operator: and" do
-    assert quote(do: x and y) |> Darwin.mutate() |> Darwin.format() == """
-           (fn a, b ->
-              case(Darwin.ActiveMutation.get()) do
-                0 ->
-                  a or b
-
-                _other ->
-                  a and b
-              end
-            end).(x, y)
+  test "operator: *" do
+    assert mutate("a * b.") == """
+           fun (_darwin_a@1, _darwin_b@1) ->
+                   case
+                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
+                       of
+                     1 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     2 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     3 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     _ ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
+                                                                      _darwin_b@1)
+                   end
+           end(a, b)
            """
   end
 
-  test "operator: or" do
-    assert quote(do: x or y) |> Darwin.mutate() |> Darwin.format() == """
-           (fn a, b ->
-              case(Darwin.ActiveMutation.get()) do
-                0 ->
-                  a and b
-
-                _other ->
-                  a or b
-              end
-            end).(x, y)
+  test "operator: /" do
+    assert mutate("a / b.") == """
+           fun (_darwin_a@1, _darwin_b@1) ->
+                   case
+                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
+                       of
+                     1 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     2 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     3 ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
+                                                                      _darwin_b@1);
+                     _ ->
+                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
+                                                                      _darwin_b@1)
+                   end
+           end(a, b)
            """
   end
 
-  test "if statement" do
-    if_statement =
-      quote do
-        if p do
-          x
-        else
-          y
-        end
-      end
-
-    assert if_statement
-           |> Darwin.mutate()
-           |> Darwin.format() == """
-           if(
-             case(Darwin.ActiveMutation.get()) do
-               0 ->
-                 true
-
-               1 ->
-                 false
-
-               2 ->
-                 !p
-
-               _other ->
-                 p
-             end
-           ) do
-             x
-           else
-             y
-           end
-           """
-  end
+  # Relational operator replacement
 end
