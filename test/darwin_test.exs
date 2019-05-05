@@ -13,7 +13,7 @@ defmodule DarwinTest do
   # Arithmetic operator replacement
 
   test "operator: +" do
-    assert mutate("a + b.") == """
+    assert mutate("A + B.") == """
            fun (_darwin_a@1, _darwin_b@1) ->
                    case
                      'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
@@ -31,12 +31,12 @@ defmodule DarwinTest do
                          'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
                                                                       _darwin_b@1)
                    end
-           end(a, b)
+           end(A, B)
            """
   end
 
   test "operator: -" do
-    assert mutate("a - b.") == """
+    assert mutate("A - B.") == """
            fun (_darwin_a@1, _darwin_b@1) ->
                    case
                      'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
@@ -54,12 +54,12 @@ defmodule DarwinTest do
                          'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
                                                                       _darwin_b@1)
                    end
-           end(a, b)
+           end(A, B)
            """
   end
 
   test "operator: *" do
-    assert mutate("a * b.") == """
+    assert mutate("A * B.") == """
            fun (_darwin_a@1, _darwin_b@1) ->
                    case
                      'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
@@ -77,12 +77,12 @@ defmodule DarwinTest do
                          'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
                                                                       _darwin_b@1)
                    end
-           end(a, b)
+           end(A, B)
            """
   end
 
   test "operator: /" do
-    assert mutate("a / b.") == """
+    assert mutate("A / B.") == """
            fun (_darwin_a@1, _darwin_b@1) ->
                    case
                      'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
@@ -100,7 +100,7 @@ defmodule DarwinTest do
                          'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
                                                                       _darwin_b@1)
                    end
-           end(a, b)
+           end(A, B)
            """
   end
 
