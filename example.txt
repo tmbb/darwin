@@ -1,0 +1,11 @@
+Mutant survived:
+- File: ...
+- Line: ...
+- Mutation: replaced '+' by '-'
+
+...
+
+replaced operator '+' by '-'
+deleted left operand of '+'
+deleted right operand of '-'
+switched order of operands of '-' (i.e. 'a - b' -> 'b - a')

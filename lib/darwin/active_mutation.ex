@@ -1,4 +1,7 @@
 defmodule Darwin.ActiveMutation do
+  @moduledoc """
+  TODO: replace this with an ETS table, which is probably faster.
+  """
   use Agent
 
   def start_link(initial_value) do

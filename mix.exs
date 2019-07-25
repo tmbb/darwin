@@ -21,7 +21,8 @@ defmodule Darwin.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:benchee, "~> 1.0.1"}
+      {:benchee, "~> 1.0.1"},
+      {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]}
     ]
   end
 end

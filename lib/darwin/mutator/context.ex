@@ -1,11 +1,32 @@
 defmodule Darwin.Mutator.Context do
   defstruct count: 0,
             module: nil,
+            frozen: false,
             mutations: []
 
-  def add_mutation(%__MODULE__{mutations: mutations, count: count} = ctx, data) do
-    new_ctx = %{ctx | count: count + 1, mutations: [data | mutations]}
-    {count + 1, new_ctx}
+  @doc """
+  Adds a single mutation to the context.
+  """
+  def add_mutation(%__MODULE__{frozen: false} = ctx, mutation) do
+    %{mutations: mutations, count: count} = ctx
+    %{ctx | count: count + 1, mutations: [mutation | mutations]}
+  end
+
+  @doc """
+  Adds a single mutation to the context.
+  """
+  def add_mutations(%__MODULE__{frozen: false} = ctx, mutations) do
+    Enum.reduce(mutations, ctx, fn mutation, ctx ->
+      add_mutation(ctx, mutation)
+    end)
+  end
+
+  @doc """
+  Reverse the mutation list, so that mutations appear in the corrrect order
+  and makes it impossible to add new mutations to the context.
+  """
+  def freeze(%__MODULE__{frozen: false} = ctx) do
+    %{ctx | mutations: :lists.reverse(ctx.mutations), frozen: true}
   end
 
   def new(opts \\ []) do
