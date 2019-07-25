@@ -29,6 +29,13 @@ defmodule Darwin.Mutator.Context do
     %{ctx | mutations: :lists.reverse(ctx.mutations), frozen: true}
   end
 
+  @doc """
+  Get the number of mutations in a context
+  """
+  def nr_of_mutations(%__MODULE__{} = ctx) do
+    ctx.count
+  end
+
   def new(opts \\ []) do
     struct(__MODULE__, opts)
   end

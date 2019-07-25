@@ -1,107 +1,69 @@
 defmodule DarwinTest do
   use ExUnit.Case
   alias Darwin.ErlUtils
+  alias Darwin.Mutator.Context
   doctest Darwin
 
-  def mutate(bin) do
+  def mutate(bin, opts \\ [module: MyModule]) do
+    module = Keyword.fetch!(opts, :module)
+
     bin
     |> ErlUtils.expression!()
-    |> Darwin.mutate()
-    |> ErlUtils.pprint()
+    |> Darwin.Mutators.mutate(module)
   end
 
   # Arithmetic operator replacement
 
   test "operator: +" do
-    assert mutate("A + B.") == """
-           fun (_darwin_a@1, _darwin_b@1) ->
-                   case
-                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
-                       of
-                     1 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     2 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     3 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     _ ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
-                                                                      _darwin_b@1)
-                   end
-           end(A, B)
+    {abstract_code, ctx} = mutate("A + B.")
+    # Assert that we generate the correct erlang code.
+    # We could compare the AST instead, but visual inspection of the code is more informative.
+    assert ErlUtils.pprint(abstract_code) == """
+           'Elixir.Darwin.Mutators.Default.OpAddMutator':'__do_mutate__'('Elixir.MyModule',
+                                                                         0, A, B)
            """
+
+    # Assert the correct number of mutations is generated.
+    # One could compare the set of mutations, but that seems a bit useless...
+    # We'd be repeating an enormous amount of code for little benefit.
+    # Maybe one day (when things are more stable we should add it)
+    assert Context.nr_of_mutations(ctx) == 5
   end
 
   test "operator: -" do
-    assert mutate("A - B.") == """
-           fun (_darwin_a@1, _darwin_b@1) ->
-                   case
-                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
-                       of
-                     1 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     2 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     3 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     _ ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
-                                                                      _darwin_b@1)
-                   end
-           end(A, B)
+    {abstract_code, ctx} = mutate("A - B.")
+    # Assert that we generate the correct erlang code.
+    assert ErlUtils.pprint(abstract_code) == """
+           'Elixir.Darwin.Mutators.Default.OpSubMutator':'__do_mutate__'('Elixir.MyModule',
+                                                                         0, A, B)
            """
+
+    # Assert the correct number of mutations is generated.
+    assert Context.nr_of_mutations(ctx) == 6
   end
 
   test "operator: *" do
-    assert mutate("A * B.") == """
-           fun (_darwin_a@1, _darwin_b@1) ->
-                   case
-                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
-                       of
-                     1 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     2 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     3 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     _ ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
-                                                                      _darwin_b@1)
-                   end
-           end(A, B)
+    {abstract_code, ctx} = mutate("A * B.")
+    # Assert that we generate the correct erlang code.
+    assert ErlUtils.pprint(abstract_code) == """
+           'Elixir.Darwin.Mutators.Default.OpMulMutator':'__do_mutate__'('Elixir.MyModule',
+                                                                         0, A, B)
            """
+
+    # Assert the correct number of mutations is generated.
+    assert Context.nr_of_mutations(ctx) == 5
   end
 
   test "operator: /" do
-    assert mutate("A / B.") == """
-           fun (_darwin_a@1, _darwin_b@1) ->
-                   case
-                     'Elixir.Darwin.Mutator.Helpers':do_get_active_mutation()
-                       of
-                     1 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_add(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     2 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_sub(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     3 ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_mul(_darwin_a@1,
-                                                                      _darwin_b@1);
-                     _ ->
-                         'Elixir.Darwin.Mutator.Helpers':do_arith_div(_darwin_a@1,
-                                                                      _darwin_b@1)
-                   end
-           end(A, B)
+    {abstract_code, ctx} = mutate("A / B.")
+    # Assert that we generate the correct erlang code.
+    assert ErlUtils.pprint(abstract_code) == """
+           'Elixir.Darwin.Mutators.Default.OpDivMutator':'__do_mutate__'('Elixir.MyModule',
+                                                                         0, A, B)
            """
+
+    # Assert the correct number of mutations is generated.
+    assert Context.nr_of_mutations(ctx) == 6
   end
 
   # Relational operator replacement

@@ -94,7 +94,7 @@ defmodule Darwin.Mutators.Default.BinOpMutatorCreator do
   # - replace by arithmetic operator (only for arithmetic operators)
   # - replace by comparison operator (only for comparison operators)
 
-  def maybe_switch_order_of_arguments(op, fun) when is_commutative(op) do
+  def maybe_switch_order_of_arguments(op, fun) when not is_commutative(op) do
     [
       %{
         f: quote(do: fn a, b -> unquote(fun).(b, a) end),
@@ -105,7 +105,7 @@ defmodule Darwin.Mutators.Default.BinOpMutatorCreator do
     ]
   end
 
-  def maybe_switch_orderof_arguments(_op, _fun), do: []
+  def maybe_switch_order_of_arguments(_op, _fun), do: []
 
   def maybe_delete_arguments(op, _fun) when is_arithmetic_operator(op) do
     [
@@ -188,7 +188,7 @@ defmodule Darwin.Mutators.Default.BinOpMutatorCreator do
   def maybe_replace_by_true_or_false(_op, _fun), do: []
 
   def mutations_for_binary_operator(op, fun) do
-    switch_order = maybe_switch_orderof_arguments(op, fun)
+    switch_order = maybe_switch_order_of_arguments(op, fun)
     replace_by_arithmetic_operator = maybe_replace_by_arithmetic_operator(op, fun)
     replace_by_comparison_operator = maybe_replace_by_comparison_operator(op, fun)
     delete_arguments = maybe_delete_arguments(op, fun)
