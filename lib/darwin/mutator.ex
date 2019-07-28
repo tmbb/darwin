@@ -1,229 +1,219 @@
-defmodule Darwin.Mutator do
-  require Logger
-  alias Darwin.ErlUtils
+defmodule Darwin.Mutators do
   alias Darwin.Mutator.Context
-  alias Darwin.Mutator.Helpers
+  alias Darwin.Mutators.Default
+  alias Darwin.Erlang.AbstractCode
 
-  # Arithmetic operator replacement (AOR)
-  @arithmetic_operator_atoms [
-    :+,
-    :-,
-    :*,
-    :/
-  ]
+  @type mutator_result() :: {:ok, {AbstractCode.t(), Context.t()}} | :error
 
-  @arithmetic_operators [
-    {:+, {Helpers, :arith_add}},
-    {:-, {Helpers, :arith_sub}},
-    {:*, {Helpers, :arith_mul}},
-    {:/, {Helpers, :arith_div}}
-  ]
+  @type mutator() :: atom()
 
-  # Logical connector replacement (LCR)
-  # @strict_logical_connector_atoms []
+  @callback mutate(AbstractCode.t(), Context.t(), list()) :: nil
 
-  # @strict_logical_connector_constants [
-  #   true,
-  #   false
-  # ]
-
-  # @strict_logical_connectors []
-
-  # Relational operator replacement (ROR)
-  @relational_operator_atoms [
-    :>,
-    :>=,
-    :==,
-    :"/=",
-    :<=,
-    :<
-  ]
-
-  @relational_operator_constants [
-    true,
-    false
-  ]
-
-  @relational_operators [
-    {:>, {Helpers, :relational_greater_than}},
-    {:>=, {Helpers, :relational_greater_than_or_equal}},
-    {:==, {Helpers, :relational_equal}},
-    {:"/=", {Helpers, :relational_not_equal}},
-    {:<=, {Helpers, :relational_less_than_or_equal}},
-    {:<, {Helpers, :relational_less_than}}
-  ]
-
-  # Unary operator insertion (UOR)
-
-  # Statement block removal (SBR)
-
-  def line_number_from_meta(line_nr) when is_integer(line_nr), do: line_nr
-  def line_number_from_meta(meta) when is_list(meta), do: Keyword.get(meta, :location)
-
-  def mutate_binary_operator(%Context{} = ctx, alternatives, constants, operator, left, right) do
-    mutations = Enum.filter(alternatives, fn {op, _mod_fun} -> op != operator end)
-    {_operator, {module, function}} = Enum.find(alternatives, fn {op, _} -> op == operator end)
-    arg1 = {:var, 0, :_darwin_a@1}
-    arg2 = {:var, 0, :_darwin_b@1}
-
-    {mutated_left, ctx} = do_mutate_abstract_code(ctx, left)
-    {mutated_right, ctx} = do_mutate_abstract_code(ctx, right)
-
-    {constant_values, ctx} =
-      Enum.map_reduce(constants, ctx, fn constant, ctx ->
-        {mut_id, ctx} =
-          Context.add_mutation(ctx, {:replace_operator_by_constant, {operator, constant}})
-
-        {{mut_id, constant}, ctx}
-      end)
-
-    # for constant <- constants do
-    #   Helpers.escape_literal(constant)
-    # end
-
-    {expressions, ctx} =
-      Enum.map_reduce(mutations, ctx, fn {op, {mod, fun}}, ctx ->
-        {mut_id, ctx} = Context.add_mutation(ctx, {:replace_operator, {operator, op}})
-        branch_value = apply(mod, fun, [arg1, arg2])
-        {{mut_id, branch_value}, ctx}
-      end)
-
-    IO.inspect(expressions)
-
-    case_statement_clauses = constant_values ++ expressions
-    original = apply(module, function, [arg1, arg2])
-
-    case_statement =
-      Helpers.make_case(
-        ctx.module,
-        Helpers.get_active_mutation(),
-        case_statement_clauses,
-        original
-      )
-
-    fun = Helpers.fun([{:clause, 0, [arg1, arg2], [], [case_statement]}])
-    result = Helpers.call(fun, [mutated_left, mutated_right])
-
-    {result, ctx}
-  end
-
-  def do_mutate_abstract_code(%Context{} = ctx, {:op, _meta, operator, left, right})
-      when operator in @arithmetic_operator_atoms do
-    mutate_binary_operator(ctx, @arithmetic_operators, [], operator, left, right)
-  end
-
-  def do_mutate_abstract_code(%Context{} = ctx, {:op, _meta, operator, left, right})
-      when operator in @relational_operator_atoms do
-    mutate_binary_operator(
-      ctx,
-      @relational_operators,
-      @relational_operator_constants,
-      operator,
-      left,
-      right
-    )
-  end
-
-  def do_mutate_abstract_code(ctx, ast), do: {ast, ctx}
-
-  def unpack_and(
-        {:case, line_nr, arg_left,
-         [
-           {:clause, [generated: true, location: _], [{:atom, _, false}], [],
-            [{:atom, 0, false}]},
-           {:clause, [generated: true, location: _], [{:atom, _, true}], [], [arg_right]},
-           {:clause, [generated: true, location: _], [{:var, _, var1}], [],
-            [
-              {:call, _, {:remote, _, {:atom, _, :erlang}, {:atom, _, :error}},
-               [
-                 {:tuple, _, [{:atom, _, :badbool}, {:atom, _, :and}, {:var, _, var2}]}
-               ]}
-            ]}
-         ]}
-      )
-      when var1 == var2 do
-    {:ok, {line_nr, {arg_left, arg_right}}}
-  end
-
-  def unpack_and(_other), do: :error
-
-  def unpack_or(
-        {:case, line_nr, arg_left,
-         [
-           {:clause, [generated: true, location: _], [{:atom, _, false}], [], [arg_right]},
-           {:clause, [generated: true, location: _], [{:atom, _, true}], [], [{:atom, _, true}]},
-           {:clause, [generated: true, location: _], [{:var, _, var1}], [],
-            [
-              {:call, _, {:remote, _, {:atom, _, :erlang}, {:atom, _, :error}},
-               [
-                 {:tuple, _, [{:atom, _, :badbool}, {:atom, _, :or}, {:var, _, var2}]}
-               ]}
-            ]}
-         ]}
-      )
-      when var1 == var2 do
-    {:ok, {line_nr, {arg_left, arg_right}}}
-  end
-
-  def unpack_or(_other), do: :error
-
-  def mutate_abstract_code(input_ast, context \\ nil) do
-    ctx = context || Context.new()
-    {output_ast, _ctx} = do_mutate_abstract_code(ctx, input_ast)
-
-    Logger.debug(fn -> log_mutation(input_ast, output_ast) end)
-
-    output_ast
-  end
-
-  def mutate_module(module) do
+  @doc """
+  Mutates Erlang abstract code.
+  """
+  @spec mutate(AbstractCode.t(), atom(), list(mutator())) :: mutator_result()
+  def mutate(abstract_code, module, mutators \\ Default.mutators()) do
     ctx = Context.new(module: module)
-    abstract_code = abstract_code(module)
-    do_mutate_abstract_code(ctx, abstract_code)
+    apply_mutators(mutators, abstract_code, ctx)
   end
 
-  def mutate_and_compile_module(module) do
-    {abstract_code, ctx} = mutate_module(module)
-    compiled = :compile.forms(abstract_code)
+  @doc """
+  Apply the mutators in order until one of them matches.
 
-    result =
-      case compiled do
-        {:ok, ^module, _binary} -> {:ok, module}
-        :error -> :error
+  A mutator `m` matches if `m.mutate/3` returns an {:ok, {abstract_code, ctx}} tuple.
+  """
+  @spec mutate(AbstractCode.t(), atom(), Context.t()) :: mutator_result()
+  def apply_mutators(mutators, ast, ctx) do
+    Enum.reduce_while(mutators, {ast, ctx}, fn mutator, {ast, ctx} ->
+      case mutator.mutate(ast, ctx, mutators) do
+        {:ok, {new_ast, new_ctx}} -> {:halt, {new_ast, new_ctx}}
+        :error -> {:cont, {ast, ctx}}
+      end
+    end)
+  end
+
+  @doc false
+  def make_mutation_opts(abstract_code, mutator, mutation) do
+    {m, f, args} = Keyword.fetch!(mutation, :abstract_code_mfa)
+    mutated_abstract_code = apply(m, f, args ++ [abstract_code])
+
+    mutation
+    |> Keyword.put(:mutated_codon, mutated_abstract_code)
+    |> Keyword.put(:mutator, mutator)
+  end
+
+  defp make_case_clauses(default_mfa, alternatives, op_args) do
+    clauses =
+      for {alternative, index} <- Enum.with_index(alternatives, 0) do
+        quoted_mfa = Keyword.fetch!(alternative, :runtime_mfa)
+
+        quote do
+          unquote(index) ->
+            {alt_m, alt_f, alt_args} = unquote(quoted_mfa)
+            apply(alt_m, alt_f, alt_args ++ unquote(op_args))
+        end
+      end
+      |> List.flatten()
+
+    default_clause =
+      quote do
+        _ ->
+          {default_m, default_f, default_args} = unquote(default_mfa)
+          apply(default_m, default_f, default_args ++ unquote(op_args))
       end
 
-    {result, ctx}
+    clauses ++ default_clause
   end
 
-  def mutate_and_compile_modules(modules) do
-    mutate_and_compile_modules__async(modules)
+  @debug true
+  @debug_filename "debug_mutators.exs"
+
+  defp debug_def_bin_op_mutator(quoted) do
+    contents =
+      quoted
+      |> Macro.to_string()
+      |> Code.format_string!(locals_without_parens: [def: :*])
+
+    if File.exists?(@debug_filename) do
+      File.write!(@debug_filename, ["\n\n", contents], [:append])
+    else
+      File.write!(@debug_filename, contents)
+    end
   end
 
-  defp mutate_and_compile_modules__async(modules) do
-    modules
-    |> Task.async_stream(&mutate_and_compile_module/1)
-    |> Enum.to_list()
-  end
+  @doc """
+  Defines a function to mutate a binary operator in the Erlang abstract code.
+  """
+  defmacro def_bin_op_mutator(name, op, default_mfa, alternatives) do
+    # Name for the helper function
+    helper_name = :"__do_#{name}__"
 
-  def abstract_code(module) do
-    file = :code.which(module)
-    result = :beam_lib.chunks(file, [:abstract_code])
-    {:ok, {_, [{:abstract_code, {_, abstract_code}}]}} = result
-    abstract_code
-  end
+    # Programatically generate new variables so that they can be used in the case statement
+    # and in the quoted expression beloww
+    left = Macro.var(:left, __MODULE__)
+    right = Macro.var(:right, __MODULE__)
+    # Now, we generate the case clauses.
+    case_clauses = make_case_clauses(default_mfa, alternatives, [left, right])
+    # The first argument is missing because we'll pipe it inside the quoted expression.
+    # It will be easier to keep proper hygiene if we pipe it there instead of generating
+    # another variable outside the quoted expression.
+    case_statement = {:case, [], [[do: case_clauses]]}
 
-  defp log_mutation(input_ast, output_ast) do
-    input = ErlUtils.pprint(input_ast)
-    output = ErlUtils.pprint(output_ast)
+    # We need the caller module so that we can insert the fully namespaced call to the
+    # `__do_#{name}__` function into the Erlang abstract code
+    caller_module = __CALLER__.module
 
-    [
-      "Darwin.mutate_abstract_code
-      /1",
-      "\n>>> Input:\n",
-      input,
-      "\n\n>>> Output:\n",
-      output,
-      "\n"
-    ]
+    function_definitions =
+      quote do
+        # This function is the one that will mutate the Erlang abstract code.
+        # It does the following:
+        #
+        # 1. It mutates the operator arguments (by recursively calling `apply_mutators()`)
+        # 2. It replaces the AST node with a function call to the `__do_#{name}__` function
+        #
+        # The `__do_#{name}__` is the one called during the tests, and the one responsible for
+        # picking which code to run (i.e., each branch of a case statement according to the active mutation)
+        def unquote(name)(
+              {:op, line, unquote(op), left, right} = abstract_code,
+              %Darwin.Mutator.Context{} = ctx,
+              mutators
+            ) do
+          # Alias the modules locally
+          alias Darwin.Erlang.AbstractCode
+          alias Darwin.Mutator.Context
+          alias Darwin.Mutators
+
+          # Mutate the operands (updating the context, of course)
+          {mutated_left, ctx} = Mutators.apply_mutators(mutators, left, ctx)
+          {mutated_right, ctx} = Mutators.apply_mutators(mutators, right, ctx)
+
+          codon = Context.new_codon(ctx, value: abstract_code)
+          nr_of_mutations = Context.nr_of_mutations(ctx)
+          module = ctx.module
+
+          mutated_abstract_code =
+            AbstractCode.call_mfa(
+              {unquote(caller_module), unquote(helper_name),
+               [
+                 AbstractCode.encode_atom(module),
+                 AbstractCode.encode_integer(codon.index, line: line),
+                 AbstractCode.encode_integer(nr_of_mutations, line: line),
+                 mutated_left,
+                 mutated_right
+               ]},
+              line: line
+            )
+
+          mutation_data = unquote(alternatives)
+
+          mutations =
+            Enum.map(mutation_data, fn mutation ->
+              Mutators.make_mutation_opts(
+                abstract_code,
+                unquote(caller_module),
+                mutation
+              )
+            end)
+
+          ctx = Context.add_mutations(ctx, codon, mutations)
+
+          {:ok, {mutated_abstract_code, ctx}}
+        end
+
+        def unquote(name)(_abstract, _ctx, _mutators) do
+          :error
+        end
+
+        @doc false
+        # This function will be used during testing (i.e. after the Erlang abstract code has been mutated).
+        # It encapsulates the whole logic of retrieving the active mutation and executing
+        # the correct branch according to the picked mutation.
+        def unquote(helper_name)(
+              module,
+              codon_index,
+              mutation_index,
+              unquote(left),
+              unquote(right)
+            ) do
+          # The current mutation is identified as a pair containing a module name and a number.
+          # This allows us to use numbers to identify mutations *in the same module*
+          # and disambiguate between different modules using the module name.
+          #
+          # Why not use just the number?
+          # Because if we allow different modules to contain the same number,
+          # we can mutate modules in parallel.
+          # Mutating modules in parallel is not possible if we are restricted
+          # to using a single stream of consecutive numbers.
+          {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+          # Are we mutating this module and this codon?
+          case module == active_module and codon_index == active_codon_index do
+            # If we are in the correct module, we test whether the corrected index matches
+            # the active mutation and run the matching alternative
+            true ->
+              # We will match on the difference between the current mutation number
+              # and the starting mutation number.
+              # That way, the indices in the case statement can always start at zero.
+              # This reduces the amount of code generation we must do.
+              corrected_index = active_mutation_index - mutation_index
+              # The case statement matches the correct index agains the alternatives
+              # (see above for the definition of the case statement)
+              corrected_index |> unquote(case_statement)
+
+            # If we aren't in the correct module, we run the default code
+            # (we also run the default code in the last clause of the case statement)
+            false ->
+              {m, f, args} = unquote(default_mfa)
+              apply(m, f, args ++ [unquote(left), unquote(right)])
+          end
+        end
+      end
+
+    if @debug do
+      debug_def_bin_op_mutator(function_definitions)
+    end
+
+    # Finally, return the quoted expression
+    function_definitions
   end
 end

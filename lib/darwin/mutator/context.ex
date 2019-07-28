@@ -1,24 +1,68 @@
 defmodule Darwin.Mutator.Context do
-  defstruct count: 0,
+  defstruct mutations: [],
+            mutation_count: 0,
+            codons: %{},
             module: nil,
-            frozen: false,
-            mutations: []
+            frozen: false
+
+  alias Darwin.Mutator.Mutation
+  alias Darwin.Mutator.Codon
+
+  @type t :: %__MODULE__{}
 
   @doc """
   Adds a single mutation to the context.
   """
-  def add_mutation(%__MODULE__{frozen: false} = ctx, mutation) do
-    %{mutations: mutations, count: count} = ctx
-    %{ctx | count: count + 1, mutations: [mutation | mutations]}
+  @spec add_mutation(t(), Codon.t(), list()) :: Context.t()
+  def add_mutation(%__MODULE__{frozen: false} = ctx, codon, opts) do
+    %{mutation_count: mutation_count, module: module, mutations: mutations} = ctx
+    %{index: codon_index} = codon
+
+    all_opts =
+      opts
+      |> Keyword.put_new(:module, module)
+      |> Keyword.put_new(:index, mutation_count)
+      |> Keyword.put_new(:original_codon_index, codon_index)
+
+    mutation = Mutation.new(all_opts)
+
+    %{ctx | mutation_count: mutation_count + 1, mutations: [mutation | mutations]}
   end
 
   @doc """
-  Adds a single mutation to the context.
+  Adds a list of mutations to the context.
   """
-  def add_mutations(%__MODULE__{frozen: false} = ctx, mutations) do
-    Enum.reduce(mutations, ctx, fn mutation, ctx ->
-      add_mutation(ctx, mutation)
+  @spec add_mutation(t(), Codon.t(), list()) :: Context.t()
+  def add_mutations(%__MODULE__{frozen: false} = ctx, codon, opts_list) do
+    Enum.reduce(opts_list, ctx, fn mutation_opts, ctx ->
+      add_mutation(ctx, codon, mutation_opts)
     end)
+  end
+
+  @spec new_codon(t(), list()) :: {Codon.t(), t()}
+  def new_codon(%__MODULE__{frozen: false} = ctx, opts) do
+    %{codons: codons, module: module} = ctx
+    next_index = map_size(codons)
+
+    all_opts =
+      opts
+      |> Keyword.put_new(:module, module)
+      |> Keyword.put_new(:index, next_index)
+
+    codon = Codon.new(all_opts)
+    new_codons = Map.put(codons, {module, next_index}, codon)
+    new_ctx = %{ctx | codons: new_codons}
+    {codon, new_ctx}
+  end
+
+  def fetch_codon(ctx, module, index) do
+    %{codons: codons} = ctx
+    Map.fetch(codons, {module, index})
+  end
+
+  def get_codon(ctx, module, index) do
+    %{codons: codons} = ctx
+    Map.get(codons, {module, index})
   end
 
   @doc """
@@ -26,14 +70,14 @@ defmodule Darwin.Mutator.Context do
   and makes it impossible to add new mutations to the context.
   """
   def freeze(%__MODULE__{frozen: false} = ctx) do
-    %{ctx | mutations: :lists.reverse(ctx.mutations), frozen: true}
+    %{ctx | frozen: true}
   end
 
   @doc """
   Get the number of mutations in a context
   """
   def nr_of_mutations(%__MODULE__{} = ctx) do
-    ctx.count
+    ctx.mutation_count
   end
 
   def new(opts \\ []) do

@@ -1,6 +1,6 @@
 defmodule DarwinTest do
   use ExUnit.Case
-  alias Darwin.ErlUtils
+  alias Darwin.Erlang
   alias Darwin.Mutator.Context
   doctest Darwin
 
@@ -8,7 +8,7 @@ defmodule DarwinTest do
     module = Keyword.fetch!(opts, :module)
 
     bin
-    |> ErlUtils.expression!()
+    |> Erlang.expression!()
     |> Darwin.Mutators.mutate(module)
   end
 
@@ -18,7 +18,7 @@ defmodule DarwinTest do
     {abstract_code, ctx} = mutate("A + B.")
     # Assert that we generate the correct erlang code.
     # We could compare the AST instead, but visual inspection of the code is more informative.
-    assert ErlUtils.pprint(abstract_code) == """
+    assert Erlang.pprint(abstract_code) == """
            'Elixir.Darwin.Mutators.Default.OpAddMutator':'__do_mutate__'('Elixir.MyModule',
                                                                          0, A, B)
            """
@@ -33,7 +33,7 @@ defmodule DarwinTest do
   test "operator: -" do
     {abstract_code, ctx} = mutate("A - B.")
     # Assert that we generate the correct erlang code.
-    assert ErlUtils.pprint(abstract_code) == """
+    assert Erlang.pprint(abstract_code) == """
            'Elixir.Darwin.Mutators.Default.OpSubMutator':'__do_mutate__'('Elixir.MyModule',
                                                                          0, A, B)
            """
@@ -45,7 +45,7 @@ defmodule DarwinTest do
   test "operator: *" do
     {abstract_code, ctx} = mutate("A * B.")
     # Assert that we generate the correct erlang code.
-    assert ErlUtils.pprint(abstract_code) == """
+    assert Erlang.pprint(abstract_code) == """
            'Elixir.Darwin.Mutators.Default.OpMulMutator':'__do_mutate__'('Elixir.MyModule',
                                                                          0, A, B)
            """
@@ -57,7 +57,7 @@ defmodule DarwinTest do
   test "operator: /" do
     {abstract_code, ctx} = mutate("A / B.")
     # Assert that we generate the correct erlang code.
-    assert ErlUtils.pprint(abstract_code) == """
+    assert Erlang.pprint(abstract_code) == """
            'Elixir.Darwin.Mutators.Default.OpDivMutator':'__do_mutate__'('Elixir.MyModule',
                                                                          0, A, B)
            """
