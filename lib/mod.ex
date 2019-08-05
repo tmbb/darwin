@@ -1,10 +1,33 @@
-defmodule Mod do
-  @moduledoc """
-  Dummy module just to make it easy to inspect some erlang expressions
-  """
-  def f(a) do
-    <<g(a)>>
+defmodule Darwin.KitchenSink do
+  @moduledoc false
+  import Bitwise
+
+  def comparison_operators(a, b) do
+    _ = a < b
+    _ = a <= b
+    _ = a == b
+    _ = a === b
+    _ = a !== b
+    _ = a != b
+    _ = a > b
+    _ = a >= b
   end
 
-  def g(x), do: x
+  def arithmetic_operators(a, b) do
+    _x = fn x -> x + 1 end
+    _ = a + b
+    _ = a - b
+    _ = a * b
+    _ = a / b
+  end
+
+  def strict_boolean_operators(a, b) do
+    _ = a and b
+    _ = a or b
+    _ = not a
+  end
+
+  def bitwise_operators(a, b) do
+    _ = a >>> b
+  end
 end

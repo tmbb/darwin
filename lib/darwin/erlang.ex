@@ -17,7 +17,7 @@ defmodule Darwin.Erlang do
   end
 
   @doc "gets the erlang source code from the BEAM file"
-  def beam_to_erl(module) do
+  def beam_to_erlang_source(module) do
     filename = :code.which(module)
 
     {:ok, {_, [{:abstract_code, {_, abstract_code}}]}} =
@@ -27,6 +27,12 @@ defmodule Darwin.Erlang do
   end
 
   @doc "gets the erlang source code from the BEAM file"
+  def beam_to_erlang_source_file(module, file) do
+    source = beam_to_erlang_source(module)
+    File.write!(file, source)
+  end
+
+  @doc "gets the erlang abstract code from the BEAM file"
   def beam_to_abstract_code(module) do
     filename = :code.which(module)
 

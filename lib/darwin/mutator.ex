@@ -1,4 +1,4 @@
-defmodule Darwin.Mutators do
+defmodule Darwin.Mutator do
   alias Darwin.Mutator.Context
   alias Darwin.Mutators.Default
   alias Darwin.Erlang.AbstractCode
@@ -10,12 +10,48 @@ defmodule Darwin.Mutators do
   @callback mutate(AbstractCode.t(), Context.t(), list()) :: nil
 
   @doc """
+  Tests whether a clause in the Erlang abstract code is generated.
+  """
+  defguard is_generated(clause)
+           when is_tuple(clause) and hd(elem(clause, 1)) == {:generated, true}
+
+  @doc """
+  Tests whether a list of clauses are generated.
+  """
+  defmacro are_generated([clause | clauses]) do
+    initial = quote(do: Darwin.Mutator.is_generated(unquote(clause)))
+
+    Enum.reduce(clauses, initial, fn clause, conjunction ->
+      quote do
+        Darwin.Mutator.is_generated(unquote(clause)) and unquote(conjunction)
+      end
+    end)
+  end
+
+  def call_mutator(
+        {caller_module, helper_name} = _fun,
+        {module, codon_index} = _codon,
+        args,
+        line
+      ) do
+    codon_args = [
+      AbstractCode.encode_atom(module, line: 0),
+      AbstractCode.encode_integer(codon_index, line: 0)
+    ]
+
+    AbstractCode.call_mfa(
+      {caller_module, helper_name, codon_args ++ args},
+      line: line
+    )
+  end
+
+  @doc """
   Mutates Erlang abstract code.
   """
   @spec mutate(AbstractCode.t(), atom(), list(mutator())) :: mutator_result()
   def mutate(abstract_code, module, mutators \\ Default.mutators()) do
-    ctx = Context.new(module: module)
-    apply_mutators(mutators, abstract_code, ctx)
+    ctx = Context.new(module: module, mutators: mutators)
+    do_mutate(abstract_code, ctx)
   end
 
   @doc """
@@ -24,13 +60,25 @@ defmodule Darwin.Mutators do
   A mutator `m` matches if `m.mutate/3` returns an {:ok, {abstract_code, ctx}} tuple.
   """
   @spec mutate(AbstractCode.t(), atom(), Context.t()) :: mutator_result()
-  def apply_mutators(mutators, ast, ctx) do
-    Enum.reduce_while(mutators, {ast, ctx}, fn mutator, {ast, ctx} ->
-      case mutator.mutate(ast, ctx, mutators) do
-        {:ok, {new_ast, new_ctx}} -> {:halt, {new_ast, new_ctx}}
-        :error -> {:cont, {ast, ctx}}
+  def do_mutate(abstract_code, ctx) do
+    %{mutators: mutators} = ctx
+
+    Enum.reduce_while(mutators, {abstract_code, ctx}, fn mutator, {abstract_code, ctx} ->
+      case mutator.mutate(abstract_code, ctx) do
+        {:ok, {new_abstract_code, new_ctx}} -> {:halt, {new_abstract_code, new_ctx}}
+        :error -> {:cont, {abstract_code, ctx}}
       end
     end)
+  end
+
+  def do_map_mutate(list, ctx) do
+    {mutated_reversed_list, ctx} =
+      Enum.reduce(list, {[], ctx}, fn abstract_code, {acc, ctx} ->
+        {mutated_abstract_code, ctx} = do_mutate(abstract_code, ctx)
+        {[mutated_abstract_code | acc], ctx}
+      end)
+
+    {:lists.reverse(mutated_reversed_list), ctx}
   end
 
   @doc false
@@ -109,7 +157,7 @@ defmodule Darwin.Mutators do
         # This function is the one that will mutate the Erlang abstract code.
         # It does the following:
         #
-        # 1. It mutates the operator arguments (by recursively calling `apply_mutators()`)
+        # 1. It mutates the operator arguments (by recursively calling `do_mutate()`)
         # 2. It replaces the AST node with a function call to the `__do_#{name}__` function
         #
         # The `__do_#{name}__` is the one called during the tests, and the one responsible for
@@ -122,34 +170,43 @@ defmodule Darwin.Mutators do
           # Alias the modules locally
           alias Darwin.Erlang.AbstractCode
           alias Darwin.Mutator.Context
-          alias Darwin.Mutators
+          alias Darwin.Mutator
 
           # Mutate the operands (updating the context, of course)
-          {mutated_left, ctx} = Mutators.apply_mutators(mutators, left, ctx)
-          {mutated_right, ctx} = Mutators.apply_mutators(mutators, right, ctx)
+          {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+          {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
 
-          codon = Context.new_codon(ctx, value: abstract_code)
+          {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+          %{index: codon_index} = codon
           nr_of_mutations = Context.nr_of_mutations(ctx)
           module = ctx.module
 
           mutated_abstract_code =
-            AbstractCode.call_mfa(
-              {unquote(caller_module), unquote(helper_name),
-               [
-                 AbstractCode.encode_atom(module),
-                 AbstractCode.encode_integer(codon.index, line: line),
-                 AbstractCode.encode_integer(nr_of_mutations, line: line),
-                 mutated_left,
-                 mutated_right
-               ]},
-              line: line
+            Mutator.call_mutator(
+              {__MODULE__, :do_mutate},
+              {module, codon_index},
+              [mutated_left, mutated_right],
+              line
             )
+
+          # mutated_abstract_code =
+          #   AbstractCode.call_mfa(
+          #     {unquote(caller_module), unquote(helper_name),
+          #      [
+          #        AbstractCode.encode_atom(module),
+          #        AbstractCode.encode_integer(codon_index, line: line),
+          #        AbstractCode.encode_integer(nr_of_mutations, line: line),
+          #        mutated_left,
+          #        mutated_right
+          #      ]},
+          #     line: line
+          #   )
 
           mutation_data = unquote(alternatives)
 
           mutations =
             Enum.map(mutation_data, fn mutation ->
-              Mutators.make_mutation_opts(
+              Mutator.make_mutation_opts(
                 abstract_code,
                 unquote(caller_module),
                 mutation

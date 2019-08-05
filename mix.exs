@@ -24,6 +24,7 @@ defmodule Darwin.MixProject do
       {:benchee, "~> 1.0.1"},
       {:decimal, "~> 1.0"},
       {:beam_to_ex_ast, "~> 0.3.3"},
+      {:ex_to_erl, path: "../../ex_to_erl"},
       {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]}
     ]
   end

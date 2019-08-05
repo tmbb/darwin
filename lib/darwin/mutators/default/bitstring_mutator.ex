@@ -18,13 +18,12 @@
 
 #   def mutate(
 #         {:bin, line, patterns} = abstract_code,
-#         %Context{} = ctx,
-#         mutators
+#         %Context{} = ctx
 #       )
 #       when is_list(patterns) do
 #     {reversed_mutated_patterns, ctx} =
 #       Enum.reduce(patterns, {[], ctx}, fn pattern, {mutated_patterns, ctx} ->
-#         {abs_code, ctx} = DefMutator.apply_mutators(pattern, ctx, mutators)
+#         {abs_code, ctx} = DefMutator.do_mutate(pattern, ctx, mutators)
 #         {[abs_code | mutated_patterns], ctx}
 #       end)
 
@@ -40,7 +39,7 @@
 
 #     mutated_abstract_code =
 #       AbstractCode.call_mfa(
-#         {__MODULE__, :__do_mutate__,
+#         {__MODULE__, :do_mutate,
 #          [
 #            AbstractCode.encode_atom(mutator),
 #            AbstractCode.encode_integer(codon_index, line: line),
@@ -63,10 +62,10 @@
 #     {:ok, {mutated_abstract_code, ctx}}
 #   end
 
-#   def mutate(_abstact_code, _ctx, _mutators), do: :error
+#   def mutate(_abstact_code, _ctx), do: :error
 
 #   @doc false
-#   def __do_mutate__(module, codon_index, mutation_index, arg) do
+#   def do_mutate(module, codon_index, mutation_index, arg) do
 #     {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
 
 #     case module == active_module and codon_index == active_codon_index do

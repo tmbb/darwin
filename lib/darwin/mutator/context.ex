@@ -3,7 +3,8 @@ defmodule Darwin.Mutator.Context do
             mutation_count: 0,
             codons: %{},
             module: nil,
-            frozen: false
+            frozen: false,
+            mutators: []
 
   alias Darwin.Mutator.Mutation
   alias Darwin.Mutator.Codon
@@ -13,15 +14,14 @@ defmodule Darwin.Mutator.Context do
   @doc """
   Adds a single mutation to the context.
   """
-  @spec add_mutation(t(), Codon.t(), list()) :: Context.t()
-  def add_mutation(%__MODULE__{frozen: false} = ctx, codon, opts) do
+  @spec add_mutation(t(), integer(), integer(), list()) :: Context.t()
+  def add_mutation(%__MODULE__{frozen: false} = ctx, codon_index, mutation_index, opts) do
     %{mutation_count: mutation_count, module: module, mutations: mutations} = ctx
-    %{index: codon_index} = codon
 
     all_opts =
       opts
       |> Keyword.put_new(:module, module)
-      |> Keyword.put_new(:index, mutation_count)
+      |> Keyword.put_new(:index, mutation_index)
       |> Keyword.put_new(:original_codon_index, codon_index)
 
     mutation = Mutation.new(all_opts)
@@ -32,10 +32,12 @@ defmodule Darwin.Mutator.Context do
   @doc """
   Adds a list of mutations to the context.
   """
-  @spec add_mutation(t(), Codon.t(), list()) :: Context.t()
-  def add_mutations(%__MODULE__{frozen: false} = ctx, codon, opts_list) do
-    Enum.reduce(opts_list, ctx, fn mutation_opts, ctx ->
-      add_mutation(ctx, codon, mutation_opts)
+  @spec add_mutations(t(), integer(), list()) :: Context.t()
+  def add_mutations(%__MODULE__{frozen: false} = ctx, codon_index, opts_list) do
+    opts_list
+    |> Enum.with_index(0)
+    |> Enum.reduce(ctx, fn {mutation_opts, mutation_index}, ctx ->
+      add_mutation(ctx, codon_index, mutation_index, mutation_opts)
     end)
   end
 
