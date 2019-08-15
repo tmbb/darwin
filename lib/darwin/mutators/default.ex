@@ -1,18 +1,21 @@
 defmodule Darwin.Mutators.Default do
   alias Darwin.Mutators.Default.{
     # Arithmetic operators
-    # OpAddMutator,
-    # OpSubMutator,
-    # OpMulMutator,
-    # OpDivMutator,
-    # Logic operators
+    OpAddMutator,
+    OpSubMutator,
+    OpMulMutator,
+    OpDivMutator,
+
+    # Stricts Logical Operators
     OpStrictOrMutator,
     OpStrictAndMutator,
     OpStrictNotMutator,
+
     # Literal Mutators
     CharlistMutator,
     StringMutator,
-    AtomMutator
+    AtomMutator,
+
     # Bitshift operators
     # Comparison operators
     # OpLessThanMutator,
@@ -22,20 +25,28 @@ defmodule Darwin.Mutators.Default do
     # OpGreaterThanMutator,
     # OpGreaterThanOrEqualToMutator,
     # OpGreaterThanMutator
+
+    # Things to ignore
+    IgnoreInfoMutator,
+    IgnoreDefacroMutator
   }
+
+  alias Darwin.Mutators.Common.BackupMutator
 
   def mutators() do
     [
       # Arithmetic operators
-      # OpAddMutator,
-      # OpSubMutator,
-      # OpMulMutator,
-      # OpDivMutator,
+      OpAddMutator,
+      OpSubMutator,
+      OpMulMutator,
+      OpDivMutator,
 
-      # Logic operators
+      # Strict Logical operators
       OpStrictOrMutator,
       OpStrictAndMutator,
       OpStrictNotMutator,
+
+      # Lax Logical Operators
 
       # Literal Mutators
       StringMutator,
@@ -53,8 +64,10 @@ defmodule Darwin.Mutators.Default do
       # OpGreaterThanOrEqualToMutator,
       # OpGreaterThanMutator
 
+      IgnoreInfoMutator,
+      IgnoreDefacroMutator,
       # Backup mutator - which will match everything else
-      Darwin.Mutators.Common.BackupMutator
+      BackupMutator
     ]
   end
 end

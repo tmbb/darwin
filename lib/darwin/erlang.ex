@@ -12,7 +12,19 @@ defmodule Darwin.Erlang do
     indent = Keyword.get(opts, :indent, 8)
 
     [:erl_prettypr.format(abstract_code), "\n"]
-    |> to_string()
+    |> IO.iodata_to_binary()
+    |> String.replace("\t", String.duplicate(" ", indent))
+  end
+
+  defp append_newline(value), do: [value | "\n"]
+
+  def pprint_forms(form_list, opts \\ []) do
+    indent = Keyword.get(opts, :indent, 8)
+
+    :erl_syntax.form_list(form_list)
+    |> :erl_prettypr.format()
+    |> append_newline()
+    |> IO.iodata_to_binary()
     |> String.replace("\t", String.duplicate(" ", indent))
   end
 

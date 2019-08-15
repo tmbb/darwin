@@ -1,4 +1,5 @@
 %{
+  "assert_value": {:hex, :assert_value, "0.9.3", "5d146ecdcef004f48915d535a0233fdb7bdf657579e97eedca2d079e45e7d904", [:mix], [], "hexpm"},
   "beam_to_ex_ast": {:hex, :beam_to_ex_ast, "0.3.3", "3f04461854106ac6195a7e58f67ce5e32e26a7e91ca459a41af10c005c45546d", [:mix], [{:forms, "~> 0.0.1", [hex: :forms, repo: "hexpm", optional: false]}, {:protocol_ex, ">= 0.3.12", [hex: :protocol_ex, repo: "hexpm", optional: false]}], "hexpm"},
   "benchee": {:hex, :benchee, "1.0.1", "66b211f9bfd84bd97e6d1beaddf8fc2312aaabe192f776e8931cb0c16f53a521", [:mix], [{:deep_merge, "~> 1.0", [hex: :deep_merge, repo: "hexpm", optional: false]}], "hexpm"},
   "decimal": {:hex, :decimal, "1.8.0", "ca462e0d885f09a1c5a342dbd7c1dcf27ea63548c65a65e67334f4b61803822e", [:mix], [], "hexpm"},
@@ -10,4 +11,6 @@
   "makeup_elixir": {:hex, :makeup_elixir, "0.14.0", "cf8b7c66ad1cff4c14679698d532f0b5d45a3968ffbcbfd590339cb57742f1ae", [:mix], [{:makeup, "~> 1.0", [hex: :makeup, repo: "hexpm", optional: false]}], "hexpm"},
   "nimble_parsec": {:hex, :nimble_parsec, "0.5.0", "90e2eca3d0266e5c53f8fbe0079694740b9c91b6747f2b7e3c5d21966bba8300", [:mix], [], "hexpm"},
   "protocol_ex": {:hex, :protocol_ex, "0.4.2", "faa832d88e60621f74d90aecc6928e0dc97af7ec05598a289cfd75aaeb43a130", [:mix], [], "hexpm"},
+  "stream_data": {:hex, :stream_data, "0.4.3", "62aafd870caff0849a5057a7ec270fad0eb86889f4d433b937d996de99e3db25", [:mix], [], "hexpm"},
+  "task_after": {:hex, :task_after, "1.2.0", "b85b42cd6ad79131139a1b9ece398e262a7c4dccc0c0f1f8a0a568f0b24056eb", [:mix], [], "hexpm"},
 }

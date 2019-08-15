@@ -586,11 +586,11 @@ defmodule Darwin.Mutators.Common.BackupMutator do
   #
   # * If C is an if clause `Gs -> B`, where `Gs` is a guard sequence and `B` is
   #   a body, then Rep(C) = `{clause,LINE,[],Rep(Gs),Rep(B)}`.
-  def mutate({:clause, line, [pattern], guards, body}, ctx) do
+  def mutate({:clause, line, pattern, guards, body}, ctx) do
     # Don't mutate the pattern or the guards!
     # That will cause compilation errors.
     {mutated_body, ctx} = Mutator.do_mutate(body, ctx)
-    mutated_clause = {:clause, line, [pattern], guards, mutated_body}
+    mutated_clause = {:clause, line, pattern, guards, mutated_body}
     {:ok, {mutated_clause, ctx}}
   end
 
