@@ -16,19 +16,17 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"/mnt/c/Users/tmbb9/Projects/elixir/ex_to_erl/\"
-                       \"lib/ex_to_erl.ex\",
-                       369).
-
+                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
+    
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1').
-
+    
                  -compile([no_auto_import]).
-
+    
                  -export(['__info__'/1, f/1]).
-
+    
                  -spec '__info__'(attributes | compile | functions |
                       macros | md5 | module | deprecated) -> any().
-
+    
                  '__info__'(module) ->
                      'Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1';
                  '__info__'(functions) -> [{f, 1}];
@@ -43,7 +41,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
                      erlang:get_module_info('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1',
                           Key);
                  '__info__'(deprecated) -> [].
-
+    
                  f(_x@1) ->
                      'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1',
                                    0, _x@1, _x@1).
@@ -63,19 +61,17 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"/mnt/c/Users/tmbb9/Projects/elixir/ex_to_erl/\"
-                       \"lib/ex_to_erl.ex\",
-                       369).
-
+                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
+    
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2').
-
+    
                  -compile([no_auto_import]).
-
+    
                  -export(['__info__'/1, f/3, g/2]).
-
+    
                  -spec '__info__'(attributes | compile | functions |
                       macros | md5 | module | deprecated) -> any().
-
+    
                  '__info__'(module) ->
                      'Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2';
                  '__info__'(functions) -> [{f, 3}, {g, 2}];
@@ -90,7 +86,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
                      erlang:get_module_info('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                           Key);
                  '__info__'(deprecated) -> [].
-
+    
                  f(_x@1, _y@1, _z@1) ->
                      'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                                    1,
@@ -99,7 +95,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
                                                  _x@1,
                                                  _y@1),
                                    _z@1).
-
+    
                  g(_x@1, _y@1) ->
                      'Elixir.Darwin.Mutators.Default.OpMulMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                                    4,
@@ -125,9 +121,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"/mnt/c/Users/tmbb9/Projects/elixir/ex_to_erl/\"
-                       \"lib/ex_to_erl.ex\",
-                       369).
+                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
     
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2').
     

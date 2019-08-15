@@ -14,9 +14,16 @@ defmodule Darwin.MixProject do
 
   # Run "mix help compile.app" to learn about applications.
   def application do
+    maybe_mod =
+      if Mix.env() in [:test, :dev] do
+        [mod: {Darwin.ExToErl.Application, []}]
+      else
+        []
+      end
+
     [
       extra_applications: [:logger]
-    ]
+    ] ++ maybe_mod
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/common"]
@@ -26,12 +33,9 @@ defmodule Darwin.MixProject do
   defp deps do
     [
       {:benchee, "~> 1.0.1"},
-      {:decimal, "~> 1.0"},
-      {:beam_to_ex_ast, "~> 0.3.3"},
-      {:stream_data, "~> 0.4.3"},
-      {:ex_to_erl, path: "../../ex_to_erl"},
+      {:stream_data, "~> 0.4.3", only: [:dev, :test]},
       {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]},
-      {:assert_value, "~> 0.9.2"}
+      {:assert_value, "~> 0.9.2", only: [:dev, :test]}
     ]
   end
 end

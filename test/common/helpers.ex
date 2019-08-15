@@ -5,6 +5,7 @@ defmodule DarwinTest.Helpers do
 
   alias Darwin.Mutator
   alias Darwin.Erlang
+  alias Darwin.ExToErl
 
   def mutate_erlang(bin, opts \\ [module: MyModule]) do
     module = Keyword.fetch!(opts, :module)
