@@ -14,7 +14,7 @@ defmodule Darwin.Mutators.Default.StringMutator do
       )
       when is_list(charlist) do
     %{module: module} = ctx
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line1)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
@@ -28,7 +28,7 @@ defmodule Darwin.Mutators.Default.StringMutator do
     mutation_replace_string = [
       mutator: __MODULE__,
       name: "replace string",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: runtime_replace_string(charlist),
         erlang: abstract_code_replace_string(abstract_code)
       }
@@ -49,7 +49,7 @@ defmodule Darwin.Mutators.Default.StringMutator do
   def do_mutate(module, codon_index, arg) do
     case ActiveMutation.mutation_index_for_codon(module, codon_index) do
       {:ok, 0} -> runtime_replace_string(arg)
-      _ -> not arg
+      _ -> arg
     end
   end
 

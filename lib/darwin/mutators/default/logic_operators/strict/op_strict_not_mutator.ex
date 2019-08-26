@@ -1,13 +1,16 @@
 defmodule Darwin.Mutators.Default.OpStrictNotMutator do
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
+  alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
   def mutate(abstract_code = {:op, line, :not, arg}, ctx) do
     %{module: module} = ctx
     {mutated_arg, ctx} = Mutator.do_mutate(arg, ctx)
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
+
+    elixir_arg = ErlToEx.erl_to_ex(arg)
 
     mutated_abstract_code =
       Mutator.call_mutator(
@@ -20,15 +23,15 @@ defmodule Darwin.Mutators.Default.OpStrictNotMutator do
     mutation_remove_negation = [
       mutator: __MODULE__,
       name: "remove negation",
-      mutated_abstract_code: %{
-        elixir: nil
+      mutated_codon: %{
+        elixir: quote(do: not unquote(elixir_arg))
       }
     ]
 
     mutation_replace_by_true = [
       mutator: __MODULE__,
       name: "replace by true",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: quote(do: true),
         erlang: {:atom, line, true}
       }
@@ -37,7 +40,7 @@ defmodule Darwin.Mutators.Default.OpStrictNotMutator do
     mutation_replace_by_false = [
       mutator: __MODULE__,
       name: "replace by false",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: quote(do: false),
         erlang: {:atom, line, false}
       }

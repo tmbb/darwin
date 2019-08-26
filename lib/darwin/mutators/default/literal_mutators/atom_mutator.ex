@@ -8,7 +8,7 @@ defmodule Darwin.Mutators.Default.AtomMutator do
 
   def mutate({:atom, line, atom} = abstract_code, %Context{} = ctx) do
     %{module: module} = ctx
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
@@ -22,7 +22,7 @@ defmodule Darwin.Mutators.Default.AtomMutator do
     mutation_replace_atom = [
       mutator: __MODULE__,
       name: "replace atom",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: runtime_replace_atom(atom),
         erlang: abstract_code_replace_atom(abstract_code)
       }
@@ -43,7 +43,7 @@ defmodule Darwin.Mutators.Default.AtomMutator do
   def do_mutate(module, codon_index, arg) do
     case ActiveMutation.mutation_index_for_codon(module, codon_index) do
       {:ok, 0} -> runtime_replace_atom(arg)
-      _ -> not arg
+      _ -> arg
     end
   end
 

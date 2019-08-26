@@ -245,6 +245,12 @@ defmodule Darwin.Mutators.Common.BackupMutator do
   # * If E is a case expression `case E\_0 of Cc\_1 ; ... ; Cc\_k end`, where
   #   `E\_0` is anexpression and each `Cc\_i` is a case clause, then Rep(E) =
   #   `{'case',LINE,Rep(E\_0),[Rep(Cc\_1), ..., Rep(Cc\_k)]}`.
+  def mutate({:case, line, test, branches}, ctx) do
+    {mutated_test, ctx} = Mutator.do_mutate(test, ctx)
+    {mutated_branches, ctx} = Mutator.do_map_mutate(branches, ctx)
+    mutated_case = {:case, line, mutated_test, mutated_branches}
+    {:ok, {mutated_case, ctx}}
+  end
 
   # * If E is a catch expression `catch E\_0`, then Rep(E) =
   #   `{'catch',LINE,Rep(E\_0)}`.
@@ -294,8 +300,8 @@ defmodule Darwin.Mutators.Common.BackupMutator do
   #   Rep(E\_k)]}`.
   def mutate({:call, line1, {:remote, line2, module, fun}, args}, ctx) do
     {mutated_args, ctx} = Mutator.do_map_mutate(args, ctx)
-    {mutated_fun, ctx} = Mutator.do_mutate(fun, ctx)
-    {mutated_module, ctx} = Mutator.do_mutate(module, ctx)
+    {mutated_fun, ctx} = dont_mutate_if_atom(fun, ctx)
+    {mutated_module, ctx} = dont_mutate_if_atom(module, ctx)
 
     mutated_call = {:call, line1, {:remote, line2, mutated_module, mutated_fun}, mutated_args}
 
@@ -306,7 +312,7 @@ defmodule Darwin.Mutators.Common.BackupMutator do
   #   `{call,LINE,Rep(E\_0),[Rep(E\_1), ..., Rep(E\_k)]}`.
   def mutate({:call, line, expression, args}, ctx) do
     {mutated_args, ctx} = Mutator.do_map_mutate(args, ctx)
-    {mutated_expression, ctx} = Mutator.do_mutate(expression, ctx)
+    {mutated_expression, ctx} = dont_mutate_if_atom(expression, ctx)
     mutated_call = {:call, line, mutated_expression, mutated_args}
     {:ok, {mutated_call, ctx}}
   end
@@ -471,7 +477,7 @@ defmodule Darwin.Mutators.Common.BackupMutator do
     {mutated_c_clauses, ctx} = c_clauses |> List.wrap() |> Mutator.do_map_mutate(ctx)
     {mutated_t_clauses, ctx} = t_clauses |> List.wrap() |> Mutator.do_map_mutate(ctx)
     {mutated_a, ctx} = a |> List.wrap() |> Mutator.do_map_mutate(ctx)
-    mutated_try = {:tuple, line, mutated_b, mutated_c_clauses, mutated_t_clauses, mutated_a}
+    mutated_try = {:try, line, mutated_b, mutated_c_clauses, mutated_t_clauses, mutated_a}
     {:ok, {mutated_try, ctx}}
   end
 
@@ -782,4 +788,8 @@ defmodule Darwin.Mutators.Common.BackupMutator do
   def mutate(other, ctx) do
     {:ok, {other, ctx}}
   end
+
+  # Helpers
+  defp dont_mutate_if_atom({:atom, _line, _value} = atom, ctx), do: {atom, ctx}
+  defp dont_mutate_if_atom(expression, ctx), do: Mutator.do_mutate(expression, ctx)
 end

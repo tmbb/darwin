@@ -43,14 +43,4 @@ defmodule Darwin.Erlang do
     source = beam_to_erlang_source(module)
     File.write!(file, source)
   end
-
-  @doc "gets the erlang abstract code from the BEAM file"
-  def beam_to_abstract_code(module) do
-    filename = :code.which(module)
-
-    {:ok, {_, [{:abstract_code, {_, abstract_code}}]}} =
-      :beam_lib.chunks(filename, [:abstract_code])
-
-    abstract_code
-  end
 end

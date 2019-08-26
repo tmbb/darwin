@@ -2,6 +2,7 @@ defmodule Darwin.Mutator do
   alias Darwin.Mutator.Context
   alias Darwin.Mutators.Default
   alias Darwin.Erlang.AbstractCode
+  alias Darwin.Beam
 
   @type mutator_result() :: {:ok, {AbstractCode.t(), Context.t()}} | :error
 
@@ -52,6 +53,14 @@ defmodule Darwin.Mutator do
   def mutate(abstract_code, module, mutators \\ Default.mutators()) do
     ctx = Context.new(module: module, mutators: mutators)
     do_mutate(abstract_code, ctx)
+  end
+
+  @doc """
+  Mutates the module with the given name.
+  """
+  def mutate_module(module, mutators \\ Default.mutators()) do
+    form_list = Beam.beam_to_abstract_code(module)
+    mutate(form_list, module, mutators)
   end
 
   @doc """
@@ -176,7 +185,7 @@ defmodule Darwin.Mutator do
           {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
           {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
 
-          {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+          {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
           %{index: codon_index} = codon
           nr_of_mutations = Context.nr_of_mutations(ctx)
           module = ctx.module

@@ -8,6 +8,7 @@ defmodule Darwin.Mutator.Context do
 
   alias Darwin.Mutator.Mutation
   alias Darwin.Mutator.Codon
+  alias Darwin.ErlToEx
 
   @type t :: %__MODULE__{}
 
@@ -46,8 +47,17 @@ defmodule Darwin.Mutator.Context do
     %{codons: codons, module: module} = ctx
     next_index = map_size(codons)
 
+    erlang_value = Keyword.get(opts, :value)
+    elixir_value = ErlToEx.erl_to_ex(erlang_value)
+
+    value = %{
+      erlang: erlang_value,
+      elixir: elixir_value
+    }
+
     all_opts =
       opts
+      |> Keyword.put(:value, value)
       |> Keyword.put_new(:module, module)
       |> Keyword.put_new(:index, next_index)
 
@@ -84,5 +94,32 @@ defmodule Darwin.Mutator.Context do
 
   def new(opts \\ []) do
     struct(__MODULE__, opts)
+  end
+
+  def merge(contexts) do
+    mutations = Enum.flat_map(contexts, fn ctx -> ctx.mutations end)
+    codons = Enum.flat_map(contexts, fn ctx -> ctx.codons end)
+
+    mutations_count =
+      contexts
+      |> Enum.map(fn %{mutations_count: count} -> count end)
+      |> Enum.sum()
+
+    new(
+      mutations: mutations,
+      codons: codons,
+      mutations_count: mutations_count,
+      frozen: true
+    )
+  end
+
+  def original_codon(ctx, mutation) do
+    %{codons: codons} = ctx
+    key = {mutation.module, mutation.original_codon_index}
+    Map.fetch!(codons, key)
+  end
+
+  def merge_mutations(contexts) do
+    Enum.flat_map(contexts, fn ctx -> ctx.mutations end)
   end
 end

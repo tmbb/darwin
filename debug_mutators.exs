@@ -6,7 +6,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -98,7 +98,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -197,7 +197,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -289,7 +289,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -388,7 +388,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -504,7 +504,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -622,7 +622,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -731,7 +731,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -840,7 +840,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -956,7 +956,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1076,7 +1076,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1208,7 +1208,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1358,7 +1358,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1490,7 +1490,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1640,7 +1640,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -1826,7 +1826,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2012,7 +2012,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2179,7 +2179,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2346,7 +2346,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2531,7 +2531,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2719,7 +2719,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -2852,7 +2852,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3003,7 +3003,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3136,7 +3136,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3287,7 +3287,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3474,7 +3474,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3661,7 +3661,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3829,7 +3829,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -3997,7 +3997,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4183,7 +4183,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4372,7 +4372,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4505,7 +4505,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4656,7 +4656,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4789,7 +4789,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -4940,7 +4940,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -5127,7 +5127,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -5314,7 +5314,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -5482,7 +5482,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -5650,7 +5650,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -5836,7 +5836,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6025,7 +6025,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6158,7 +6158,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6309,7 +6309,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6442,7 +6442,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6593,7 +6593,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6780,7 +6780,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -6967,7 +6967,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7135,7 +7135,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7303,7 +7303,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7489,7 +7489,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7678,7 +7678,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7811,7 +7811,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -7962,7 +7962,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8095,7 +8095,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8246,7 +8246,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8433,7 +8433,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8620,7 +8620,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8788,7 +8788,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -8956,7 +8956,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9142,7 +9142,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9331,7 +9331,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9464,7 +9464,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9615,7 +9615,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9748,7 +9748,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -9899,7 +9899,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10086,7 +10086,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10273,7 +10273,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10441,7 +10441,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10609,7 +10609,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10795,7 +10795,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -10984,7 +10984,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11117,7 +11117,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11268,7 +11268,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11401,7 +11401,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11552,7 +11552,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11739,7 +11739,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -11926,7 +11926,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12094,7 +12094,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12262,7 +12262,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12448,7 +12448,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12637,7 +12637,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12770,7 +12770,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -12921,7 +12921,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13054,7 +13054,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13205,7 +13205,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13392,7 +13392,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13579,7 +13579,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13747,7 +13747,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -13915,7 +13915,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14101,7 +14101,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14290,7 +14290,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14423,7 +14423,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14574,7 +14574,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14707,7 +14707,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -14858,7 +14858,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15045,7 +15045,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15232,7 +15232,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15400,7 +15400,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15568,7 +15568,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15754,7 +15754,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -15943,7 +15943,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16076,7 +16076,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16227,7 +16227,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16360,7 +16360,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16511,7 +16511,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16698,7 +16698,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -16885,7 +16885,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17053,7 +17053,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17221,7 +17221,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17407,7 +17407,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17596,7 +17596,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17729,7 +17729,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -17880,7 +17880,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18013,7 +18013,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18164,7 +18164,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18351,7 +18351,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18538,7 +18538,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18706,7 +18706,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -18874,7 +18874,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19060,7 +19060,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19249,7 +19249,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19382,7 +19382,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19533,7 +19533,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19666,7 +19666,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -19817,7 +19817,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20004,7 +20004,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20191,7 +20191,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20359,7 +20359,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20527,7 +20527,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20713,7 +20713,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -20902,7 +20902,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21035,7 +21035,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21186,7 +21186,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21319,7 +21319,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21470,7 +21470,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21657,7 +21657,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -21844,7 +21844,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22012,7 +22012,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22180,7 +22180,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22366,7 +22366,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22555,7 +22555,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22688,7 +22688,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22839,7 +22839,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -22972,7 +22972,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -23123,7 +23123,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -23310,7 +23310,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -23497,7 +23497,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -23665,7 +23665,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -23833,7 +23833,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24019,7 +24019,7 @@ def(
   alias(Darwin.Mutator.Context)
   {mutated_left, ctx} = DefMutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = DefMutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24208,7 +24208,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24341,7 +24341,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24492,7 +24492,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24625,7 +24625,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24776,7 +24776,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -24963,7 +24963,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25150,7 +25150,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25318,7 +25318,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25486,7 +25486,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25672,7 +25672,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25861,7 +25861,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -25994,7 +25994,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26127,7 +26127,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26260,7 +26260,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26393,7 +26393,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26526,7 +26526,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26677,7 +26677,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26810,7 +26810,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -26961,7 +26961,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -27148,7 +27148,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -27335,7 +27335,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -27503,7 +27503,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -27671,7 +27671,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -27857,7 +27857,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28046,7 +28046,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28179,7 +28179,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28330,7 +28330,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28463,7 +28463,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28614,7 +28614,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28801,7 +28801,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -28988,7 +28988,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29156,7 +29156,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29324,7 +29324,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29510,7 +29510,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29699,7 +29699,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29832,7 +29832,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -29983,7 +29983,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30116,7 +30116,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30267,7 +30267,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30454,7 +30454,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30641,7 +30641,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30809,7 +30809,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -30977,7 +30977,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31163,7 +31163,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31352,7 +31352,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31485,7 +31485,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31636,7 +31636,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31769,7 +31769,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -31920,7 +31920,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -32107,7 +32107,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -32294,7 +32294,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -32462,7 +32462,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -32630,7 +32630,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -32816,7 +32816,7 @@ def(
   alias(Darwin.Mutators)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33005,7 +33005,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33138,7 +33138,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33289,7 +33289,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33422,7 +33422,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33573,7 +33573,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33760,7 +33760,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -33947,7 +33947,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34115,7 +34115,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34283,7 +34283,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34469,7 +34469,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34658,7 +34658,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34791,7 +34791,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -34942,7 +34942,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35075,7 +35075,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35226,7 +35226,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35413,7 +35413,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35600,7 +35600,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35768,7 +35768,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -35936,7 +35936,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36122,7 +36122,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutators.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutators.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36311,7 +36311,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36444,7 +36444,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36595,7 +36595,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36728,7 +36728,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -36879,7 +36879,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37066,7 +37066,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37253,7 +37253,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37421,7 +37421,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37589,7 +37589,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37775,7 +37775,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -37964,7 +37964,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38097,7 +38097,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38248,7 +38248,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38381,7 +38381,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38532,7 +38532,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38719,7 +38719,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -38906,7 +38906,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -39074,7 +39074,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -39242,7 +39242,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -39428,7 +39428,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  codon = Context.new_codon(ctx, value: abstract_code)
+  codon = Context.new_codon(ctx, value: abstract_code, line: line)
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
 
@@ -39617,7 +39617,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -39751,1670 +39751,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpSubMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'-' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a - b",
-      example_output: "b - a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
-      description: "'-' operator: delete left argument",
-      name: "delete left argument",
-      example_input: "a - b",
-      example_output: "a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
-      description: "'-' operator: delete right argument",
-      name: "delete right argument",
-      example_input: "a - b",
-      example_output: "b"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
-      description: "replace by '+'",
-      example_input: "a - b",
-      example_output: "b + a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
-      description: "replace by '*'",
-      example_input: "a - b",
-      example_output: "b * a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
-      description: "replace by '/'",
-      example_input: "a - b",
-      example_output: "b / a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpSubMutator, mutation)
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :*, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpMulMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
-      description: "'*' operator: delete left argument",
-      name: "delete left argument",
-      example_input: "a * b",
-      example_output: "a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
-      description: "'*' operator: delete right argument",
-      name: "delete right argument",
-      example_input: "a * b",
-      example_output: "b"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
-      description: "replace by '+'",
-      example_input: "a * b",
-      example_output: "b + a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
-      description: "replace by '-'",
-      example_input: "a * b",
-      example_output: "b - a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
-      description: "replace by '/'",
-      example_input: "a * b",
-      example_output: "b / a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpMulMutator, mutation)
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :/, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpDivMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'/' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a / b",
-      example_output: "b / a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
-      description: "'/' operator: delete left argument",
-      name: "delete left argument",
-      example_input: "a / b",
-      example_output: "a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
-      description: "'/' operator: delete right argument",
-      name: "delete right argument",
-      example_input: "a / b",
-      example_output: "b"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
-      description: "replace by '+'",
-      example_input: "a / b",
-      example_output: "b + a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
-      description: "replace by '-'",
-      example_input: "a / b",
-      example_output: "b - a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
-      description: "replace by '*'",
-      example_input: "a / b",
-      example_output: "b * a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpDivMutator, mutation)
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :<, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpLessThanMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'<' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a < b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a < b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a < b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
-      description: "replace by '<='",
-      example_input: "a < b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
-      description: "replace by '=='",
-      example_input: "a < b",
-      example_output: "b == a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
-      description: "replace by '!='",
-      example_input: "a < b",
-      example_output: "b != a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
-      description: "replace by '>='",
-      example_input: "a < b",
-      example_output: "b >= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
-      description: "replace by '>'",
-      example_input: "a < b",
-      example_output: "b > a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpLessThanMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-             [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        7 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :<=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpLessThanOrEqualToMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'<=' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a <= b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a <= b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a <= b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
-      description: "replace by '<'",
-      example_input: "a <= b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
-      description: "replace by '=='",
-      example_input: "a <= b",
-      example_output: "b == a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
-      description: "replace by '!='",
-      example_input: "a <= b",
-      example_output: "b != a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
-      description: "replace by '>='",
-      example_input: "a <= b",
-      example_output: "b >= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
-      description: "replace by '>'",
-      example_input: "a <= b",
-      example_output: "b > a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpLessThanOrEqualToMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-             [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        7 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} =
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}
-
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :==, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpEqualToMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a == b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a == b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
-      description: "replace by '<'",
-      example_input: "a == b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
-      description: "replace by '<='",
-      example_input: "a == b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
-      description: "replace by '!='",
-      example_input: "a == b",
-      example_output: "b != a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
-      description: "replace by '>='",
-      example_input: "a == b",
-      example_output: "b >= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
-      description: "replace by '>'",
-      example_input: "a == b",
-      example_output: "b > a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpEqualToMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-             [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :!=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpNotEqualToMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a != b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a != b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
-      description: "replace by '<'",
-      example_input: "a != b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
-      description: "replace by '<='",
-      example_input: "a != b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
-      description: "replace by '=='",
-      example_input: "a != b",
-      example_output: "b == a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
-      description: "replace by '>='",
-      example_input: "a != b",
-      example_output: "b >= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
-      description: "replace by '>'",
-      example_input: "a != b",
-      example_output: "b > a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpNotEqualToMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-             [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :>, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpGreaterThanMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'>' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a > b",
-      example_output: "b > a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a > b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a > b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
-      description: "replace by '<'",
-      example_input: "a > b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
-      description: "replace by '<='",
-      example_input: "a > b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
-      description: "replace by '=='",
-      example_input: "a > b",
-      example_output: "b == a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
-      description: "replace by '!='",
-      example_input: "a > b",
-      example_output: "b != a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
-      description: "replace by '>='",
-      example_input: "a > b",
-      example_output: "b >= a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpGreaterThanMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        7 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-             [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :>=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
-      description: "'>=' operator: swap arguments",
-      name: "swap arguments",
-      example_input: "a >= b",
-      example_output: "b >= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
-      description: "replace by 'true'",
-      example_input: "a >= b",
-      example_output: "true"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
-      description: "replace by 'false'",
-      example_input: "a >= b",
-      example_output: "false"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
-      description: "replace by '<'",
-      example_input: "a >= b",
-      example_output: "b < a"
-    ],
-    [
-      runtime_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
-      description: "replace by '<='",
-      example_input: "a >= b",
-      example_output: "b <= a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
-      description: "replace by '=='",
-      example_input: "a >= b",
-      example_output: "b == a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
-      description: "replace by '!='",
-      example_input: "a >= b",
-      example_output: "b != a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
-      description: "replace by '>'",
-      example_input: "a >= b",
-      example_output: "b > a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(
-        abstract_code,
-        Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator,
-        mutation
-      )
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
-             [
-               {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
-                []}
-             ]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        5 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        6 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        7 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} =
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}
-
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :+, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
-  %{index: codon_index} = codon
-  nr_of_mutations = Context.nr_of_mutations(ctx)
-  module = ctx.module()
-
-  mutated_abstract_code =
-    AbstractCode.call_mfa(
-      {Darwin.Mutators.Default.OpAddMutator, :do_mutate,
-       [
-         AbstractCode.encode_atom(module),
-         AbstractCode.encode_integer(codon_index, line: line),
-         AbstractCode.encode_integer(nr_of_mutations, line: line),
-         mutated_left,
-         mutated_right
-       ]},
-      line: line
-    )
-
-  mutation_data = [
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
-      description: "'+' operator: delete left argument",
-      name: "delete left argument",
-      example_input: "a + b",
-      example_output: "a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
-      abstract_code_mfa:
-        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
-      description: "'+' operator: delete right argument",
-      name: "delete right argument",
-      example_input: "a + b",
-      example_output: "b"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
-      description: "replace by '-'",
-      example_input: "a + b",
-      example_output: "b - a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
-      description: "replace by '*'",
-      example_input: "a + b",
-      example_output: "b * a"
-    ],
-    [
-      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
-      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
-      description: "replace by '/'",
-      example_input: "a + b",
-      example_output: "b / a"
-    ]
-  ]
-
-  mutations =
-    Enum.map(mutation_data, fn mutation ->
-      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpAddMutator, mutation)
-    end)
-
-  ctx = Context.add_mutations(ctx, codon, mutations)
-  {:ok, {mutated_abstract_code, ctx}}
-end
-
-def(mutate(_abstract, _ctx, _mutators)) do
-  :error
-end
-
-@doc false
-def(do_mutate(module, codon_index, mutation_index, left, right)) do
-  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
-
-  case(module == active_module and codon_index == active_codon_index) do
-    true ->
-      corrected_index = active_mutation_index - mutation_index
-
-      corrected_index
-      |> case do
-        0 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        1 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        2 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        3 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        4 ->
-          {alt_m, alt_f, alt_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
-
-          apply(alt_m, alt_f, alt_args ++ [left, right])
-
-        _ ->
-          {default_m, default_f, default_args} =
-            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, []}
-
-          apply(default_m, default_f, default_args ++ [left, right])
-      end
-
-    false ->
-      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, []}
-      apply(m, f, args ++ [left, right])
-  end
-end
-
-def(
-  mutate({:op, line, :-, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
-) do
-  alias(Darwin.Erlang.AbstractCode)
-  alias(Darwin.Mutator.Context)
-  alias(Darwin.Mutator)
-  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
-  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -41566,7 +39903,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -41700,7 +40037,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -41852,7 +40189,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42040,7 +40377,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42228,7 +40565,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42397,7 +40734,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42566,7 +40903,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42753,7 +41090,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -42943,7 +41280,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43077,7 +41414,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43229,7 +41566,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43363,7 +41700,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43515,7 +41852,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43703,7 +42040,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -43891,7 +42228,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44060,7 +42397,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44229,7 +42566,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44416,7 +42753,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44606,7 +42943,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44740,7 +43077,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -44892,7 +43229,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45026,7 +43363,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45178,7 +43515,1670 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpLessThanMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'<' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a < b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a < b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a < b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
+      description: "replace by '<='",
+      example_input: "a < b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
+      description: "replace by '=='",
+      example_input: "a < b",
+      example_output: "b == a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
+      description: "replace by '!='",
+      example_input: "a < b",
+      example_output: "b != a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
+      description: "replace by '>='",
+      example_input: "a < b",
+      example_output: "b >= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
+      description: "replace by '>'",
+      example_input: "a < b",
+      example_output: "b > a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpLessThanMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+             [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        7 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :<=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpLessThanOrEqualToMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'<=' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a <= b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a <= b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a <= b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
+      description: "replace by '<'",
+      example_input: "a <= b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
+      description: "replace by '=='",
+      example_input: "a <= b",
+      example_output: "b == a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
+      description: "replace by '!='",
+      example_input: "a <= b",
+      example_output: "b != a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
+      description: "replace by '>='",
+      example_input: "a <= b",
+      example_output: "b >= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
+      description: "replace by '>'",
+      example_input: "a <= b",
+      example_output: "b > a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpLessThanOrEqualToMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+             [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        7 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} =
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, []}
+
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :==, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpEqualToMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a == b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a == b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
+      description: "replace by '<'",
+      example_input: "a == b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
+      description: "replace by '<='",
+      example_input: "a == b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
+      description: "replace by '!='",
+      example_input: "a == b",
+      example_output: "b != a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
+      description: "replace by '>='",
+      example_input: "a == b",
+      example_output: "b >= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
+      description: "replace by '>'",
+      example_input: "a == b",
+      example_output: "b > a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpEqualToMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+             [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :!=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpNotEqualToMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a != b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a != b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
+      description: "replace by '<'",
+      example_input: "a != b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
+      description: "replace by '<='",
+      example_input: "a != b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
+      description: "replace by '=='",
+      example_input: "a != b",
+      example_output: "b == a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
+      description: "replace by '>='",
+      example_input: "a != b",
+      example_output: "b >= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
+      description: "replace by '>'",
+      example_input: "a != b",
+      example_output: "b > a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpNotEqualToMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+             [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :>, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpGreaterThanMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'>' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a > b",
+      example_output: "b > a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a > b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a > b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
+      description: "replace by '<'",
+      example_input: "a > b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
+      description: "replace by '<='",
+      example_input: "a > b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
+      description: "replace by '=='",
+      example_input: "a > b",
+      example_output: "b == a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
+      description: "replace by '!='",
+      example_input: "a > b",
+      example_output: "b != a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than_or_equal_to, []},
+      description: "replace by '>='",
+      example_input: "a > b",
+      example_output: "b >= a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpGreaterThanMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        7 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+             [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :>=, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'>=' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a >= b",
+      example_output: "b >= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_true, []},
+      description: "replace by 'true'",
+      example_input: "a >= b",
+      example_output: "true"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_always_false, []},
+      description: "replace by 'false'",
+      example_input: "a >= b",
+      example_output: "false"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_less_than, []},
+      description: "replace by '<'",
+      example_input: "a >= b",
+      example_output: "b < a"
+    ],
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_less_than_or_equal_to, []},
+      description: "replace by '<='",
+      example_input: "a >= b",
+      example_output: "b <= a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_equal_to, []},
+      description: "replace by '=='",
+      example_input: "a >= b",
+      example_output: "b == a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_not_equal_to, []},
+      description: "replace by '!='",
+      example_input: "a >= b",
+      example_output: "b != a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_greater_than, []},
+      description: "replace by '>'",
+      example_input: "a >= b",
+      example_output: "b > a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(
+        abstract_code,
+        Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator,
+        mutation
+      )
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [
+               {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to,
+                []}
+             ]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_true, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_always_false, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_less_than_or_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        6 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_not_equal_to, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        7 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} =
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_greater_than_or_equal_to, []}
+
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :+, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpAddMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
+      description: "'+' operator: delete left argument",
+      name: "delete left argument",
+      example_input: "a + b",
+      example_output: "a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
+      description: "'+' operator: delete right argument",
+      name: "delete right argument",
+      example_input: "a + b",
+      example_output: "b"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
+      description: "replace by '-'",
+      example_input: "a + b",
+      example_output: "b - a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
+      description: "replace by '*'",
+      example_input: "a + b",
+      example_output: "b * a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
+      description: "replace by '/'",
+      example_input: "a + b",
+      example_output: "b / a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpAddMutator, mutation)
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :-, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpSubMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'-' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a - b",
+      example_output: "b - a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
+      description: "'-' operator: delete left argument",
+      name: "delete left argument",
+      example_input: "a - b",
+      example_output: "a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
+      description: "'-' operator: delete right argument",
+      name: "delete right argument",
+      example_input: "a - b",
+      example_output: "b"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
+      description: "replace by '+'",
+      example_input: "a - b",
+      example_output: "b + a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
+      description: "replace by '*'",
+      example_input: "a - b",
+      example_output: "b * a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
+      description: "replace by '/'",
+      example_input: "a - b",
+      example_output: "b / a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpSubMutator, mutation)
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :*, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpMulMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
+      description: "'*' operator: delete left argument",
+      name: "delete left argument",
+      example_input: "a * b",
+      example_output: "a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
+      description: "'*' operator: delete right argument",
+      name: "delete right argument",
+      example_input: "a * b",
+      example_output: "b"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
+      description: "replace by '+'",
+      example_input: "a * b",
+      example_output: "b + a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
+      description: "replace by '-'",
+      example_input: "a * b",
+      example_output: "b - a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_div, []},
+      description: "replace by '/'",
+      example_input: "a * b",
+      example_output: "b / a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpMulMutator, mutation)
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :/, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  %{index: codon_index} = codon
+  nr_of_mutations = Context.nr_of_mutations(ctx)
+  module = ctx.module()
+
+  mutated_abstract_code =
+    AbstractCode.call_mfa(
+      {Darwin.Mutators.Default.OpDivMutator, :do_mutate,
+       [
+         AbstractCode.encode_atom(module),
+         AbstractCode.encode_integer(codon_index, line: line),
+         AbstractCode.encode_integer(nr_of_mutations, line: line),
+         mutated_left,
+         mutated_right
+       ]},
+      line: line
+    )
+
+  mutation_data = [
+    [
+      runtime_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+         [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_swap_args, []},
+      description: "'/' operator: swap arguments",
+      name: "swap arguments",
+      example_input: "a / b",
+      example_output: "b / a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_left, []},
+      description: "'/' operator: delete left argument",
+      name: "delete left argument",
+      example_input: "a / b",
+      example_output: "a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]},
+      abstract_code_mfa:
+        {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_delete_right, []},
+      description: "'/' operator: delete right argument",
+      name: "delete right argument",
+      example_input: "a / b",
+      example_output: "b"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_add, []},
+      description: "replace by '+'",
+      example_input: "a / b",
+      example_output: "b + a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_sub, []},
+      description: "replace by '-'",
+      example_input: "a / b",
+      example_output: "b - a"
+    ],
+    [
+      runtime_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]},
+      abstract_code_mfa: {Darwin.Mutators.Default.BinOpMutatorCreator, :abstract_code_mul, []},
+      description: "replace by '*'",
+      example_input: "a / b",
+      example_output: "b * a"
+    ]
+  ]
+
+  mutations =
+    Enum.map(mutation_data, fn mutation ->
+      Mutator.make_mutation_opts(abstract_code, Darwin.Mutators.Default.OpDivMutator, mutation)
+    end)
+
+  ctx = Context.add_mutations(ctx, codon, mutations)
+  {:ok, {mutated_abstract_code, ctx}}
+end
+
+def(mutate(_abstract, _ctx, _mutators)) do
+  :error
+end
+
+@doc false
+def(do_mutate(module, codon_index, mutation_index, left, right)) do
+  {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
+
+  case(module == active_module and codon_index == active_codon_index) do
+    true ->
+      corrected_index = active_mutation_index - mutation_index
+
+      corrected_index
+      |> case do
+        0 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_swap_args,
+             [{Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        1 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_left, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        2 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_delete_right, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        3 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_add, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        4 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_sub, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        5 ->
+          {alt_m, alt_f, alt_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_mul, [nil]}
+
+          apply(alt_m, alt_f, alt_args ++ [left, right])
+
+        _ ->
+          {default_m, default_f, default_args} =
+            {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}
+
+          apply(default_m, default_f, default_args ++ [left, right])
+      end
+
+    false ->
+      {m, f, args} = {Darwin.Mutators.Default.BinOpMutatorCreator, :runtime_div, []}
+      apply(m, f, args ++ [left, right])
+  end
+end
+
+def(
+  mutate({:op, line, :<, left, right} = abstract_code, %Darwin.Mutator.Context{} = ctx, mutators)
+) do
+  alias(Darwin.Erlang.AbstractCode)
+  alias(Darwin.Mutator.Context)
+  alias(Darwin.Mutator)
+  {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
+  {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45370,7 +45370,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45558,7 +45558,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45727,7 +45727,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -45896,7 +45896,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46083,7 +46083,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46273,7 +46273,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46407,7 +46407,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46559,7 +46559,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46693,7 +46693,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -46845,7 +46845,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47037,7 +47037,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47225,7 +47225,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47394,7 +47394,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47563,7 +47563,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47750,7 +47750,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -47940,7 +47940,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48074,7 +48074,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48226,7 +48226,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48360,7 +48360,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48512,7 +48512,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48704,7 +48704,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -48892,7 +48892,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49061,7 +49061,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49230,7 +49230,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49417,7 +49417,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49607,7 +49607,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49741,7 +49741,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -49893,7 +49893,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50027,7 +50027,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50179,7 +50179,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50371,7 +50371,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50559,7 +50559,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50728,7 +50728,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -50897,7 +50897,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51084,7 +51084,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51274,7 +51274,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51408,7 +51408,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51560,7 +51560,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51694,7 +51694,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -51846,7 +51846,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52038,7 +52038,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52226,7 +52226,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52395,7 +52395,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52564,7 +52564,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52751,7 +52751,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -52941,7 +52941,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53075,7 +53075,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53227,7 +53227,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53361,7 +53361,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53513,7 +53513,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53705,7 +53705,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -53894,7 +53894,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54064,7 +54064,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54234,7 +54234,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54422,7 +54422,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54613,7 +54613,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54747,7 +54747,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -54899,7 +54899,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55033,7 +55033,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55185,7 +55185,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55377,7 +55377,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55566,7 +55566,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55736,7 +55736,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -55906,7 +55906,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56094,7 +56094,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56285,7 +56285,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56419,7 +56419,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56571,7 +56571,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56705,7 +56705,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -56857,7 +56857,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57049,7 +57049,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57238,7 +57238,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57412,7 +57412,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57614,7 +57614,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57802,7 +57802,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -57993,7 +57993,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58127,7 +58127,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58279,7 +58279,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58413,7 +58413,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58565,7 +58565,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58757,7 +58757,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -58946,7 +58946,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59120,7 +59120,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59322,7 +59322,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59510,7 +59510,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59701,7 +59701,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59835,7 +59835,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -59987,7 +59987,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -60121,7 +60121,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -60273,7 +60273,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -60465,7 +60465,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -60654,7 +60654,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -60828,7 +60828,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61012,7 +61012,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61200,7 +61200,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61391,7 +61391,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61525,7 +61525,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61677,7 +61677,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61811,7 +61811,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -61963,7 +61963,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -62155,7 +62155,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -62344,7 +62344,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -62518,7 +62518,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -62702,7 +62702,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -62890,7 +62890,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63081,7 +63081,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63215,7 +63215,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63367,7 +63367,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63501,7 +63501,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63653,7 +63653,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -63845,7 +63845,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64034,7 +64034,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64208,7 +64208,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64392,7 +64392,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64580,7 +64580,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64771,7 +64771,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -64905,7 +64905,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65057,7 +65057,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65191,7 +65191,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65343,7 +65343,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65535,7 +65535,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65724,7 +65724,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -65898,7 +65898,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66082,7 +66082,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66270,7 +66270,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66461,7 +66461,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66595,7 +66595,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66747,7 +66747,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -66881,7 +66881,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67033,7 +67033,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67225,7 +67225,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67414,7 +67414,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67588,7 +67588,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67772,7 +67772,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -67960,7 +67960,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68151,7 +68151,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68285,7 +68285,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68437,7 +68437,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68571,7 +68571,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68723,7 +68723,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -68915,7 +68915,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -69104,7 +69104,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -69278,7 +69278,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -69462,7 +69462,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()
@@ -69650,7 +69650,7 @@ def(
   alias(Darwin.Mutator)
   {mutated_left, ctx} = Mutator.do_mutate(mutators, left, ctx)
   {mutated_right, ctx} = Mutator.do_mutate(mutators, right, ctx)
-  {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+  {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
   %{index: codon_index} = codon
   nr_of_mutations = Context.nr_of_mutations(ctx)
   module = ctx.module()

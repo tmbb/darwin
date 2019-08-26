@@ -55,7 +55,7 @@
 #     mutation = [
 #       mutator: mutator,
 #       name: "replace charlist",
-#       mutated_abstract_code: mutated_pattern
+#       mutated_codon: mutated_pattern
 #     ]
 
 #     ctx = Context.add_mutation(ctx, codon, mutation)

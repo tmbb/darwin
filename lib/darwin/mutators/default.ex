@@ -17,14 +17,17 @@ defmodule Darwin.Mutators.Default do
     AtomMutator,
 
     # Bitshift operators
+
     # Comparison operators
-    # OpLessThanMutator,
-    # OpLessThanOrEqualToMutator,
-    # OpEqualToMutator,
-    # OpNotEqualToMutator,
-    # OpGreaterThanMutator,
-    # OpGreaterThanOrEqualToMutator,
-    # OpGreaterThanMutator
+    OpLessThanMutator,
+    OpLessThanOrEqualToMutator,
+    OpEqualToMutator,
+    OpNotEqualToMutator,
+    OpGreaterThanMutator,
+    OpGreaterThanOrEqualToMutator,
+    OpGreaterThanMutator,
+
+    # Bitshift operators
 
     # Things to ignore
     IgnoreInfoMutator,
@@ -56,16 +59,18 @@ defmodule Darwin.Mutators.Default do
       # Bitshift operators
 
       # Comparison operators
-      # OpLessThanMutator,
-      # OpLessThanOrEqualToMutator,
-      # OpEqualToMutator,
-      # OpNotEqualToMutator,
-      # OpGreaterThanMutator,
-      # OpGreaterThanOrEqualToMutator,
-      # OpGreaterThanMutator
+      OpLessThanMutator,
+      OpLessThanOrEqualToMutator,
+      OpEqualToMutator,
+      OpNotEqualToMutator,
+      OpGreaterThanMutator,
+      OpGreaterThanOrEqualToMutator,
+      OpGreaterThanMutator,
 
+      # Mutators that ignore stuff
       IgnoreInfoMutator,
       IgnoreDefacroMutator,
+
       # Backup mutator - which will match everything else
       BackupMutator
     ]

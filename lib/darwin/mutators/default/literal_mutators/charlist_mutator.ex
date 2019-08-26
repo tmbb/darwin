@@ -5,7 +5,7 @@ defmodule Darwin.Mutators.Default.CharlistMutator do
 
   def mutate({:string, line, charlist} = abstract_code, %Context{} = ctx) do
     %{module: module} = ctx
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
@@ -19,7 +19,7 @@ defmodule Darwin.Mutators.Default.CharlistMutator do
     mutation_replace_charlist = [
       mutator: __MODULE__,
       name: "replace charlist",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: runtime_replace_charlist(charlist),
         erlang: abstract_code_replace_charlist(abstract_code)
       }
@@ -40,7 +40,7 @@ defmodule Darwin.Mutators.Default.CharlistMutator do
   def do_mutate(module, codon_index, arg) do
     case ActiveMutation.mutation_index_for_codon(module, codon_index) do
       {:ok, 0} -> runtime_replace_charlist(arg)
-      _ -> not arg
+      _ -> arg
     end
   end
 

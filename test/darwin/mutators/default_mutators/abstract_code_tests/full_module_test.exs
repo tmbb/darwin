@@ -16,7 +16,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
+                 -file(\"lib/darwin/ex_to_erl.ex\", 0).
     
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1').
     
@@ -61,7 +61,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
+                 -file(\"lib/darwin/ex_to_erl.ex\", 0).
     
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2').
     
@@ -121,7 +121,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
       """)
 
     assert_value Erlang.pprint_forms(form_list, indent: 2) == """
-                 -file(\"lib/darwin/ex_to_erl.ex\", 368).
+                 -file(\"lib/darwin/ex_to_erl.ex\", 0).
     
                  -module('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2').
     

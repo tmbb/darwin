@@ -17,6 +17,8 @@ defmodule Darwin.ExToErl do
 
   alias Darwin.ExToErl.ModuleQueue
 
+  @module_location [file: Path.join(__DIR__, "ex_to_erl.ex"), line: 0]
+
   @doc """
   Extracts the Erlang abstract code from a BEAM module.
 
@@ -333,7 +335,8 @@ defmodule Darwin.ExToErl do
     module_name = ModuleQueue.pop()
 
     try do
-      {:module, ^module_name, _, _} = module = Module.create(module_name, module_body, __ENV__)
+      {:module, ^module_name, _, _} =
+        module = Module.create(module_name, module_body, @module_location)
 
       full_module_abstract_code = beam_to_erlang_abstract_code(module)
       function = find_function_by_name(full_module_abstract_code, :main)
@@ -365,7 +368,8 @@ defmodule Darwin.ExToErl do
   end
 
   def elixir_module_ast_to_erlang_abstract_code(module_name, module_body) do
-    {:module, ^module_name, _, _} = module = Module.create(module_name, module_body, __ENV__)
+    {:module, ^module_name, _, _} =
+      module = Module.create(module_name, module_body, @module_location)
 
     full_module_abstract_code = beam_to_erlang_abstract_code(module)
 

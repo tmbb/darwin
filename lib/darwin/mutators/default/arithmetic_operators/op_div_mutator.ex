@@ -1,19 +1,21 @@
 defmodule Darwin.Mutators.Default.OpDivMutator do
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
+  alias Darwin.ErlToEx
+  alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
   def mutate(abstract_code = {:op, line, :/, left, right}, ctx) do
     %{module: module} = ctx
 
     # TODO: convert erlang to Elixir
-    elixir_left = left
-    elixir_right = right
+    elixir_left = ErlToEx.erl_to_ex(left)
+    elixir_right = ErlToEx.erl_to_ex(right)
 
     {mutated_left, ctx} = Mutator.do_mutate(left, ctx)
     {mutated_right, ctx} = Mutator.do_mutate(right, ctx)
 
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
@@ -27,7 +29,7 @@ defmodule Darwin.Mutators.Default.OpDivMutator do
     mutation_replace_by_add = [
       mutator: __MODULE__,
       name: "replace by '+",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         erlang: {:op, line, :+, left, right},
         elixir: quote(do: unquote(elixir_left) + unquote(elixir_right))
       }
@@ -36,7 +38,7 @@ defmodule Darwin.Mutators.Default.OpDivMutator do
     mutation_replace_by_sub = [
       mutator: __MODULE__,
       name: "replace by '-'",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         erlang: {:op, line, :-, left, right},
         elixir: quote(do: unquote(elixir_left) - unquote(elixir_right))
       }
@@ -45,7 +47,7 @@ defmodule Darwin.Mutators.Default.OpDivMutator do
     mutation_replace_by_mul = [
       mutator: __MODULE__,
       name: "replace by '/'",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         erlang: {:op, line, :*, left, right},
         elixir: quote(do: unquote(elixir_left) * unquote(elixir_right))
       }
@@ -54,7 +56,7 @@ defmodule Darwin.Mutators.Default.OpDivMutator do
     mutation_swap_arguments = [
       mutator: __MODULE__,
       name: "swap arguments",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         erlang: {:op, line, :/, right, left},
         elixir: quote(do: unquote(elixir_right) / unquote(elixir_left))
       }

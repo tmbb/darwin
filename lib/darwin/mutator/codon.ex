@@ -2,7 +2,8 @@ defmodule Darwin.Mutator.Codon do
   defstruct [
     :module,
     :index,
-    :value
+    :value,
+    :line
   ]
 
   @type t :: %__MODULE__{}

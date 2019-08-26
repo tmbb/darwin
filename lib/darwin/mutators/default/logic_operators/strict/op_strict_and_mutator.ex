@@ -22,7 +22,7 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
         ctx
       )
       when atom1 == atom2 do
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code)
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{module: module} = ctx
     %{index: codon_index} = codon
 
@@ -40,7 +40,7 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
     mutation_replace_by_or = [
       mutator: __MODULE__,
       name: "replace by or",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: nil
       }
     ]
@@ -48,7 +48,7 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
     mutation_replace_by_true = [
       mutator: __MODULE__,
       name: "replace by true",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: quote(do: true),
         erlang: {:atom, line, true}
       }
@@ -57,7 +57,7 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
     mutation_replace_by_false = [
       mutator: __MODULE__,
       name: "replace by false",
-      mutated_abstract_code: %{
+      mutated_codon: %{
         elixir: quote(do: false),
         erlang: {:atom, line, false}
       }
