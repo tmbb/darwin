@@ -18,10 +18,18 @@ defmodule Mix.Tasks.Darwin.Test do
       {:error, {:already_loaded, :ex_unit}} -> :ok
     end
 
+    modules = get_modules()
     require_test_helper()
-    Darwin.TestRunner.create_and_hunt_mutants([Enom])
+    Darwin.TestRunner.create_and_hunt_mutants(modules)
 
     exit({:shutdown, 0})
+  end
+
+  defp get_modules() do
+    config = Mix.Project.config()
+    darwin = Keyword.get(config, :darwin, [])
+    modules = Keyword.get(darwin, :modules, [])
+    modules
   end
 
   def unrequire_file(file) do

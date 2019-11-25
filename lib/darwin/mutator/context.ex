@@ -3,6 +3,7 @@ defmodule Darwin.Mutator.Context do
             mutation_count: 0,
             codons: %{},
             module: nil,
+            source_path: nil,
             frozen: false,
             mutators: []
 
@@ -19,10 +20,14 @@ defmodule Darwin.Mutator.Context do
   def add_mutation(%__MODULE__{frozen: false} = ctx, codon_index, mutation_index, opts) do
     %{mutation_count: mutation_count, module: module, mutations: mutations} = ctx
 
+    codon = get_codon(ctx, module, codon_index)
+    line = codon.line
+
     all_opts =
       opts
       |> Keyword.put_new(:module, module)
       |> Keyword.put_new(:index, mutation_index)
+      |> Keyword.put_new(:line, line)
       |> Keyword.put_new(:original_codon_index, codon_index)
 
     mutation = Mutation.new(all_opts)
@@ -92,8 +97,32 @@ defmodule Darwin.Mutator.Context do
     ctx.mutation_count
   end
 
+  defp source_path_for_module(module) do
+    charlist =
+      module
+      |> :erlang.get_module_info(:compile)
+      |> Keyword.get(:source)
+
+    if charlist do
+      to_string(charlist)
+    else
+      nil
+    end
+  end
+
   def new(opts \\ []) do
-    struct(__MODULE__, opts)
+    module = Keyword.get(opts, :module, nil)
+
+    source_path =
+      if module do
+        source_path_for_module(module)
+      else
+        nil
+      end
+
+    all_opts = Keyword.merge([source_path: source_path], opts)
+
+    struct(__MODULE__, all_opts)
   end
 
   def merge(contexts) do

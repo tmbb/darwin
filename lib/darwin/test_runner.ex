@@ -1,37 +1,12 @@
-defmodule TimeConvert do
-  @minute 60
-  @hour @minute * 60
-  @day @hour * 24
-  @week @day * 7
-  @divisor [@week, @day, @hour, @minute, 1]
-
-  defp sec_to_str(sec) do
-    {_, [s, m, h, d, w]} =
-      Enum.reduce(@divisor, {sec, []}, fn divisor, {n, acc} ->
-        {rem(n, divisor), [n / divisor | acc]}
-      end)
-
-    [
-      "#{trunc(w)}wk",
-      "#{trunc(d)}d",
-      "#{trunc(h)}h",
-      "#{trunc(m)}m",
-      "#{Float.round(s, 3)}s"
-    ]
-    |> Enum.reject(fn str ->
-      str == "0.0" or (String.starts_with?(str, "0") and not String.starts_with?(str, "0."))
-    end)
-    |> Enum.join(", ")
-  end
-
-  def microsec_to_str(ms), do: trunc(ms / 1_000_000) |> sec_to_str()
-end
-
 defmodule Darwin.TestRunner do
   alias Darwin.Mutator
   alias Darwin.Beam
   alias Darwin.Mutator.Context
+  alias Darwin.Mutator.Mutation
   alias Darwin.ActiveMutation
+  alias Darwin.MutationServer
+  # alias Darwin.TestRunner.Persistence
+  alias Darwin.Utils.TimeConvert
   require Logger
 
   def mutate_compile_and_load_module(module_name) do
@@ -50,14 +25,10 @@ defmodule Darwin.TestRunner do
     |> Enum.map(fn {:ok, result} -> result end)
   end
 
-  defp mutation_to_tuple(mutation) do
-    {mutation.module, mutation.original_codon_index, mutation.index}
-  end
-
   require Logger
 
   @config [
-    formatters: [],
+    formatters: [Darwin.TestRunner.Formatter],
     autorun: false,
     max_failures: 1,
     timeout: 3000
@@ -95,7 +66,11 @@ defmodule Darwin.TestRunner do
     Mix.Compilers.Test.require_and_run(test_files, ["test"], config)
   end
 
-  def create_and_hunt_mutants(module_names) do
+  def create_and_hunt_mutants(modules) do
+    module_names = for {module_name, _opts} <- modules, do: module_name
+
+    ExUnit.start()
+
     ex_unit_config =
       ExUnit.configuration()
       |> Keyword.merge(Application.get_all_env(:ex_unit))
@@ -109,20 +84,20 @@ defmodule Darwin.TestRunner do
     add_modules_to_ex_unit_server(test_files)
     modules = get_modules_from_ex_unit_server()
 
-    # ...
-    ExUnit.start()
-
     # Mutate the modules
     _test_suite = run_test_suite(test_files, ex_unit_config)
 
     module_contexts = mutate_modules(module_names)
 
     ExUnit.configure(darwin_config)
+    # Persistence.setup()
 
     {darwin_delta, _value} =
       :timer.tc(fn ->
         for ctx <- module_contexts do
           for mutation <- ctx.mutations do
+            # Prepare the mutation server for a new suite
+            MutationServer.start_suite()
             # Activate the new mutation
             ActiveMutation.put(mutation)
             # Reset the server so that we can test our modules again
@@ -137,12 +112,14 @@ defmodule Darwin.TestRunner do
             mutation_human_time = TimeConvert.microsec_to_str(mutation_delta)
             original_codon = Context.original_codon(ctx, mutation)
 
-            test_suite =
-              if test_suite[:failures] > 0 do
-                log_mutant_killed(mutation, original_codon, mutation_human_time)
-              else
-                log_mutant_survived(mutation, original_codon, mutation_human_time)
-              end
+            # killed = test_suite[:failures] > 0
+            # Persistence.save(mutation, killed)
+
+            if test_suite[:failures] > 0 do
+              log_mutant_killed(ctx, mutation, original_codon, mutation_human_time)
+            else
+              log_mutant_survived(ctx, mutation, original_codon, mutation_human_time)
+            end
 
             {mutation, test_suite}
           end
@@ -163,8 +140,8 @@ defmodule Darwin.TestRunner do
     IO.ANSI.red() <> text <> IO.ANSI.reset()
   end
 
-  defp log_mutant_killed(mutation, original_codon, human_time) do
-    tuple = mutation_to_tuple(mutation)
+  defp log_mutant_killed(_ctx, mutation, original_codon, human_time) do
+    tuple = Mutation.to_tuple(mutation)
     mutation_name = mutation.name
     original_code = Macro.to_string(original_codon.value.elixir)
     mutated_code = Macro.to_string(mutation.mutated_codon.elixir)
@@ -179,12 +156,37 @@ defmodule Darwin.TestRunner do
     """)
   end
 
-  defp log_mutant_survived(mutation, original_codon, human_time) do
-    tuple = mutation_to_tuple(mutation)
+  @radius 3
+
+  require EEx
+
+  defp log_mutant_survived(ctx, mutation, original_codon, human_time) do
+    tuple = Mutation.to_tuple(mutation)
     mutation_name = mutation.name
     original_code = Macro.to_string(original_codon.value.elixir)
     mutated_code = Macro.to_string(mutation.mutated_codon.elixir)
     line = original_codon.line
+
+    line_min = line - @radius
+    line_max = line + @radius
+
+    line_range = line_min..line_max
+
+    lines =
+      ctx.source_path
+      |> File.read!()
+      |> String.split("\n")
+      |> Enum.slice(line_range)
+      |> Enum.with_index(line_min)
+
+    code =
+      EEx.eval_string(
+        """
+        <%= for {line, nr} <- lines do %>
+            <%= nr %> <%= line %><% end %>
+        """,
+        lines: lines
+      )
 
     IO.puts("""
     #{in_red("Mutant survived: #{inspect(tuple)} (#{human_time})")}
@@ -192,6 +194,7 @@ defmodule Darwin.TestRunner do
     - Mutation name: #{mutation_name}
     - Original code: #{original_code}
     - Mutated code: #{mutated_code}
+    #{code}
     """)
   end
 end

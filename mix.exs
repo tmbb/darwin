@@ -35,6 +35,8 @@ defmodule Darwin.MixProject do
       {:benchee, "~> 1.0.1", only: [:dev]},
       {:stream_data, "~> 0.4.3", only: [:dev, :test]},
       {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]},
+      {:memento, "~> 0.3.1"},
+      {:makeup_elixir, "~> 0.14.0"},
       {:assert_value, "~> 0.9.2", only: [:dev, :test]}
     ]
   end
