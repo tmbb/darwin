@@ -1,4 +1,7 @@
 defmodule Darwin.Mutator.Context do
+  @moduledoc """
+  The `Context` is a structure used by the mutators to encode state relative to the mutations.
+  """
   defstruct mutations: [],
             mutation_count: 0,
             codons: %{},
@@ -48,6 +51,10 @@ defmodule Darwin.Mutator.Context do
     end)
   end
 
+  @doc """
+  Adds a new codon to a context.
+  Returns a pair `{codon, new_ctx}` containing the new codon and the new context.
+  """
   @spec new_codon(t(), list()) :: {Codon.t(), t()}
   def new_codon(%__MODULE__{frozen: false} = ctx, opts) do
     %{codons: codons, module: module} = ctx
@@ -73,19 +80,30 @@ defmodule Darwin.Mutator.Context do
     {codon, new_ctx}
   end
 
+  @doc """
+  Fetches a codon from the context (`ctx`), given the `module` and the codon `index`.
+  Returns either `{:ok, codon}` or `:error`.
+
+  The behaviour is based on `Map.fetch/2`.
+  """
   def fetch_codon(ctx, module, index) do
     %{codons: codons} = ctx
     Map.fetch(codons, {module, index})
   end
 
+  @doc """
+  Gets a codon from the context (`ctx`), given the `module` and the codon `index`.
+  Returns either the `codon` or `nil`.
+
+  The behaviour is based on `Map.get/2`.
+  """
   def get_codon(ctx, module, index) do
     %{codons: codons} = ctx
     Map.get(codons, {module, index})
   end
 
   @doc """
-  Reverse the mutation list, so that mutations appear in the corrrect order
-  and makes it impossible to add new mutations to the context.
+  Makes it impossible to add new mutations to the context.
   """
   def freeze(%__MODULE__{frozen: false} = ctx) do
     %{ctx | frozen: true}
@@ -98,6 +116,9 @@ defmodule Darwin.Mutator.Context do
     ctx.mutation_count
   end
 
+  @doc """
+  Creates a new context
+  """
   def new(opts \\ []) do
     module = Keyword.get(opts, :module, nil)
 
@@ -113,6 +134,12 @@ defmodule Darwin.Mutator.Context do
     struct(__MODULE__, all_opts)
   end
 
+  @doc """
+  Merges several contexts.
+
+  Each module is mutated in its own context.
+  This function is useful to merge contexts from different modules.
+  """
   def merge(contexts) do
     mutations = Enum.flat_map(contexts, fn ctx -> ctx.mutations end)
     codons = Enum.flat_map(contexts, fn ctx -> ctx.codons end)
@@ -130,12 +157,21 @@ defmodule Darwin.Mutator.Context do
     )
   end
 
+  @doc """
+  Fetches the codon for a given `mutation`
+  """
   def original_codon(ctx, mutation) do
     %{codons: codons} = ctx
     key = {mutation.module, mutation.original_codon_index}
     Map.fetch!(codons, key)
   end
 
+  @doc """
+  Merges the mutations from several contexts.
+
+  Each module is mutated in its own context.
+  This function is useful to merge all mutations from different modules.
+  """
   def merge_mutations(contexts) do
     Enum.flat_map(contexts, fn ctx -> ctx.mutations end)
   end

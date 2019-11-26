@@ -1,4 +1,6 @@
 defmodule Darwin.Utils.TimeConvert do
+  @moduledoc false
+
   @minute 60
   @hour @minute * 60
   @day @hour * 24

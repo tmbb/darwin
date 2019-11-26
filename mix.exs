@@ -16,7 +16,10 @@ defmodule Darwin.MixProject do
   def application do
     maybe_mod =
       if Mix.env() in [:test, :dev] do
-        [mod: {Darwin.ExToErl.Application, []}]
+        [
+          registered: [Darwin.ExToErl.ModuleQueue],
+          mod: {Darwin.Application, []}
+        ]
       else
         []
       end

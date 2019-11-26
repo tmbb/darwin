@@ -1,5 +1,19 @@
 defmodule Darwin.Mutators.Common.BackupMutator do
+  @doc """
+  A mutator thattraverses the Erlang Abstract Code,
+  applying the other mutators to places where it makes sense.
+  """
   alias Darwin.Mutator
+
+  ###################################################################################
+  # The comments in this module contain the official description of Erlang's
+  # Abstract Code Format (*abstract code* is just a fancy name for AST in the Erlang
+  # docs); The description here is supposed to be authoritative, but the Abstract Code
+  # representation might change without warning between Erlang releases, which will
+  # require updating this mutator.
+  #
+  # In practice, the Erlang Abstract Code format is very stable.
+  ###################################################################################
 
   #   8 The Abstract Format
   #   ======================

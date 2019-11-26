@@ -1,4 +1,7 @@
 defmodule Darwin.Mutator.Codon do
+  @moduledoc """
+  A *codon* is an AST node that can be mutated.
+  """
   defstruct [
     :module,
     :index,

@@ -1,4 +1,10 @@
 defmodule Darwin.Mutators.Default do
+  @moduledoc """
+  A module containing the default list of mutators.
+
+  Darwing is meant to be fully modular, and you can define your own
+  custom list of mutators.
+  """
   alias Darwin.Mutators.Default.{
     # Arithmetic operators
     OpAddMutator,
@@ -36,43 +42,75 @@ defmodule Darwin.Mutators.Default do
 
   alias Darwin.Mutators.Common.BackupMutator
 
-  def mutators() do
+  @doc """
+  Arithmetic operator mutators.
+  """
+  def arithmetic_operator_mutators() do
     [
-      # Arithmetic operators
       OpAddMutator,
       OpSubMutator,
       OpMulMutator,
-      OpDivMutator,
+      OpDivMutator
+    ]
+  end
 
-      # Strict Logical operators
+  @doc """
+  Strict logical operator mutators.
+  """
+  def strict_logical_operator_mutators() do
+    [
       OpStrictOrMutator,
       OpStrictAndMutator,
-      OpStrictNotMutator,
+      OpStrictNotMutator
+    ]
+  end
 
-      # Lax Logical Operators
-
-      # Literal Mutators
+  @doc """
+  Literal mutators.
+  """
+  def literal_mutators() do
+    [
       StringMutator,
       CharlistMutator,
-      AtomMutator,
+      AtomMutator
+    ]
+  end
 
-      # Bitshift operators
-
-      # Comparison operators
+  @doc """
+  Comparison operator mutators.
+  """
+  def comparison_operators() do
+    [
       OpLessThanMutator,
       OpLessThanOrEqualToMutator,
       OpEqualToMutator,
       OpNotEqualToMutator,
       OpGreaterThanMutator,
       OpGreaterThanOrEqualToMutator,
-      OpGreaterThanMutator,
-
-      # Mutators that ignore stuff
-      IgnoreInfoMutator,
-      IgnoreDefacroMutator,
-
-      # Backup mutator - which will match everything else
-      BackupMutator
+      OpGreaterThanMutator
     ]
+  end
+
+  @doc """
+  The default list of mutators.
+  """
+  def mutators() do
+    named_mutators =
+      arithmetic_operator_mutators() ++
+        strict_logical_operator_mutators() ++ literal_mutators() ++ comparison_operators()
+
+    named_mutators ++
+      [
+        # Lax Logical Operators - MISSING
+
+        # Bitshift operators - MISSING
+
+        # Mutators that ignore stuff
+        IgnoreInfoMutator,
+        IgnoreDefacroMutator,
+
+        # Backup mutator - which will match everything else
+        BackupMutator
+      ]
   end
 end

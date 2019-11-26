@@ -1,4 +1,5 @@
 defmodule Darwin.TestRunner do
+  @moduledoc false
   alias Darwin.Mutator
   alias Darwin.Beam
   alias Darwin.Mutator.Context
@@ -56,7 +57,8 @@ defmodule Darwin.TestRunner do
     Kernel.ParallelCompiler.compile(test_files)
   end
 
-  def get_modules_from_ex_unit_server() do
+  def get_modules_from_server() do
+    # THIS IS VERY HACKY!!!
     %{async_modules: async, sync_modules: sync} = :sys.get_state(ExUnit.Server)
     # Ignore the other keys in the map:
     %{async_modules: async, sync_modules: sync}
@@ -69,6 +71,7 @@ defmodule Darwin.TestRunner do
   def create_and_hunt_mutants(modules) do
     module_names = for {module_name, _opts} <- modules, do: module_name
 
+    # We need to start ExUnit explicitly
     ExUnit.start()
 
     ex_unit_config =
@@ -82,7 +85,7 @@ defmodule Darwin.TestRunner do
 
     test_files = get_test_files()
     add_modules_to_ex_unit_server(test_files)
-    modules = get_modules_from_ex_unit_server()
+    modules = get_modules_from_server()
 
     # Mutate the modules
     _test_suite = run_test_suite(test_files, ex_unit_config)

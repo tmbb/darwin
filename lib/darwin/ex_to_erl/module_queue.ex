@@ -1,6 +1,6 @@
 defmodule Darwin.ExToErl.ModuleQueue do
   @moduledoc false
-  # Stolen from ...
+  # Stolen from somehwere on the internet (I forget where...)
   use GenServer
 
   @empty_queue :queue.new()
