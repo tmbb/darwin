@@ -10,7 +10,7 @@ defmodule DarwinTest.Generators do
   @max_codon 999
 
   @modules Enum.map('ABCDEFGHIJKLMNOPQRSTUV', fn c ->
-             Module.concat(Module, <<c>>)
+             Module.concat(Darwin.TestModule, <<c>>)
            end)
 
   # Generates atoms at runtime!!!
