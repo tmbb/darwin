@@ -22,6 +22,6 @@ defmodule Darwin.MutationServer do
   def should_this_test_run?() do
     mutation = ActiveMutation.get()
     should_run? = Application.get_env(:darwin, :next_test_should_run?)
-    mutation != @default_mutation and should_run? == true
+    mutation == @default_mutation or should_run? == true
   end
 end
