@@ -13,10 +13,17 @@ defmodule Mix.Tasks.Darwin.Test do
     Mix.shell().print_app
     Mix.Task.run("app.start", [])
 
+    # Start the ExUnit application as a "normal" application.
+    # Don't use the `ExUnit.start()` function because that way ExUnit
+    # tries to control how the tessts are run.
+    ExUnit.start([], [])
+
     case Application.load(:ex_unit) do
       :ok -> :ok
       {:error, {:already_loaded, :ex_unit}} -> :ok
     end
+
+    Application.put_env(:darwin, :darwin_is_running?, true)
 
     modules = get_modules()
     require_test_helper()
@@ -30,16 +37,6 @@ defmodule Mix.Tasks.Darwin.Test do
     darwin = Keyword.get(config, :darwin, [])
     modules = Keyword.get(darwin, :modules, [])
     modules
-  end
-
-  def unrequire_file(file) do
-    to_unrequire =
-      Code.required_files()
-      |> Enum.find(fn required_file ->
-        String.contains?(required_file, file)
-      end)
-
-    Code.unrequire_files([to_unrequire])
   end
 
   defp require_test_helper do

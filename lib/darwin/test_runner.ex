@@ -34,7 +34,8 @@ defmodule Darwin.TestRunner do
     timeout: 3000
   ]
 
-  def reset_ex_unit_server(modules) do
+  defp reset_ex_unit_server(modules) do
+    # BLACK MAGIC: This uses private APIs
     %{async_modules: async, sync_modules: sync} = modules
 
     for module <- async do
@@ -53,25 +54,29 @@ defmodule Darwin.TestRunner do
   end
 
   defp add_modules_to_ex_unit_server(test_files) do
+    # The way to add modules to the ExUnit server is to compile the test suite
     Kernel.ParallelCompiler.compile(test_files)
   end
 
-  def get_modules_from_server() do
-    # THIS IS VERY HACKY!!!
+  defp get_modules_from_ex_unit_server() do
+    # BLACK MAGIC:
+    # - Not only does this use private APIs, it directly inspects the state of a (private) GenServer!
     %{async_modules: async, sync_modules: sync} = :sys.get_state(ExUnit.Server)
     # Ignore the other keys in the map:
     %{async_modules: async, sync_modules: sync}
   end
 
-  def run_test_suite(test_files, config) do
-    Mix.Compilers.Test.require_and_run(test_files, ["test"], config)
+  defp run_test_suite() do
+    # BLACK MAGIC: I don't know why any of this works!
+    ExUnit.Server.modules_loaded()
+    ExUnit.run()
+    # task = Task.async(ExUnit, :run, [])
+    # Task.await(task, :infinity)
   end
 
-  def create_and_hunt_mutants(modules) do
-    module_names = for {module_name, _opts} <- modules, do: module_name
-
-    # We need to start ExUnit explicitly
-    ExUnit.start()
+  def create_and_hunt_mutants(modules_to_mutate) do
+    # Suppress the warnigs we get when we recompile the test cases in memory
+    Code.compiler_options(ignore_module_conflict: true)
 
     ex_unit_config =
       ExUnit.configuration()
@@ -82,14 +87,32 @@ defmodule Darwin.TestRunner do
       |> Keyword.merge(Application.get_all_env(:ex_unit))
       |> Keyword.merge(@config)
 
+    # Store the test files; we'll need them to add the modules into the `ExUnit.Server`
     test_files = get_test_files()
+    # Add the test case modules to the `ExUnit.Server` so that they will be tested
     add_modules_to_ex_unit_server(test_files)
-    modules = get_modules_from_server()
+    # Store the test case modules from `ExUnit.Server` so that they can be reused
+    test_case_modules = get_modules_from_ex_unit_server()
+    # Configure `ExUnit` for a "normal" test run with unmutated code
+    ExUnit.configure(ex_unit_config)
+    # No need to populate the `ExUnit.Server` when we run the test suite for the first time;
+    # The `ExUnit.Server` is already populated
+    unmutated_test_suite = run_test_suite()
+    %{failures: failures} = unmutated_test_suite
 
-    _test_suite = run_test_suite(test_files, ex_unit_config)
+    if failures > 0 do
+      Logger.error(
+        "Some tests in the original test suite failed. " <>
+          "Darwin won't run mutation tests until all tests pass."
+      )
+    else
+      mutate_and_test(modules_to_mutate, test_case_modules, darwin_config)
+    end
+  end
 
-    module_contexts = mutate_modules(module_names)
-
+  defp mutate_and_test(modules_to_mutate, test_case_modules, darwin_config) do
+    module_names_to_mutate = for {module_name, _opts} <- modules_to_mutate, do: module_name
+    module_contexts = mutate_modules(module_names_to_mutate)
     ExUnit.configure(darwin_config)
 
     {darwin_delta, _value} =
@@ -101,11 +124,12 @@ defmodule Darwin.TestRunner do
             # Activate the new mutation
             ActiveMutation.put(mutation)
             # Reset the server so that we can test our modules again
-            reset_ex_unit_server(modules)
+            reset_ex_unit_server(test_case_modules)
+            ExUnit.configure(darwin_config)
             # Run the tests (without having to recompile the test modules!)
-            {mutation_delta, {:ok, test_suite}} =
+            {mutation_delta, test_suite} =
               :timer.tc(fn ->
-                run_test_suite(test_files, darwin_config)
+                run_test_suite()
               end)
 
             # Humanize the time delta
