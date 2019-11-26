@@ -6,7 +6,6 @@ defmodule Darwin.TestRunner do
   alias Darwin.Mutator.Mutation
   alias Darwin.ActiveMutation
   alias Darwin.MutationServer
-  # alias Darwin.TestRunner.Persistence
   alias Darwin.Utils.TimeConvert
   require Logger
 
@@ -87,13 +86,11 @@ defmodule Darwin.TestRunner do
     add_modules_to_ex_unit_server(test_files)
     modules = get_modules_from_server()
 
-    # Mutate the modules
     _test_suite = run_test_suite(test_files, ex_unit_config)
 
     module_contexts = mutate_modules(module_names)
 
     ExUnit.configure(darwin_config)
-    # Persistence.setup()
 
     {darwin_delta, _value} =
       :timer.tc(fn ->
@@ -114,9 +111,6 @@ defmodule Darwin.TestRunner do
             # Humanize the time delta
             mutation_human_time = TimeConvert.microsec_to_str(mutation_delta)
             original_codon = Context.original_codon(ctx, mutation)
-
-            # killed = test_suite[:failures] > 0
-            # Persistence.save(mutation, killed)
 
             if test_suite[:failures] > 0 do
               log_mutant_killed(ctx, mutation, original_codon, mutation_human_time)
