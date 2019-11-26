@@ -1,10 +1,39 @@
 defmodule Darwin.Erlang do
+  @moduledoc """
+  Utilities to work with Erlang expressions.
+  """
+
   @doc "Parses an expression into erlang abstract code"
   def expression!(bin) do
     charlist = String.to_charlist(bin)
     {:ok, tokens, _} = :erl_scan.string(charlist)
     {:ok, [expression]} = :erl_parse.parse_exprs(tokens)
     expression
+  end
+
+  @doc """
+  Parses a string into a form list.
+  """
+  def forms!(bin) do
+    charlist = String.to_charlist(bin)
+    {:ok, tokens, _} = :erl_scan.string(charlist)
+    {:ok, forms} = :erl_parse.parse_exprs(tokens)
+    forms
+  end
+
+  @doc """
+  Tests whether two expressions (`left` and `right`) are equivalent.
+
+  An expression can be a term representing Erlang abstract code or a binary
+  containing valid Erlang code.
+  """
+  def equivalent?(left, right) do
+    left_expression = if is_binary(left), do: expression!(left), else: left
+    right_expression = if is_binary(right), do: expression!(right), else: right
+
+    canonical_left = pprint(left_expression)
+    canonical_right = pprint(right_expression)
+    canonical_left == canonical_right
   end
 
   @doc "Pretty prints erlang abstract code into the erlang source"

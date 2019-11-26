@@ -4,7 +4,7 @@ defmodule Darwin.Mutators.Default.OpLessThanOrEqualToMutator do
   alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
-  def mutate(abstract_code = {:op, line, :<=, left, right}, ctx) do
+  def mutate(abstract_code = {:op, line, :"=<", left, right}, ctx) do
     %{module: module} = ctx
 
     # TODO: convert erlang to Elixir
