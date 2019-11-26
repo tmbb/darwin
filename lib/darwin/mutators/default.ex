@@ -12,10 +12,15 @@ defmodule Darwin.Mutators.Default do
     OpMulMutator,
     OpDivMutator,
 
-    # Stricts Logical Operators
+    # Strict Logical Operators
     OpStrictOrMutator,
     OpStrictAndMutator,
     OpStrictNotMutator,
+
+    # Lax Logical Operators
+    OpLaxOrMutator,
+    OpLaxAndMutator,
+    OpLaxNotMutator,
 
     # Literal Mutators
     CharlistMutator,
@@ -42,75 +47,121 @@ defmodule Darwin.Mutators.Default do
 
   alias Darwin.Mutators.Common.BackupMutator
 
+  print_list = fn list ->
+    items =
+      for m <- list do
+        "- `#{inspect(m)}`"
+      end
+
+    Enum.join(items, "\n")
+  end
+
+  @arithmetic_operator_mutators [
+    OpAddMutator,
+    OpSubMutator,
+    OpMulMutator,
+    OpDivMutator
+  ]
+
+  @strict_logical_operator_mutators [
+    OpStrictOrMutator,
+    OpStrictAndMutator,
+    OpStrictNotMutator
+  ]
+
+  @lax_logical_operator_mutators [
+    OpLaxOrMutator,
+    OpLaxAndMutator,
+    OpLaxNotMutator
+  ]
+
+  @literal_mutators [
+    StringMutator,
+    CharlistMutator,
+    AtomMutator
+  ]
+
+  @comparison_operators [
+    OpLessThanMutator,
+    OpLessThanOrEqualToMutator,
+    OpEqualToMutator,
+    OpNotEqualToMutator,
+    OpGreaterThanMutator,
+    OpGreaterThanOrEqualToMutator,
+    OpGreaterThanMutator
+  ]
+
+  @miscelaneous_mutators [
+    IgnoreInfoMutator,
+    IgnoreDefacroMutator,
+    BackupMutator
+  ]
+
+  @all_mutators @arithmetic_operator_mutators ++
+                  @strict_logical_operator_mutators ++
+                  @lax_logical_operator_mutators ++
+                  @literal_mutators ++ @comparison_operators ++ @miscelaneous_mutators
+
   @doc """
-  Arithmetic operator mutators.
+  Mutators for the arithmetic operators.
+
+  Contains:
+  #{print_list.(@arithmetic_operator_mutators)}
   """
   def arithmetic_operator_mutators() do
-    [
-      OpAddMutator,
-      OpSubMutator,
-      OpMulMutator,
-      OpDivMutator
-    ]
+    @arithmetic_operator_mutators
   end
 
   @doc """
-  Strict logical operator mutators.
+  Mutators for the strict logical operators (`or`, `and`, `not`).
+
+  Contains:
+  #{print_list.(@strict_logical_operator_mutators)}
   """
   def strict_logical_operator_mutators() do
-    [
-      OpStrictOrMutator,
-      OpStrictAndMutator,
-      OpStrictNotMutator
-    ]
+    @strict_logical_operator_mutators
   end
 
   @doc """
-  Literal mutators.
+  Mutators for the lax logical operators (`||`, `&&`, `!`).
+
+  Contains:
+  #{print_list.(@lax_logical_operator_mutators)}
+  """
+  def lax_logical_operator_mutators() do
+    @lax_logical_operator_mutators
+  end
+
+  @doc """
+  Mutators for literals.
+
+  Contains:
+  #{print_list.(@literal_mutators)}
   """
   def literal_mutators() do
-    [
-      StringMutator,
-      CharlistMutator,
-      AtomMutator
-    ]
+    @literal_mutators
   end
 
   @doc """
   Comparison operator mutators.
+
+  Contains:
+  #{print_list.(@comparison_operators)}
   """
   def comparison_operators() do
-    [
-      OpLessThanMutator,
-      OpLessThanOrEqualToMutator,
-      OpEqualToMutator,
-      OpNotEqualToMutator,
-      OpGreaterThanMutator,
-      OpGreaterThanOrEqualToMutator,
-      OpGreaterThanMutator
-    ]
+    @comparison_operators
   end
 
   @doc """
   The default list of mutators.
+
+  Contains (in this order):
+  #{print_list.(@all_mutators)}
+
+  The order in which the mutators are applied is important.
+  The `#{inspect(BackupMutator)}` must always come last (because it matches everything).
   """
   def mutators() do
-    named_mutators =
-      arithmetic_operator_mutators() ++
-        strict_logical_operator_mutators() ++ literal_mutators() ++ comparison_operators()
-
-    named_mutators ++
-      [
-        # Lax Logical Operators - MISSING
-
-        # Bitshift operators - MISSING
-
-        # Mutators that ignore stuff
-        IgnoreInfoMutator,
-        IgnoreDefacroMutator,
-
-        # Backup mutator - which will match everything else
-        BackupMutator
-      ]
+    @all_mutators
   end
 end
