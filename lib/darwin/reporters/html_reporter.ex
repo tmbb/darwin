@@ -1,6 +1,7 @@
 defmodule Darwin.Reporters.HtmlReporter do
   alias Darwin.TestRunner.Persistence
   alias Darwin.TestRunner.Persistence.Mutant
+  alias Darwin.Utils.SafeSourcePath
   require EEx
 
   @external_resource "lib/darwin/reporters/html_reporter/templates/layout.html.eex"
@@ -27,15 +28,17 @@ defmodule Darwin.Reporters.HtmlReporter do
     make_output_dir(dst)
 
     for {module, _lines} <- grouped do
-      code_path = source_path_for_module(module) |> IO.inspect(label: "code_path")
+      code_path = SafeSourcePath.source_path_for_module(module) |> IO.inspect(label: "code_path")
 
-      if String.ends_with?(code_path, ".ex") do
-        code = File.read!(code_path)
-        highlighted = Makeup.highlight_inner_html(code)
-        contents = layout_html(module: module, highlighted: highlighted)
-        base_path = inspect(module) <> ".html"
-        report_path = Path.join(dst, base_path)
-        File.write!(report_path, contents)
+      if code_path do
+        if String.ends_with?(code_path, ".ex") do
+          code = File.read!(code_path)
+          highlighted = Makeup.highlight_inner_html(code)
+          contents = layout_html(module: module, highlighted: highlighted)
+          base_path = inspect(module) <> ".html"
+          report_path = Path.join(dst, base_path)
+          File.write!(report_path, contents)
+        end
       end
     end
 
@@ -44,18 +47,5 @@ defmodule Darwin.Reporters.HtmlReporter do
 
   defp src_root_path() do
     Path.join(:code.priv_dir(:darwin), "reporters/html_reporter")
-  end
-
-  defp source_path_for_module(module) do
-    charlist =
-      module
-      |> :erlang.get_module_info(:compile)
-      |> Keyword.get(:source)
-
-    if charlist do
-      to_string(charlist)
-    else
-      nil
-    end
   end
 end

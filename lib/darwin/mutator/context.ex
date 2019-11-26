@@ -9,6 +9,7 @@ defmodule Darwin.Mutator.Context do
 
   alias Darwin.Mutator.Mutation
   alias Darwin.Mutator.Codon
+  alias Darwin.Utils.SafeSourcePath
   alias Darwin.ErlToEx
 
   @type t :: %__MODULE__{}
@@ -97,25 +98,12 @@ defmodule Darwin.Mutator.Context do
     ctx.mutation_count
   end
 
-  defp source_path_for_module(module) do
-    charlist =
-      module
-      |> :erlang.get_module_info(:compile)
-      |> Keyword.get(:source)
-
-    if charlist do
-      to_string(charlist)
-    else
-      nil
-    end
-  end
-
   def new(opts \\ []) do
     module = Keyword.get(opts, :module, nil)
 
     source_path =
       if module do
-        source_path_for_module(module)
+        SafeSourcePath.source_path_for_module(module)
       else
         nil
       end

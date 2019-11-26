@@ -9,16 +9,9 @@ defmodule DarwinTest.Generators do
   @min_codon 0
   @max_codon 999
 
-  @modules [
-    ModuleA,
-    ModuleB,
-    ModuleC,
-    ModuleD,
-    ModuleE,
-    ModuleF,
-    ModuleG,
-    ModuleH
-  ]
+  @modules Enum.map('ABCDEFGHIJKLMNOPQRSTUV', fn c ->
+             Module.concat(Module, <<c>>)
+           end)
 
   # Generates atoms at runtime!!!
   def module(opts \\ []) do
