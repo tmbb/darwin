@@ -67,11 +67,9 @@ defmodule Darwin.TestRunner do
   end
 
   defp run_test_suite() do
-    # BLACK MAGIC: I don't know why any of this works!
+    # Do I really have to call `ExUnit.Server.modules_loaded/0`?
     ExUnit.Server.modules_loaded()
     ExUnit.run()
-    # task = Task.async(ExUnit, :run, [])
-    # Task.await(task, :infinity)
   end
 
   def create_and_hunt_mutants(modules_to_mutate) do
