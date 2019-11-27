@@ -6,7 +6,7 @@ defmodule Darwin.Mutators.Default.OpLaxNotMutator do
 
   def mutate(
         abstract_code =
-          {:case, line, {:var, _, arg},
+          {:case, line, arg,
            [
              {:clause, _, [{:var, _, atom1}],
               [
@@ -15,7 +15,7 @@ defmodule Darwin.Mutators.Default.OpLaxNotMutator do
                    {:op, _, :"=:=", {:var, _, atom3}, {:atom, _, false}}}
                 ]
               ], [{:atom, _, true}]},
-             {:clause, _, [{:var, 0, :_}], [], [{:atom, _, false}]}
+             {:clause, _, [{:var, _, :_}], [], [{:atom, _, false}]}
            ]},
         ctx
       )
@@ -26,7 +26,7 @@ defmodule Darwin.Mutators.Default.OpLaxNotMutator do
 
     elixir_arg = ErlToEx.erl_to_ex(arg)
 
-    {mutated_arg, ctx} = Mutator.mutate(arg, ctx)
+    {mutated_arg, ctx} = Mutator.do_mutate(arg, ctx)
 
     mutated_abstract_code =
       Mutator.call_mutator(

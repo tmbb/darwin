@@ -10,6 +10,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     OpStrictOrMutator
   }
 
+  # ----------------------------------------------------------------
+  # TODO: replace hardcoded values by StreamData generators;
+  # Be careful because these operators raise errors for some values
+  # ----------------------------------------------------------------
+
   describe "operator 'not':" do
     property "wrong module or codon" do
       # If the module and the codon are wrong, the function is compatible

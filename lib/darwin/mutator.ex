@@ -68,7 +68,7 @@ defmodule Darwin.Mutator do
 
   A mutator `m` matches if `m.mutate/3` returns an {:ok, {abstract_code, ctx}} tuple.
   """
-  @spec mutate(AbstractCode.t(), atom(), Context.t()) :: mutator_result()
+  @spec mutate(AbstractCode.t(), Context.t()) :: mutator_result()
   def do_mutate(abstract_code, ctx) do
     %{mutators: mutators} = ctx
 

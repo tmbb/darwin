@@ -27,8 +27,8 @@ defmodule Darwin.Mutators.Default.OpLaxOrMutator do
     elixir_left = ErlToEx.erl_to_ex(left)
     elixir_right = ErlToEx.erl_to_ex(right)
 
-    {mutated_left, ctx} = Mutator.mutate(left, ctx)
-    {mutated_right, ctx} = Mutator.mutate(right, ctx)
+    {mutated_left, ctx} = Mutator.do_mutate(left, ctx)
+    {mutated_right, ctx} = Mutator.do_mutate(right, ctx)
 
     mutated_abstract_code =
       Mutator.call_mutator(
@@ -83,7 +83,7 @@ defmodule Darwin.Mutators.Default.OpLaxOrMutator do
       {:ok, 0} -> left && right
       {:ok, 1} -> true
       {:ok, 2} -> false
-      _ -> left && right
+      _ -> left || right
     end
   end
 end
