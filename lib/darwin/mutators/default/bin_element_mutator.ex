@@ -66,7 +66,7 @@
 #   def mutate(_abstact_code, _ctx, _mutators), do: :error
 
 #   @doc false
-#   def do_mutate(module, codon_index, mutation_index, arg) do
+#   def darwin_was_here(module, codon_index, mutation_index, arg) do
 #     {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
 
 #     case module == active_module and codon_index == active_codon_index do

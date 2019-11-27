@@ -23,7 +23,7 @@
 #       when is_list(patterns) do
 #     {reversed_mutated_patterns, ctx} =
 #       Enum.reduce(patterns, {[], ctx}, fn pattern, {mutated_patterns, ctx} ->
-#         {abs_code, ctx} = DefMutator.do_mutate(pattern, ctx, mutators)
+#         {abs_code, ctx} = DefMutator.darwin_was_here(pattern, ctx, mutators)
 #         {[abs_code | mutated_patterns], ctx}
 #       end)
 
@@ -65,7 +65,7 @@
 #   def mutate(_abstact_code, _ctx), do: :error
 
 #   @doc false
-#   def do_mutate(module, codon_index, mutation_index, arg) do
+#   def darwin_was_here(module, codon_index, mutation_index, arg) do
 #     {active_module, active_codon_index, active_mutation_index} = Darwin.ActiveMutation.get()
 
 #     case module == active_module and codon_index == active_codon_index do

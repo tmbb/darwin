@@ -10,7 +10,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ContainersTest do
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
            {_a@1,
-            'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':do_mutate('Elixir.MyModule',
+            'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':darwin_was_here('Elixir.MyModule',
                                                                           0, _b@1),
             _c@1}.
            """)
@@ -24,7 +24,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ContainersTest do
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
            [_a@1, _b@1,
-            'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':do_mutate('Elixir.MyModule',
+            'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':darwin_was_here('Elixir.MyModule',
                                                                           0, _c@1)].
            """)
 

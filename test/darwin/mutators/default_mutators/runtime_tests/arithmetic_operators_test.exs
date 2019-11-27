@@ -22,7 +22,8 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpAddMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, a, b) == a + b
+          assert OpAddMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, a, b) ==
+                   a + b
         end)
       end
     end
@@ -35,7 +36,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpAddMutator.do_mutate(module, codon, a, b) == a + b
+          assert OpAddMutator.darwin_was_here(module, codon, a, b) == a + b
         end)
       end
     end
@@ -47,7 +48,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpAddMutator.do_mutate(module, codon, a, b) == a - b
+          assert OpAddMutator.darwin_was_here(module, codon, a, b) == a - b
         end)
       end
     end
@@ -59,7 +60,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpAddMutator.do_mutate(module, codon, a, b) == a * b
+          assert OpAddMutator.darwin_was_here(module, codon, a, b) == a * b
         end)
       end
     end
@@ -72,7 +73,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 b <- one_of([float(), integer()]),
                 b != 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpAddMutator.do_mutate(module, codon, a, b) == a / b
+          assert OpAddMutator.darwin_was_here(module, codon, a, b) == a / b
         end)
       end
     end
@@ -89,7 +90,8 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, a, b) == a - b
+          assert OpSubMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, a, b) ==
+                   a - b
         end)
       end
     end
@@ -102,7 +104,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(module, codon, a, b) == a - b
+          assert OpSubMutator.darwin_was_here(module, codon, a, b) == a - b
         end)
       end
     end
@@ -114,7 +116,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(module, codon, a, b) == a + b
+          assert OpSubMutator.darwin_was_here(module, codon, a, b) == a + b
         end)
       end
     end
@@ -126,7 +128,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(module, codon, a, b) == a * b
+          assert OpSubMutator.darwin_was_here(module, codon, a, b) == a * b
         end)
       end
     end
@@ -139,7 +141,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 b <- one_of([float(), integer()]),
                 b != 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(module, codon, a, b) == a / b
+          assert OpSubMutator.darwin_was_here(module, codon, a, b) == a / b
         end)
       end
     end
@@ -151,7 +153,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpSubMutator.do_mutate(module, codon, a, b) == b - a
+          assert OpSubMutator.darwin_was_here(module, codon, a, b) == b - a
         end)
       end
     end
@@ -168,7 +170,8 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpMulMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, a, b) == a * b
+          assert OpMulMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, a, b) ==
+                   a * b
         end)
       end
     end
@@ -181,7 +184,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpMulMutator.do_mutate(module, codon, a, b) == a * b
+          assert OpMulMutator.darwin_was_here(module, codon, a, b) == a * b
         end)
       end
     end
@@ -193,7 +196,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpMulMutator.do_mutate(module, codon, a, b) == a + b
+          assert OpMulMutator.darwin_was_here(module, codon, a, b) == a + b
         end)
       end
     end
@@ -205,7 +208,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpMulMutator.do_mutate(module, codon, a, b) == a - b
+          assert OpMulMutator.darwin_was_here(module, codon, a, b) == a - b
         end)
       end
     end
@@ -218,7 +221,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 b <- one_of([float(), integer()]),
                 b != 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpMulMutator.do_mutate(module, codon, a, b) == a / b
+          assert OpMulMutator.darwin_was_here(module, codon, a, b) == a / b
         end)
       end
     end
@@ -236,7 +239,8 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 b <- one_of([float(), integer()]),
                 b != 0 do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, a, b) == a / b
+          assert OpDivMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, a, b) ==
+                   a / b
         end)
       end
     end
@@ -250,7 +254,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 b <- one_of([float(), integer()]),
                 b != 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(module, codon, a, b) == a / b
+          assert OpDivMutator.darwin_was_here(module, codon, a, b) == a / b
         end)
       end
     end
@@ -262,7 +266,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(module, codon, a, b) == a + b
+          assert OpDivMutator.darwin_was_here(module, codon, a, b) == a + b
         end)
       end
     end
@@ -274,7 +278,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(module, codon, a, b) == a - b
+          assert OpDivMutator.darwin_was_here(module, codon, a, b) == a - b
         end)
       end
     end
@@ -286,7 +290,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
                 a <- one_of([float(), integer()]),
                 b <- one_of([float(), integer()]) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(module, codon, a, b) == a * b
+          assert OpDivMutator.darwin_was_here(module, codon, a, b) == a * b
         end)
       end
     end
@@ -300,7 +304,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
         denom = if a == 0, do: 0.1, else: a
 
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpDivMutator.do_mutate(module, codon, denom, b) == b / denom
+          assert OpDivMutator.darwin_was_here(module, codon, denom, b) == b / denom
         end)
       end
     end

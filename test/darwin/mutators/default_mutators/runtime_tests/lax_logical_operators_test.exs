@@ -23,12 +23,17 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-        assert OpLaxNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true) == !true
+        assert OpLaxNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
+                 !true
 
-        assert OpLaxNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false) == !false
+        assert OpLaxNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, false) ==
+                 !false
 
-        assert OpLaxNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, :not_a_boolean) ==
-                 !:not_a_boolean
+        assert OpLaxNotMutator.darwin_was_here(
+                 maybe_wrong_module,
+                 maybe_wrong_codon,
+                 :not_a_boolean
+               ) == !:not_a_boolean
       end)
     end
   end
@@ -42,12 +47,17 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-        assert OpLaxNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true) == not true
+        assert OpLaxNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
+                 not true
 
-        assert OpLaxNotMutator.do_mutate(right_module, maybe_wrong_codon, false) == not false
+        assert OpLaxNotMutator.darwin_was_here(right_module, maybe_wrong_codon, false) ==
+                 not false
 
-        assert OpLaxNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, :not_a_boolean) ==
-                 !:not_a_boolean
+        assert OpLaxNotMutator.darwin_was_here(
+                 maybe_wrong_module,
+                 maybe_wrong_codon,
+                 :not_a_boolean
+               ) == !:not_a_boolean
       end)
     end
   end
@@ -56,9 +66,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
     check all module <- Gen.module(),
               codon <- Gen.codon() do
       ActiveMutation.with_mutation({module, codon, 0}, fn ->
-        assert OpLaxNotMutator.do_mutate(module, codon, true) == true
-        assert OpLaxNotMutator.do_mutate(module, codon, false) == false
-        assert OpLaxNotMutator.do_mutate(module, codon, :other) == :other
+        assert OpLaxNotMutator.darwin_was_here(module, codon, true) == true
+        assert OpLaxNotMutator.darwin_was_here(module, codon, false) == false
+        assert OpLaxNotMutator.darwin_was_here(module, codon, :other) == :other
       end)
     end
   end
@@ -67,9 +77,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
     check all module <- Gen.module(),
               codon <- Gen.codon() do
       ActiveMutation.with_mutation({module, codon, 1}, fn ->
-        assert OpLaxNotMutator.do_mutate(module, codon, true) == true
-        assert OpLaxNotMutator.do_mutate(module, codon, false) == true
-        assert OpLaxNotMutator.do_mutate(module, codon, :other) == true
+        assert OpLaxNotMutator.darwin_was_here(module, codon, true) == true
+        assert OpLaxNotMutator.darwin_was_here(module, codon, false) == true
+        assert OpLaxNotMutator.darwin_was_here(module, codon, :other) == true
       end)
     end
   end
@@ -78,9 +88,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
     check all module <- Gen.module(),
               codon <- Gen.codon() do
       ActiveMutation.with_mutation({module, codon, 2}, fn ->
-        assert OpLaxNotMutator.do_mutate(module, codon, true) == false
-        assert OpLaxNotMutator.do_mutate(module, codon, false) == false
-        assert OpLaxNotMutator.do_mutate(module, codon, :other) == false
+        assert OpLaxNotMutator.darwin_was_here(module, codon, true) == false
+        assert OpLaxNotMutator.darwin_was_here(module, codon, false) == false
+        assert OpLaxNotMutator.darwin_was_here(module, codon, :other) == false
       end)
     end
   end
@@ -93,19 +103,23 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-        assert OpLaxAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, true) ==
+        assert OpLaxAndMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, true) ==
                  true
 
-        assert OpLaxAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, false) ==
+        assert OpLaxAndMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, false) ==
                  false
 
-        assert OpLaxAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, true) ==
+        assert OpLaxAndMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, false, true) ==
                  false
 
-        assert OpLaxAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, false) ==
+        assert OpLaxAndMutator.darwin_was_here(
+                 maybe_wrong_module,
+                 maybe_wrong_codon,
+                 false,
                  false
+               ) == false
 
-        assert OpLaxAndMutator.do_mutate(
+        assert OpLaxAndMutator.darwin_was_here(
                  maybe_wrong_module,
                  maybe_wrong_codon,
                  :not_a_boolean,
@@ -121,33 +135,33 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               mutation > 2 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxAndMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, true, false) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, false, true) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, true) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, false) == false
 
-        assert OpLaxAndMutator.do_mutate(
+        assert OpLaxAndMutator.darwin_was_here(
                  module,
                  codon,
                  :not_a_boolean,
                  true
                ) == true
 
-        assert OpLaxAndMutator.do_mutate(
+        assert OpLaxAndMutator.darwin_was_here(
                  module,
                  codon,
                  :not_a_boolean,
                  false
                ) == false
 
-        assert OpLaxAndMutator.do_mutate(
+        assert OpLaxAndMutator.darwin_was_here(
                  module,
                  codon,
                  true,
                  :not_a_boolean
                ) == :not_a_boolean
 
-        assert OpLaxAndMutator.do_mutate(
+        assert OpLaxAndMutator.darwin_was_here(
                  module,
                  codon,
                  false,
@@ -162,21 +176,21 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 0 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxAndMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, true, false) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, false, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, false) == false
 
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, true) == :not_a_boolean ||
-                 true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, true) ==
+                 :not_a_boolean || true
 
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, false) == :not_a_boolean ||
-                 false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, false) ==
+                 :not_a_boolean || false
 
-        assert OpLaxAndMutator.do_mutate(module, codon, true, :not_a_boolean) == true ||
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true ||
                  :not_a_boolean
 
-        assert OpLaxAndMutator.do_mutate(module, codon, false, :not_a_boolean) == false ||
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, :not_a_boolean) == false ||
                  :not_a_boolean
       end)
     end
@@ -187,15 +201,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 1 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxAndMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, true, false) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, false, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, false, false) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, false) == true
 
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, true) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, false) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, true, :not_a_boolean) == true
-        assert OpLaxAndMutator.do_mutate(module, codon, false, :not_a_boolean) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, true) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, false) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, :not_a_boolean) == true
       end)
     end
   end
@@ -205,15 +219,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 2 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxAndMutator.do_mutate(module, codon, true, true) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, true, false) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, false, true) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, true) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, false) == false
 
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, true) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, :not_a_boolean, false) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, true, :not_a_boolean) == false
-        assert OpLaxAndMutator.do_mutate(module, codon, false, :not_a_boolean) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, true) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, :not_a_boolean, false) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, true, :not_a_boolean) == false
+        assert OpLaxAndMutator.darwin_was_here(module, codon, false, :not_a_boolean) == false
       end)
     end
   end
@@ -226,18 +240,19 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-        assert OpLaxOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, true) == true
-
-        assert OpLaxOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, false) ==
+        assert OpLaxOrMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, true) ==
                  true
 
-        assert OpLaxOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, true) ==
+        assert OpLaxOrMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, false) ==
                  true
 
-        assert OpLaxOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, false) ==
+        assert OpLaxOrMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, false, true) ==
+                 true
+
+        assert OpLaxOrMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, false, false) ==
                  false
 
-        assert OpLaxOrMutator.do_mutate(
+        assert OpLaxOrMutator.darwin_was_here(
                  maybe_wrong_module,
                  maybe_wrong_codon,
                  :not_a_boolean,
@@ -253,15 +268,21 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               mutation <- Gen.mutation(),
               mutation > 2 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxOrMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, true, false) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, false) == false
 
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, true) == :not_a_boolean
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, false) == :not_a_boolean
-        assert OpLaxOrMutator.do_mutate(module, codon, true, :not_a_boolean) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, :not_a_boolean) == :not_a_boolean
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) ==
+                 :not_a_boolean
+
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) ==
+                 :not_a_boolean
+
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true
+
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, :not_a_boolean) ==
+                 :not_a_boolean
       end)
     end
   end
@@ -271,23 +292,23 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 0 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxOrMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, true, false) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, false, true) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, true) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, false) == false
 
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) == true
 
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) == false
 
-        assert OpLaxOrMutator.do_mutate(
+        assert OpLaxOrMutator.darwin_was_here(
                  module,
                  codon,
                  true,
                  :not_a_boolean
                ) == :not_a_boolean
 
-        assert OpLaxOrMutator.do_mutate(
+        assert OpLaxOrMutator.darwin_was_here(
                  module,
                  codon,
                  false,
@@ -302,15 +323,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 1 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxOrMutator.do_mutate(module, codon, true, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, true, false) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, false) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, false) == true
         # These would raise an error in the unmutated version
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, true) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, false) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, true, :not_a_boolean) == true
-        assert OpLaxOrMutator.do_mutate(module, codon, false, :not_a_boolean) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, :not_a_boolean) == true
       end)
     end
   end
@@ -320,15 +341,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
               codon <- Gen.codon(),
               mutation = 2 do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-        assert OpLaxOrMutator.do_mutate(module, codon, true, true) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, true, false) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, false, true) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, false, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, true) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, false) == false
         # These would raise an error in the unmutated version
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, true) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, :not_a_boolean, false) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, true, :not_a_boolean) == false
-        assert OpLaxOrMutator.do_mutate(module, codon, false, :not_a_boolean) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, true, :not_a_boolean) == false
+        assert OpLaxOrMutator.darwin_was_here(module, codon, false, :not_a_boolean) == false
       end)
     end
   end

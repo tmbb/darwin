@@ -40,8 +40,9 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
            '__info__'(deprecated) -> [].
 
            f(_x@1) ->
-               'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1',
-                             0, _x@1, _x@1).
+               'Elixir.Darwin.Mutators.Default.OpAddMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod1',
+                             0, _x@1,
+                             _x@1).
            """
   end
 
@@ -85,22 +86,22 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
            '__info__'(deprecated) -> [].
 
            f(_x@1, _y@1, _z@1) ->
-               'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
+               'Elixir.Darwin.Mutators.Default.OpAddMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                              1,
-                             'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
+                             'Elixir.Darwin.Mutators.Default.OpAddMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                                            0,
                                            _x@1,
                                            _y@1),
                              _z@1).
 
            g(_x@1, _y@1) ->
-               'Elixir.Darwin.Mutators.Default.OpMulMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
+               'Elixir.Darwin.Mutators.Default.OpMulMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                              4,
-                             'Elixir.Darwin.Mutators.Default.OpAddMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
+                             'Elixir.Darwin.Mutators.Default.OpAddMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                                            2,
                                            _x@1,
                                            _y@1),
-                             'Elixir.Darwin.Mutators.Default.OpSubMutator':do_mutate('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
+                             'Elixir.Darwin.Mutators.Default.OpSubMutator':darwin_was_here('Elixir.Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest.Mod2',
                                            3,
                                            _x@1,
                                            _y@1)).

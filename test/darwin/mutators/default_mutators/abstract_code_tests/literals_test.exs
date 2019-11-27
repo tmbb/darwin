@@ -9,7 +9,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LiteralsTest do
     {abstract_code, ctx} = mutate_erlang(~s'"galapagos".')
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.CharlistMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.CharlistMutator':darwin_was_here('Elixir.MyModule',
                                                                       0, "galapagos").
            """)
 
@@ -33,7 +33,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LiteralsTest do
     {abstract_code, ctx} = mutate_erlang(~s'<<"galapagos">>.')
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.StringMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.StringMutator':darwin_was_here('Elixir.MyModule',
                                                                     0, <<"galapagos">>).
            """)
 
@@ -45,7 +45,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LiteralsTest do
     {abstract_code, ctx} = mutate_erlang("evolution.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.AtomMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.AtomMutator':darwin_was_here('Elixir.MyModule',
                                                                   0, evolution).
            """)
 
@@ -57,7 +57,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LiteralsTest do
     {abstract_code, ctx} = mutate_elixir(":evolution")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.AtomMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.AtomMutator':darwin_was_here('Elixir.MyModule',
                                                                   0, evolution).
            """)
 

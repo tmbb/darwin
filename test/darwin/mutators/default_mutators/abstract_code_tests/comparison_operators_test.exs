@@ -9,7 +9,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     # Assert that we generate the correct erlang code.
     # We could compare the AST instead, but visual inspection of the code is more informative.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpLessThanMutator':do_mutate('Elixir.MyModule', 0, A, B).
+           'Elixir.Darwin.Mutators.Default.OpLessThanMutator':darwin_was_here('Elixir.MyModule', 0, A, B).
            """)
 
     # Assert the correct number of mutations is generated.
@@ -23,7 +23,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     {abstract_code, ctx} = mutate_erlang("A =< B.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpLessThanOrEqualToMutator':do_mutate('Elixir.MyModule', 0, A, B).
+           'Elixir.Darwin.Mutators.Default.OpLessThanOrEqualToMutator':darwin_was_here('Elixir.MyModule', 0, A, B).
            """)
 
     # Assert the correct number of mutations is generated.
@@ -34,7 +34,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     {abstract_code, ctx} = mutate_erlang("A == B.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpEqualToMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpEqualToMutator':darwin_was_here('Elixir.MyModule',
                                                                        0, A, B).
            """)
 
@@ -46,7 +46,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     {abstract_code, ctx} = mutate_erlang("A /= B.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpNotEqualToMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpNotEqualToMutator':darwin_was_here('Elixir.MyModule',
                                                                           0, A, B).
            """)
 
@@ -58,7 +58,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     {abstract_code, ctx} = mutate_erlang("A >= B.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpGreaterThanOrEqualToMutator':darwin_was_here('Elixir.MyModule',
                                                                                     0, A, B).
            """)
 
@@ -70,7 +70,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ComparisonOperatorsTest do
     {abstract_code, ctx} = mutate_erlang("A > B.")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpGreaterThanMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpGreaterThanMutator':darwin_was_here('Elixir.MyModule',
                                                                            0, A, B).
            """)
 

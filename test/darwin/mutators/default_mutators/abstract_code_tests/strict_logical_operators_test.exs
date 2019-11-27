@@ -10,7 +10,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.StrictLogicalOperatorsTest do
     {abstract_code, ctx} = mutate_elixir("a and b")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpStrictAndMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpStrictAndMutator':darwin_was_here('Elixir.MyModule',
                                                                          0, _a@1, _b@1).
            """)
 
@@ -22,7 +22,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.StrictLogicalOperatorsTest do
     {abstract_code, ctx} = mutate_elixir("a or b")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpStrictOrMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpStrictOrMutator':darwin_was_here('Elixir.MyModule',
                                                                         0, _a@1, _b@1).
            """)
 
@@ -34,7 +34,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.StrictLogicalOperatorsTest do
     {abstract_code, ctx} = mutate_elixir("not a")
     # Assert that we generate the correct erlang code.
     assert Erlang.equivalent?(abstract_code, """
-           'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':do_mutate('Elixir.MyModule',
+           'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':darwin_was_here('Elixir.MyModule',
                                                                          0, _a@1).
            """)
 

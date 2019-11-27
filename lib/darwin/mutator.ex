@@ -192,7 +192,7 @@ defmodule Darwin.Mutator do
 
           mutated_abstract_code =
             Mutator.call_mutator(
-              {__MODULE__, :do_mutate},
+              {__MODULE__, :darwin_was_here},
               {module, codon_index},
               [mutated_left, mutated_right],
               line

@@ -32,7 +32,7 @@ defmodule Darwin.Mutators.Default.OpStrictOrMutator do
 
     mutated_abstract_code =
       Mutator.call_mutator(
-        {__MODULE__, :do_mutate},
+        {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [mutated_left, mutated_right],
         line
@@ -78,7 +78,7 @@ defmodule Darwin.Mutators.Default.OpStrictOrMutator do
   def mutate(_abstract_code, _ctx), do: :error
 
   @doc false
-  def do_mutate(module, codon_index, left, right) do
+  def darwin_was_here(module, codon_index, left, right) do
     case ActiveMutation.mutation_index_for_codon(module, codon_index) do
       {:ok, 0} -> left and right
       {:ok, 1} -> true

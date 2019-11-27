@@ -25,14 +25,18 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpStrictNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true) ==
+          assert OpStrictNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                    not true
 
-          assert OpStrictNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false) ==
+          assert OpStrictNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, false) ==
                    not false
 
           assert_raise ArgumentError, fn ->
-            OpStrictNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, :not_a_boolean)
+            OpStrictNotMutator.darwin_was_here(
+              maybe_wrong_module,
+              maybe_wrong_codon,
+              :not_a_boolean
+            )
           end
         end)
       end
@@ -47,13 +51,18 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpStrictNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true) ==
+          assert OpStrictNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                    not true
 
-          assert OpStrictNotMutator.do_mutate(right_module, maybe_wrong_codon, false) == not false
+          assert OpStrictNotMutator.darwin_was_here(right_module, maybe_wrong_codon, false) ==
+                   not false
 
           assert_raise ArgumentError, fn ->
-            OpStrictNotMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, :not_a_boolean)
+            OpStrictNotMutator.darwin_was_here(
+              maybe_wrong_module,
+              maybe_wrong_codon,
+              :not_a_boolean
+            )
           end
         end)
       end
@@ -63,9 +72,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
       check all module <- Gen.module(),
                 codon <- Gen.codon() do
         ActiveMutation.with_mutation({module, codon, 0}, fn ->
-          assert OpStrictNotMutator.do_mutate(module, codon, true) == true
-          assert OpStrictNotMutator.do_mutate(module, codon, false) == false
-          assert OpStrictNotMutator.do_mutate(module, codon, :other) == :other
+          assert OpStrictNotMutator.darwin_was_here(module, codon, true) == true
+          assert OpStrictNotMutator.darwin_was_here(module, codon, false) == false
+          assert OpStrictNotMutator.darwin_was_here(module, codon, :other) == :other
         end)
       end
     end
@@ -74,9 +83,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
       check all module <- Gen.module(),
                 codon <- Gen.codon() do
         ActiveMutation.with_mutation({module, codon, 1}, fn ->
-          assert OpStrictNotMutator.do_mutate(module, codon, true) == true
-          assert OpStrictNotMutator.do_mutate(module, codon, false) == true
-          assert OpStrictNotMutator.do_mutate(module, codon, :other) == true
+          assert OpStrictNotMutator.darwin_was_here(module, codon, true) == true
+          assert OpStrictNotMutator.darwin_was_here(module, codon, false) == true
+          assert OpStrictNotMutator.darwin_was_here(module, codon, :other) == true
         end)
       end
     end
@@ -85,9 +94,9 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
       check all module <- Gen.module(),
                 codon <- Gen.codon() do
         ActiveMutation.with_mutation({module, codon, 2}, fn ->
-          assert OpStrictNotMutator.do_mutate(module, codon, true) == false
-          assert OpStrictNotMutator.do_mutate(module, codon, false) == false
-          assert OpStrictNotMutator.do_mutate(module, codon, :other) == false
+          assert OpStrictNotMutator.darwin_was_here(module, codon, true) == false
+          assert OpStrictNotMutator.darwin_was_here(module, codon, false) == false
+          assert OpStrictNotMutator.darwin_was_here(module, codon, :other) == false
         end)
       end
     end
@@ -102,20 +111,36 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpStrictAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, true) ==
-                   (true and true)
+          assert OpStrictAndMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   true,
+                   true
+                 ) == (true and true)
 
-          assert OpStrictAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, false) ==
-                   (true and false)
+          assert OpStrictAndMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   true,
+                   false
+                 ) == (true and false)
 
-          assert OpStrictAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, true) ==
-                   (false and true)
+          assert OpStrictAndMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   false,
+                   true
+                 ) == (false and true)
 
-          assert OpStrictAndMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, false) ==
-                   (false and false)
+          assert OpStrictAndMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   false,
+                   false
+                 ) == (false and false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictAndMutator.do_mutate(
+            OpStrictAndMutator.darwin_was_here(
               maybe_wrong_module,
               maybe_wrong_codon,
               :not_a_boolean,
@@ -132,16 +157,22 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 mutation > 2 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictAndMutator.do_mutate(module, codon, true, true) == (true and true)
-          assert OpStrictAndMutator.do_mutate(module, codon, true, false) == (true and false)
-          assert OpStrictAndMutator.do_mutate(module, codon, false, true) == (false and true)
-          assert OpStrictAndMutator.do_mutate(module, codon, false, false) == (false and false)
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == (true and true)
+
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) ==
+                   (true and false)
+
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, true) ==
+                   (false and true)
+
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, false) ==
+                   (false and false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, true)
-            OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, false)
-            OpStrictAndMutator.do_mutate(module, codon, true, :not_a_boolean)
-            OpStrictAndMutator.do_mutate(module, codon, false, :not_a_boolean)
+            OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, true)
+            OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, false)
+            OpStrictAndMutator.darwin_was_here(module, codon, true, :not_a_boolean)
+            OpStrictAndMutator.darwin_was_here(module, codon, false, :not_a_boolean)
           end
         end)
       end
@@ -152,16 +183,18 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictAndMutator.do_mutate(module, codon, true, true) == (true or true)
-          assert OpStrictAndMutator.do_mutate(module, codon, true, false) == (true or false)
-          assert OpStrictAndMutator.do_mutate(module, codon, false, true) == (false or true)
-          assert OpStrictAndMutator.do_mutate(module, codon, false, false) == (false or false)
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == (true or true)
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == (true or false)
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, true) == (false or true)
+
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, false) ==
+                   (false or false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, true)
-            OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, false)
-            OpStrictAndMutator.do_mutate(module, codon, true, :not_a_boolean)
-            OpStrictAndMutator.do_mutate(module, codon, false, :not_a_boolean)
+            OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, true)
+            OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, false)
+            OpStrictAndMutator.darwin_was_here(module, codon, true, :not_a_boolean)
+            OpStrictAndMutator.darwin_was_here(module, codon, false, :not_a_boolean)
           end
         end)
       end
@@ -172,15 +205,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 1 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictAndMutator.do_mutate(module, codon, true, true) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, true, false) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, false, true) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, false, false) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, true) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, false) == true
           # These would raise an error in the unmutated version
-          assert OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, true) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, false) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, true, :not_a_boolean) == true
-          assert OpStrictAndMutator.do_mutate(module, codon, false, :not_a_boolean) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, true) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, false) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, :not_a_boolean) == true
         end)
       end
     end
@@ -190,15 +223,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 2 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictAndMutator.do_mutate(module, codon, true, true) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, true, false) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, false, true) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, false, false) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, true) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, false) == false
           # These would raise an error in the unmutated version
-          assert OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, true) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, :not_a_boolean, false) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, true, :not_a_boolean) == false
-          assert OpStrictAndMutator.do_mutate(module, codon, false, :not_a_boolean) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, true) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, :not_a_boolean, false) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, true, :not_a_boolean) == false
+          assert OpStrictAndMutator.darwin_was_here(module, codon, false, :not_a_boolean) == false
         end)
       end
     end
@@ -213,20 +246,36 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
-          assert OpStrictOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, true) ==
-                   (true or true)
+          assert OpStrictOrMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   true,
+                   true
+                 ) == (true or true)
 
-          assert OpStrictOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, true, false) ==
-                   (true or false)
+          assert OpStrictOrMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   true,
+                   false
+                 ) == (true or false)
 
-          assert OpStrictOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, true) ==
-                   (false or true)
+          assert OpStrictOrMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   false,
+                   true
+                 ) == (false or true)
 
-          assert OpStrictOrMutator.do_mutate(maybe_wrong_module, maybe_wrong_codon, false, false) ==
-                   (false or false)
+          assert OpStrictOrMutator.darwin_was_here(
+                   maybe_wrong_module,
+                   maybe_wrong_codon,
+                   false,
+                   false
+                 ) == (false or false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictOrMutator.do_mutate(
+            OpStrictOrMutator.darwin_was_here(
               maybe_wrong_module,
               maybe_wrong_codon,
               :not_a_boolean,
@@ -243,16 +292,18 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 mutation <- Gen.mutation(),
                 mutation > 2 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictOrMutator.do_mutate(module, codon, true, true) == (true or true)
-          assert OpStrictOrMutator.do_mutate(module, codon, true, false) == (true or false)
-          assert OpStrictOrMutator.do_mutate(module, codon, false, true) == (false or true)
-          assert OpStrictOrMutator.do_mutate(module, codon, false, false) == (false or false)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == (true or true)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == (true or false)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, true) == (false or true)
+
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, false) ==
+                   (false or false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, true)
-            OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, false)
-            OpStrictOrMutator.do_mutate(module, codon, true, :not_a_boolean)
-            OpStrictOrMutator.do_mutate(module, codon, false, :not_a_boolean)
+            OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, true)
+            OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, false)
+            OpStrictOrMutator.darwin_was_here(module, codon, true, :not_a_boolean)
+            OpStrictOrMutator.darwin_was_here(module, codon, false, :not_a_boolean)
           end
         end)
       end
@@ -263,16 +314,18 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 0 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictOrMutator.do_mutate(module, codon, true, true) == (true and true)
-          assert OpStrictOrMutator.do_mutate(module, codon, true, false) == (true and false)
-          assert OpStrictOrMutator.do_mutate(module, codon, false, true) == (false and true)
-          assert OpStrictOrMutator.do_mutate(module, codon, false, false) == (false and false)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == (true and true)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == (true and false)
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, true) == (false and true)
+
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, false) ==
+                   (false and false)
 
           assert_raise BadBooleanError, fn ->
-            OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, true)
-            OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, false)
-            OpStrictOrMutator.do_mutate(module, codon, true, :not_a_boolean)
-            OpStrictOrMutator.do_mutate(module, codon, false, :not_a_boolean)
+            OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, true)
+            OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, false)
+            OpStrictOrMutator.darwin_was_here(module, codon, true, :not_a_boolean)
+            OpStrictOrMutator.darwin_was_here(module, codon, false, :not_a_boolean)
           end
         end)
       end
@@ -283,15 +336,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 1 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictOrMutator.do_mutate(module, codon, true, true) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, true, false) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, false, true) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, false, false) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, true) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, false) == true
           # These would raise an error in the unmutated version
-          assert OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, true) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, false) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, true, :not_a_boolean) == true
-          assert OpStrictOrMutator.do_mutate(module, codon, false, :not_a_boolean) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, :not_a_boolean) == true
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, :not_a_boolean) == true
         end)
       end
     end
@@ -301,15 +354,15 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
                 codon <- Gen.codon(),
                 mutation = 2 do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
-          assert OpStrictOrMutator.do_mutate(module, codon, true, true) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, true, false) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, false, true) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, false, false) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, true) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, false) == false
           # These would raise an error in the unmutated version
-          assert OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, true) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, :not_a_boolean, false) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, true, :not_a_boolean) == false
-          assert OpStrictOrMutator.do_mutate(module, codon, false, :not_a_boolean) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, true) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, :not_a_boolean, false) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, true, :not_a_boolean) == false
+          assert OpStrictOrMutator.darwin_was_here(module, codon, false, :not_a_boolean) == false
         end)
       end
     end
