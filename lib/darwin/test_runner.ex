@@ -1,13 +1,108 @@
 defmodule Darwin.TestRunner do
   @moduledoc false
+  require Logger
   alias Darwin.Mutator
   alias Darwin.Beam
   alias Darwin.Mutator.Context
-  alias Darwin.Mutator.Mutation
   alias Darwin.ActiveMutation
   alias Darwin.MutationServer
   alias Darwin.Utils.TimeConvert
-  require Logger
+
+  alias Darwin.TestRunner.{
+    TestRunnerArguments,
+    TestRunnerLogger
+  }
+
+  @config [
+    formatters: [Darwin.TestRunner.Formatter],
+    autorun: false,
+    max_failures: 1,
+    timeout: 3000
+  ]
+
+  def create_and_hunt_mutants(arguments) do
+    # Everything in this function is parametrized by the `arguments`.
+    # This makes it easier to test the `mix darwin.test` task,
+    # because you can just run this function with different arguments.
+    %{modules_to_mutate: modules_to_mutate} = arguments
+
+    # Start the ExUnit application as a "normal" application.
+    # Don't use the `ExUnit.start()` function because that way ExUnit
+    # tries to control how the tessts are run.
+    ExUnit.start([], [])
+
+    case Application.load(:ex_unit) do
+      :ok -> :ok
+      {:error, {:already_loaded, :ex_unit}} -> :ok
+    end
+
+    # Before requiring the test helper, make sure the runtime "knows" that Darwin is running.
+    # The test helper might contain code meant to be running ony if darwin is running.
+    Darwin.darwin_is_now_running()
+
+    # Require the test helper file, which conatins setup code necessary to run the tests.
+    require_test_helper(arguments)
+
+    # Suppress the warnigs we get when we recompile the test cases in memory
+    Code.compiler_options(ignore_module_conflict: true)
+
+    ex_unit_config =
+      ExUnit.configuration()
+      |> Keyword.merge(Application.get_all_env(:ex_unit))
+
+    darwin_config =
+      ExUnit.configuration()
+      |> Keyword.merge(Application.get_all_env(:ex_unit))
+      |> Keyword.merge(@config)
+
+    # Store the test files; we'll need them to add the modules into the `ExUnit.Server`
+    test_files = get_test_files(arguments)
+    # Add the test case modules to the `ExUnit.Server` so that they will be tested
+    add_modules_to_ex_unit_server(test_files)
+    # Store the test case modules from `ExUnit.Server` so that they can be reused
+    test_case_modules = get_modules_from_ex_unit_server()
+    # Configure `ExUnit` for a "normal" test run with unmutated code
+    ExUnit.configure(ex_unit_config)
+    # No need to populate the `ExUnit.Server` when we run the test suite for the first time;
+    # The `ExUnit.Server` is already populated
+    unmutated_test_suite_results = run_test_suite()
+    %{failures: failures} = unmutated_test_suite_results
+
+    if failures > 0 do
+      Mix.raise(
+        "Some tests in the original test suite failed. " <>
+          "Darwin won't run mutation tests until all tests pass."
+      )
+    end
+
+    # Then we must mutate the modules and tun the test suite without activating any mutation.
+    reset_ex_unit_server(test_case_modules)
+    module_contexts = mutate_modules(modules_to_mutate)
+    mutated_test_suite_results = run_test_suite()
+    # After mutating the modules, we must ensure that the mutated and unmutated and unmutated
+    # test suites return the same result.
+    # Because we've already tested that all tests pass, this only tests whether
+    # the tests pass in both the mutated and unmutated test suites.
+    # This is a very crude sanity check to make sure or mutations aren't changing the code semantics.
+    ensure_test_suites_are_equivalent!(unmutated_test_suite_results, mutated_test_suite_results)
+    # We can finaly test the mutated modules:
+    test_mutated_modules(module_contexts, test_case_modules, darwin_config)
+
+    Darwin.darwin_has_stopped()
+  end
+
+  def ensure_test_suites_are_equivalent!(unmutated, mutated) do
+    if unmutated != mutated do
+      Darwin.Exceptions.raise("""
+      The mutated and the original test suites are not equivalent.
+      This is probably a bug in one of the mutators.
+      If you are using Darwin's default mutators, please report a bug.
+
+      - Original test suite results: #{inspect(unmutated)}
+      - Mutated test suite results: #{inspect(mutated)}
+      """)
+    end
+  end
 
   def mutate_compile_and_load_module(module_name) do
     {mutated_form_list, ctx} = Mutator.mutate_module(module_name)
@@ -17,22 +112,15 @@ defmodule Darwin.TestRunner do
     ctx
   end
 
-  def mutate_modules(module_names) do
-    Task.async_stream(module_names, fn module_name ->
+  def mutate_modules(modules_to_mutate) do
+    module_names_to_mutate = for {module_name, _opts} <- modules_to_mutate, do: module_name
+
+    Task.async_stream(module_names_to_mutate, fn module_name ->
       mutate_compile_and_load_module(module_name)
     end)
     |> Enum.to_list()
     |> Enum.map(fn {:ok, result} -> result end)
   end
-
-  require Logger
-
-  @config [
-    formatters: [Darwin.TestRunner.Formatter],
-    autorun: false,
-    max_failures: 1,
-    timeout: 3000
-  ]
 
   defp reset_ex_unit_server(modules) do
     # BLACK MAGIC: This uses private APIs
@@ -49,8 +137,21 @@ defmodule Darwin.TestRunner do
     :ok
   end
 
-  defp get_test_files() do
-    Path.wildcard("test/**/*_test.exs")
+  defp get_test_files(%TestRunnerArguments{} = arguments) do
+    %{test_file_patterns: patterns} = arguments
+    Enum.flat_map(patterns, &Path.wildcard/1)
+  end
+
+  defp require_test_helper(%TestRunnerArguments{} = arguments) do
+    %{test_helper_path: test_helper_path} = arguments
+
+    if File.exists?(test_helper_path) do
+      Code.require_file(test_helper_path)
+    else
+      Darwin.Exceptions.raise(
+        "Cannot run tests because test helper file #{inspect(test_helper_path)} does not exist"
+      )
+    end
   end
 
   defp add_modules_to_ex_unit_server(test_files) do
@@ -72,45 +173,7 @@ defmodule Darwin.TestRunner do
     ExUnit.run()
   end
 
-  def create_and_hunt_mutants(modules_to_mutate) do
-    # Suppress the warnigs we get when we recompile the test cases in memory
-    Code.compiler_options(ignore_module_conflict: true)
-
-    ex_unit_config =
-      ExUnit.configuration()
-      |> Keyword.merge(Application.get_all_env(:ex_unit))
-
-    darwin_config =
-      ExUnit.configuration()
-      |> Keyword.merge(Application.get_all_env(:ex_unit))
-      |> Keyword.merge(@config)
-
-    # Store the test files; we'll need them to add the modules into the `ExUnit.Server`
-    test_files = get_test_files()
-    # Add the test case modules to the `ExUnit.Server` so that they will be tested
-    add_modules_to_ex_unit_server(test_files)
-    # Store the test case modules from `ExUnit.Server` so that they can be reused
-    test_case_modules = get_modules_from_ex_unit_server()
-    # Configure `ExUnit` for a "normal" test run with unmutated code
-    ExUnit.configure(ex_unit_config)
-    # No need to populate the `ExUnit.Server` when we run the test suite for the first time;
-    # The `ExUnit.Server` is already populated
-    unmutated_test_suite = run_test_suite()
-    %{failures: failures} = unmutated_test_suite
-
-    if failures > 0 do
-      Logger.error(
-        "Some tests in the original test suite failed. " <>
-          "Darwin won't run mutation tests until all tests pass."
-      )
-    else
-      mutate_and_test(modules_to_mutate, test_case_modules, darwin_config)
-    end
-  end
-
-  defp mutate_and_test(modules_to_mutate, test_case_modules, darwin_config) do
-    module_names_to_mutate = for {module_name, _opts} <- modules_to_mutate, do: module_name
-    module_contexts = mutate_modules(module_names_to_mutate)
+  defp test_mutated_modules(module_contexts, test_case_modules, darwin_config) do
     ExUnit.configure(darwin_config)
 
     {darwin_delta, _value} =
@@ -135,9 +198,21 @@ defmodule Darwin.TestRunner do
             original_codon = Context.original_codon(ctx, mutation)
 
             if test_suite[:failures] > 0 do
-              log_mutant_killed(ctx, mutation, original_codon, mutation_human_time)
+              # A mutant is killed if it fails at least one test
+              TestRunnerLogger.log_mutant_killed(
+                ctx,
+                mutation,
+                original_codon,
+                mutation_human_time
+              )
             else
-              log_mutant_survived(ctx, mutation, original_codon, mutation_human_time)
+              # A mutant survives if it passes all tests
+              TestRunnerLogger.log_mutant_survived(
+                ctx,
+                mutation,
+                original_codon,
+                mutation_human_time
+              )
             end
 
             {mutation, test_suite}
@@ -149,71 +224,5 @@ defmodule Darwin.TestRunner do
     Logger.info("Total time: #{human_time}")
 
     :ok
-  end
-
-  defp in_green(text) do
-    IO.ANSI.green() <> text <> IO.ANSI.reset()
-  end
-
-  defp in_red(text) do
-    IO.ANSI.red() <> text <> IO.ANSI.reset()
-  end
-
-  defp log_mutant_killed(_ctx, mutation, original_codon, human_time) do
-    tuple = Mutation.to_tuple(mutation)
-    mutation_name = mutation.name
-    original_code = Macro.to_string(original_codon.value.elixir)
-    mutated_code = Macro.to_string(mutation.mutated_codon.elixir)
-    line = original_codon.line
-
-    IO.puts("""
-    #{in_green("Mutant killed: #{inspect(tuple)} (#{human_time})")}
-    - Line: #{line}
-    - Mutation name: #{mutation_name}
-    - Original code: #{original_code}
-    - Mutated code: #{mutated_code}
-    """)
-  end
-
-  @radius 3
-
-  require EEx
-
-  defp log_mutant_survived(ctx, mutation, original_codon, human_time) do
-    tuple = Mutation.to_tuple(mutation)
-    mutation_name = mutation.name
-    original_code = Macro.to_string(original_codon.value.elixir)
-    mutated_code = Macro.to_string(mutation.mutated_codon.elixir)
-    line = original_codon.line
-
-    line_min = line - @radius
-    line_max = line + @radius
-
-    line_range = line_min..line_max
-
-    lines =
-      ctx.source_path
-      |> File.read!()
-      |> String.split("\n")
-      |> Enum.slice(line_range)
-      |> Enum.with_index(line_min)
-
-    code =
-      EEx.eval_string(
-        """
-        <%= for {line, nr} <- lines do %>
-            <%= nr %> <%= line %><% end %>
-        """,
-        lines: lines
-      )
-
-    IO.puts("""
-    #{in_red("Mutant survived: #{inspect(tuple)} (#{human_time})")}
-    - Line: #{line}
-    - Mutation name: #{mutation_name}
-    - Original code: #{original_code}
-    - Mutated code: #{mutated_code}
-    #{code}
-    """)
   end
 end
