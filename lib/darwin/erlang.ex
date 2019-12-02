@@ -3,7 +3,46 @@ defmodule Darwin.Erlang do
   Utilities to work with Erlang expressions.
   """
 
-  @doc "Parses an expression into erlang abstract code"
+  require Logger
+  import ExUnit.Assertions
+
+  @doc """
+  Parses a binary as Erlang into abstract code and replaces variable
+  occurrences according to the substitutions given as a keyword list.
+  """
+  defmacro interpolate_in_abstract_code!(bin, substitutions) do
+    # Parse the expression out of the binary
+    erlang_abstract_code = forms!(bin)
+    escaped_erlang_abstract_code = Macro.escape(erlang_abstract_code)
+    # Replace the variables by the substitutions
+    quote do
+      :parse_trans.plain_transform(
+        Darwin.Erlang.variable_replacer(unquote(substitutions)),
+        unquote(escaped_erlang_abstract_code)
+      )
+    end
+  end
+
+  @doc false
+  def variable_replacer(substitutions) do
+    fn
+      {:var, _line, name} ->
+        case Keyword.fetch(substitutions, name) do
+          {:ok, value} ->
+            value
+
+          :error ->
+            :continue
+        end
+
+      _ ->
+        :continue
+    end
+  end
+
+  @doc """
+  Parses an expression into erlang abstract code
+  """
   def expression!(bin) do
     charlist = String.to_charlist(bin)
     {:ok, tokens, _} = :erl_scan.string(charlist)
@@ -22,21 +61,40 @@ defmodule Darwin.Erlang do
   end
 
   @doc """
+  Asserts that two expressions (`left` and `right`) are equivalent.
+
+  An expression can be a term representing Erlang abstract code or a binary
+  containing valid Erlang code.
+  """
+  def assert_equivalent(left, right) do
+    left_forms = if is_binary(left), do: forms!(left), else: List.wrap(left)
+    right_forms = if is_binary(right), do: forms!(right), else: List.wrap(right)
+
+    canonical_left = pprint_forms(left_forms)
+    canonical_right = pprint_forms(right_forms)
+
+    assert(canonical_left == canonical_right)
+  end
+
+  @doc """
   Tests whether two expressions (`left` and `right`) are equivalent.
 
   An expression can be a term representing Erlang abstract code or a binary
   containing valid Erlang code.
   """
   def equivalent?(left, right) do
-    left_expression = if is_binary(left), do: expression!(left), else: left
-    right_expression = if is_binary(right), do: expression!(right), else: right
+    left_forms = if is_binary(left), do: forms!(left), else: List.wrap(left)
+    right_forms = if is_binary(right), do: forms!(right), else: List.wrap(right)
 
-    canonical_left = pprint(left_expression)
-    canonical_right = pprint(right_expression)
+    canonical_left = pprint_forms(left_forms)
+    canonical_right = pprint_forms(right_forms)
+
     canonical_left == canonical_right
   end
 
-  @doc "Pretty prints erlang abstract code into the erlang source"
+  @doc """
+  Pretty prints erlang abstract code into the erlang source
+  """
   def pprint(abstract_code, opts \\ []) do
     indent = Keyword.get(opts, :indent, 8)
 
@@ -57,7 +115,9 @@ defmodule Darwin.Erlang do
     |> String.replace("\t", String.duplicate(" ", indent))
   end
 
-  @doc "gets the erlang source code from the BEAM file"
+  @doc """
+  gets the erlang source code from the BEAM file
+  """
   def beam_to_erlang_source(module) do
     filename = :code.which(module)
 
@@ -67,7 +127,9 @@ defmodule Darwin.Erlang do
     pprint(:erl_syntax.form_list(abstract_code))
   end
 
-  @doc "gets the erlang source code from the BEAM file"
+  @doc """
+  gets the erlang source code from the BEAM file
+  """
   def beam_to_erlang_source_file(module, file) do
     source = beam_to_erlang_source(module)
     File.write!(file, source)

@@ -26,6 +26,7 @@ defmodule Darwin.Mutators.Default do
     CharlistMutator,
     StringMutator,
     AtomMutator,
+    IntegerMutator,
 
     # Bitshift operators
 
@@ -38,14 +39,15 @@ defmodule Darwin.Mutators.Default do
     OpGreaterThanOrEqualToMutator,
     OpGreaterThanMutator,
 
-    # Bitshift operators
-
     # Things to ignore
     IgnoreInfoMutator,
     IgnoreDefacroMutator
   }
 
-  alias Darwin.Mutators.Common.BackupMutator
+  alias Darwin.Mutators.Common.{
+    BackupMutator,
+    GuardRewriterMutator
+  }
 
   print_list = fn list ->
     items =
@@ -55,6 +57,11 @@ defmodule Darwin.Mutators.Default do
 
     Enum.join(items, "\n")
   end
+
+  @ignore_mutators [
+    IgnoreInfoMutator,
+    IgnoreDefacroMutator
+  ]
 
   @arithmetic_operator_mutators [
     OpAddMutator,
@@ -78,7 +85,8 @@ defmodule Darwin.Mutators.Default do
   @literal_mutators [
     StringMutator,
     CharlistMutator,
-    AtomMutator
+    AtomMutator,
+    IntegerMutator
   ]
 
   @comparison_operators [
@@ -92,12 +100,12 @@ defmodule Darwin.Mutators.Default do
   ]
 
   @miscelaneous_mutators [
-    IgnoreInfoMutator,
-    IgnoreDefacroMutator,
+    GuardRewriterMutator,
     BackupMutator
   ]
 
-  @all_mutators @arithmetic_operator_mutators ++
+  @all_mutators @ignore_mutators ++
+                  @arithmetic_operator_mutators ++
                   @strict_logical_operator_mutators ++
                   @lax_logical_operator_mutators ++
                   @literal_mutators ++ @comparison_operators ++ @miscelaneous_mutators

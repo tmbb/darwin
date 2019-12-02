@@ -38,7 +38,9 @@ defmodule Darwin.Beam do
     end
   end
 
-  @doc "gets the erlang abstract code from the BEAM file"
+  @doc """
+  gets the erlang abstract code from the BEAM file
+  """
   def beam_to_abstract_code(module) do
     filename = :code.which(module)
 

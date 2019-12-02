@@ -36,6 +36,7 @@ defmodule Darwin.MixProject do
   defp deps do
     [
       {:benchee, "~> 1.0.1", only: [:dev]},
+      {:parse_trans, "~> 3.3"},
       {:stream_data, "~> 0.4.3", only: [:dev, :test]},
       {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]},
       {:memento, "~> 0.3.1"},

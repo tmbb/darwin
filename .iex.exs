@@ -1,3 +1,5 @@
 alias Darwin.Mutator
 alias Darwin.Erlang
-alias Darwin.TestRunner.Persistence
+alias Darwin.ExToErl
+alias Darwin.ErlToEx
+alias Darwin.Mutator.GuardRewriter

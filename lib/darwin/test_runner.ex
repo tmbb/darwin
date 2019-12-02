@@ -2,7 +2,7 @@ defmodule Darwin.TestRunner do
   @moduledoc false
   require Logger
   alias Darwin.Mutator
-  alias Darwin.Beam
+  alias Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.MutationServer
@@ -28,7 +28,7 @@ defmodule Darwin.TestRunner do
 
     # Start the ExUnit application as a "normal" application.
     # Don't use the `ExUnit.start()` function because that way ExUnit
-    # tries to control how the tessts are run.
+    # tries to control how the tests are run.
     ExUnit.start([], [])
 
     case Application.load(:ex_unit) do
@@ -104,19 +104,11 @@ defmodule Darwin.TestRunner do
     end
   end
 
-  def mutate_compile_and_load_module(module_name) do
-    {mutated_form_list, ctx} = Mutator.mutate_module(module_name)
-    contents = Darwin.Erlang.pprint_forms(mutated_form_list)
-    File.write!("mutated_dump.erl", contents)
-    Beam.compile_and_load(mutated_form_list)
-    ctx
-  end
-
   def mutate_modules(modules_to_mutate) do
     module_names_to_mutate = for {module_name, _opts} <- modules_to_mutate, do: module_name
 
     Task.async_stream(module_names_to_mutate, fn module_name ->
-      mutate_compile_and_load_module(module_name)
+      Mutator.mutate_compile_and_load_module(module_name)
     end)
     |> Enum.to_list()
     |> Enum.map(fn {:ok, result} -> result end)

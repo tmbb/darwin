@@ -9,7 +9,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
   test "operator: &&" do
     {abstract_code, ctx} = mutate_elixir("a && b")
     # Assert that we generate the correct erlang code.
-    assert Erlang.equivalent?(abstract_code, """
+    assert Erlang.assert_equivalent(abstract_code, """
            'Elixir.Darwin.Mutators.Default.OpLaxAndMutator':darwin_was_here('Elixir.MyModule',
                                                                        0, _a@1, _b@1).
            """)
@@ -21,7 +21,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
   test "operator: ||" do
     {abstract_code, ctx} = mutate_elixir("a || b")
     # Assert that we generate the correct erlang code.
-    assert Erlang.equivalent?(abstract_code, """
+    assert Erlang.assert_equivalent(abstract_code, """
            'Elixir.Darwin.Mutators.Default.OpLaxOrMutator':darwin_was_here('Elixir.MyModule',
                                                                       0, _a@1, _b@1).
            """)
@@ -33,7 +33,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
   test "operator: !" do
     {abstract_code, ctx} = mutate_elixir("!a")
     # Assert that we generate the correct erlang code.
-    assert Erlang.equivalent?(abstract_code, """
+    assert Erlang.assert_equivalent(abstract_code, """
            'Elixir.Darwin.Mutators.Default.OpLaxNotMutator':darwin_was_here('Elixir.MyModule',
                                                                       0, _a@1).
            """)

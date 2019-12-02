@@ -8,7 +8,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ContainersTest do
   test "tuple" do
     {abstract_code, ctx} = mutate_elixir("{a, not b, c}")
     # Assert that we generate the correct erlang code.
-    assert Erlang.equivalent?(abstract_code, """
+    assert Erlang.assert_equivalent(abstract_code, """
            {_a@1,
             'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':darwin_was_here('Elixir.MyModule',
                                                                           0, _b@1),
@@ -22,7 +22,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.ContainersTest do
   test "list" do
     {abstract_code, ctx} = mutate_elixir("[a, b, not c]")
     # Assert that we generate the correct erlang code.
-    assert Erlang.equivalent?(abstract_code, """
+    assert Erlang.assert_equivalent(abstract_code, """
            [_a@1, _b@1,
             'Elixir.Darwin.Mutators.Default.OpStrictNotMutator':darwin_was_here('Elixir.MyModule',
                                                                           0, _c@1)].
