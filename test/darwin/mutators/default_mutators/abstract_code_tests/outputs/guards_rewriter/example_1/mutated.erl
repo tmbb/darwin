@@ -45,7 +45,8 @@ f(X1_@darwin) ->
                                                                                                      f1)
                                       end};
                                  false -> error
-                               end
+                               end;
+                           (_) -> error
                        end,
                        fun ({__@1}) ->
                                case try
@@ -70,7 +71,8 @@ f(X1_@darwin) ->
                                                                                                      f2)
                                       end};
                                  false -> error
-                               end
+                               end;
+                           (_) -> error
                        end,
                        fun ({{_, 2}}) -> {ok, begin f3 end};
                            (_) -> error

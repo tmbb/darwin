@@ -34,7 +34,8 @@ random_integer(X1_@darwin, X2_@darwin) ->
                                    of
                                  true -> {ok, begin __@1 end};
                                  false -> error
-                               end
+                               end;
+                           (_) -> error
                        end,
                        fun ({__@1, __@2}) ->
                                case try
@@ -49,7 +50,8 @@ random_integer(X1_@darwin, X2_@darwin) ->
                                  true ->
                                      {ok, begin random_integer(__@2, __@1) end};
                                  false -> error
-                               end
+                               end;
+                           (_) -> error
                        end,
                        fun ({__@1, __@2}) ->
                                {ok,

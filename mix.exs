@@ -8,7 +8,12 @@ defmodule Darwin.MixProject do
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      elixirc_paths: elixirc_paths(Mix.env())
+      elixirc_paths: elixirc_paths(Mix.env()),
+      guaxinim: [
+        src: "lib",
+        dst: "literate",
+        project_title: "Darwin"
+      ]
     ]
   end
 
@@ -35,13 +40,14 @@ defmodule Darwin.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:benchee, "~> 1.0.1", only: [:dev]},
       {:parse_trans, "~> 3.3"},
+      {:makeup_elixir, "~> 0.14"},
+      # Testing dependencies
       {:stream_data, "~> 0.4.3", only: [:dev, :test]},
-      {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]},
-      {:memento, "~> 0.3.1"},
-      {:makeup_elixir, "~> 0.14.0"},
-      {:assert_value, "~> 0.9.2", only: [:dev, :test]}
+      # Benchmarking dependencies
+      {:benchee, "~> 1.0.1", only: [:dev]},
+      # Documentation dependencies
+      {:ex_doc, github: "elixir-lang/ex_doc", only: [:dev, :doc]}
     ]
   end
 end

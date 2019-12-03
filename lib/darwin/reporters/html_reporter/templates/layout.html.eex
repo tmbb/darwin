@@ -8,13 +8,56 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/makeup.css">
+    <style>
+    .line:target {
+      background-color: #ffa;
+      transition: all 1s linear;
+    }
+    </style>
 
     <title><%= inspect(@module) %> coverage report</title>
   </head>
   <body>
-    <h1><code><%= inspect(@module) %></code> coverage report</h1>
+    <div class="container">
+        <h1><code><%= inspect(@module) %></code> coverage report</h1>
+    </div>
 
-    <code class="highlight"><pre><%= @highlighted %></pre><code>
+    <div class="row">
+      <div class="col-md-7">
+        <table class="table table-hover">
+          <thead class=".thead-light">
+            <th></th>
+            <th>Mutation</th>
+            <th>Line</th>
+            <th>State</th>
+            <th>Original</th>
+            <th>Mutated</th>
+          </thead>
+          <tbody>
+            <%= for {mutant, index} <- Enum.with_index(@mutants) do %>
+              <%= if mutant.state == :survived do %>
+                <tr class="table-danger">
+              <% else %>
+                <tr class="table-default">
+              <% end %>
+                <% original_elixir = mutant.original_codon.value[:elixir] %>
+                <% mutated_elixir = mutant.mutation.mutated_codon[:elixir] %>
+                <td><%= inspect(index) %></td>
+                <td><%= mutant.mutation.name %></td>
+                <td><a href="#L<%= mutant.line %>"><%= mutant.line %></a></td>
+                <td><%= format_mutant_state(mutant) %></td>
+                <td><code><%= format_elixir(original_elixir) %></code></td>
+                <td><code><%= format_elixir(mutated_elixir) %></code></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-5">
+        <code class="highlight"><pre><%= @highlighted %></pre><code>
+      </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <script src="assets/makeup.js"></script>

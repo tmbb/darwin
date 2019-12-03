@@ -53,15 +53,9 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.GuardsRewriterTest do
 
     output_path = Path.join(@outputs, "example_2/mutated.erl")
     m_mutated = __MODULE__.Example2_Module_Mutated
+    expected = File.read!(output_path)
 
     {mutated_abstract_code, _ctx} = mutate_and_compile_elixir(elixir_function, module: m_mutated)
-
-    File.write!(
-      output_path,
-      Erlang.pprint_forms(mutated_abstract_code)
-    )
-
-    expected = File.read!(output_path)
 
     assert Erlang.pprint_forms(mutated_abstract_code) == expected
   end

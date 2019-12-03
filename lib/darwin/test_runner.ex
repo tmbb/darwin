@@ -2,11 +2,13 @@ defmodule Darwin.TestRunner do
   @moduledoc false
   require Logger
   alias Darwin.Mutator
-  alias Darwin.Mutator
   alias Darwin.Mutator.Context
+  alias Darwin.Mutator.Mutant
   alias Darwin.ActiveMutation
   alias Darwin.MutationServer
   alias Darwin.Utils.TimeConvert
+  alias Darwin.Utils.SafeSourcePath
+  alias Darwin.Reporters.HtmlReporter
 
   alias Darwin.TestRunner.{
     TestRunnerArguments,
@@ -25,6 +27,11 @@ defmodule Darwin.TestRunner do
     # This makes it easier to test the `mix darwin.test` task,
     # because you can just run this function with different arguments.
     %{modules_to_mutate: modules_to_mutate} = arguments
+
+    source_paths =
+      for {module, _opts} <- modules_to_mutate, into: %{} do
+        {module, SafeSourcePath.source_path_for_module(module)}
+      end
 
     # Start the ExUnit application as a "normal" application.
     # Don't use the `ExUnit.start()` function because that way ExUnit
@@ -86,7 +93,7 @@ defmodule Darwin.TestRunner do
     # This is a very crude sanity check to make sure or mutations aren't changing the code semantics.
     ensure_test_suites_are_equivalent!(unmutated_test_suite_results, mutated_test_suite_results)
     # We can finaly test the mutated modules:
-    test_mutated_modules(module_contexts, test_case_modules, darwin_config)
+    test_mutated_modules(source_paths, module_contexts, test_case_modules, darwin_config)
 
     Darwin.darwin_has_stopped()
   end
@@ -165,13 +172,13 @@ defmodule Darwin.TestRunner do
     ExUnit.run()
   end
 
-  defp test_mutated_modules(module_contexts, test_case_modules, darwin_config) do
+  defp test_mutated_modules(code_paths, module_contexts, test_case_modules, darwin_config) do
     ExUnit.configure(darwin_config)
 
-    {darwin_delta, _value} =
+    {darwin_delta, mutants} =
       :timer.tc(fn ->
-        for ctx <- module_contexts do
-          for mutation <- ctx.mutations do
+        for ctx <- Enum.reverse(module_contexts) do
+          for mutation <- Enum.reverse(ctx.mutations) do
             # Prepare the mutation server for a new suite
             MutationServer.start_suite()
             # Activate the new mutation
@@ -189,28 +196,27 @@ defmodule Darwin.TestRunner do
             mutation_human_time = TimeConvert.microsec_to_str(mutation_delta)
             original_codon = Context.original_codon(ctx, mutation)
 
-            if test_suite[:failures] > 0 do
-              # A mutant is killed if it fails at least one test
-              TestRunnerLogger.log_mutant_killed(
-                ctx,
-                mutation,
-                original_codon,
-                mutation_human_time
-              )
-            else
-              # A mutant survives if it passes all tests
-              TestRunnerLogger.log_mutant_survived(
-                ctx,
-                mutation,
-                original_codon,
-                mutation_human_time
-              )
-            end
+            state =
+              if test_suite[:failures] > 0 do
+                :killed
+              else
+                :survived
+              end
 
-            {mutation, test_suite}
+            mutant = Mutant.new(mutation: mutation, state: state, original_codon: original_codon)
+            TestRunnerLogger.log_mutant(mutant, mutation_human_time)
+
+            mutant
           end
         end
       end)
+
+    grouped_mutants =
+      mutants
+      |> List.flatten()
+      |> Mutant.group_by_module()
+
+    HtmlReporter.run(code_paths, grouped_mutants)
 
     human_time = TimeConvert.microsec_to_str(darwin_delta)
     Logger.info("Total time: #{human_time}")

@@ -4,9 +4,8 @@ defmodule Darwin.TestCase do
   """
 
   @doc false
-  defmacro __using__(opts) do
+  defmacro __using__(_opts) do
     quote do
-      use ExUnit.Case, async: !!unquote(opts)[:async]
       # Make sure that the `test/2` and `test/3` macros are not imported!
       import ExUnit.Case, only: [describe: 2, test: 1]
       import Darwin.TestCase, only: [test: 2, test: 3]
