@@ -1,35 +1,24 @@
-defmodule Darwin.Mutators.Default.OpStrictAndMutator do
+defmodule Darwin.Mutators.Default.OpAndalsoMutator do
   @behaviour Darwin.Mutator
-  @moduledoc """
-  Mutates the `and` operator.
-  """
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
+  alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
+  # TODO: ADD-TESTS
+
   @impl true
-  def mutate(
-        abstract_code =
-          {:case, line, left,
-           [
-             _clause1 = {:clause, _, [{:atom, _, false}], [], [{:atom, _, false}]},
-             _clause2 = {:clause, _, [{:atom, _, true}], [], [right]},
-             _clause3 =
-               {:clause, _, [{:var, _, atom1}], [],
-                [
-                  {:call, _, {:remote, _, {:atom, _, :erlang}, {:atom, _, :error}},
-                   [{:tuple, _, [{:atom, _, :badbool}, {:atom, _, :and}, {:var, _, atom2}]}]}
-                ]}
-           ]},
-        ctx
-      )
-      when atom1 == atom2 do
-    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+  def mutate(abstract_code = {:op, line, :andalso, left, right}, ctx) do
     %{module: module} = ctx
-    %{index: codon_index} = codon
+
+    elixir_left = ErlToEx.erl_to_ex(left)
+    elixir_right = ErlToEx.erl_to_ex(right)
 
     {mutated_left, ctx} = Mutator.do_mutate(left, ctx)
     {mutated_right, ctx} = Mutator.do_mutate(right, ctx)
+
+    {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
+    %{index: codon_index} = codon
 
     mutated_abstract_code =
       Mutator.mutation_for_codon(
@@ -41,27 +30,28 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
 
     mutation_replace_by_or = [
       mutator: __MODULE__,
-      name: "replace by or",
+      name: "replace by 'or'",
       mutated_codon: %{
-        elixir: nil
+        erlang: {:op, line, :orelse, left, right},
+        elixir: quote(do: unquote(elixir_left) or unquote(elixir_right))
       }
     ]
 
     mutation_replace_by_true = [
       mutator: __MODULE__,
-      name: "replace by true",
+      name: "replace by 'true'",
       mutated_codon: %{
-        elixir: quote(do: true),
-        erlang: {:atom, line, true}
+        erlang: {:atom, 0, true},
+        elixir: quote(do: true)
       }
     ]
 
     mutation_replace_by_false = [
       mutator: __MODULE__,
-      name: "replace by false",
+      name: "replace by 'false'",
       mutated_codon: %{
-        elixir: quote(do: false),
-        erlang: {:atom, line, false}
+        erlang: {:atom, 0, false},
+        elixir: quote(do: false)
       }
     ]
 
@@ -84,7 +74,7 @@ defmodule Darwin.Mutators.Default.OpStrictAndMutator do
       {:ok, 0} -> left or right
       {:ok, 1} -> true
       {:ok, 2} -> false
-      _ -> left and right
+      _ -> :erlang.andalso(left, right)
     end
   end
 end

@@ -1,9 +1,11 @@
 defmodule Darwin.Mutators.Default.OpLessThanOrEqualToMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
+  @impl true
   def mutate(abstract_code = {:op, line, :"=<", left, right}, ctx) do
     %{module: module} = ctx
 
@@ -18,7 +20,7 @@ defmodule Darwin.Mutators.Default.OpLessThanOrEqualToMutator do
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [mutated_left, mutated_right],

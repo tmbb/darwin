@@ -1,4 +1,5 @@
 defmodule Darwin.Mutators.Common.BackupMutator do
+  @behaviour Darwin.Mutator
   @doc """
   A mutator thattraverses the Erlang Abstract Code,
   applying the other mutators to places where it makes sense.
@@ -51,6 +52,7 @@ defmodule Darwin.Mutators.Common.BackupMutator do
 
   # * If D is a module declaration consisting of the forms `F\_1`, ..., `F\_k`,
   #   then Rep(D) = `[Rep(F\_1), ..., Rep(F\_k)]`.
+  @impl true
   def mutate(forms, ctx) when is_list(forms) do
     {mutated, ctx} = Mutator.do_map_mutate(forms, ctx)
     {:ok, {mutated, ctx}}

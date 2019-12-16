@@ -1,4 +1,6 @@
 defmodule Darwin.ErlToEx do
+  @moduledoc false
+
   @ellipse quote(do: ...)
 
   def erl_variable_name_to_ex_variable_name(erl_var_name) do
@@ -14,6 +16,9 @@ defmodule Darwin.ErlToEx do
     end
   end
 
+  @doc """
+  Convert erlang abstract code into equivalent Elixir AST
+  """
   def erl_to_ex({:var, _loc, erl_var}) when is_atom(erl_var) do
     erl_var_name = Atom.to_string(erl_var)
     ex_var_name = erl_variable_name_to_ex_variable_name(erl_var_name)

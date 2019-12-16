@@ -1,9 +1,8 @@
 defmodule Darwin.Mutators.Default.BooleanMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.Mutator
-
-  @behaviour Darwin.Mutator
 
   @moduledoc """
   Mutates a static boolean.
@@ -22,7 +21,7 @@ defmodule Darwin.Mutators.Default.BooleanMutator do
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [abstract_code],

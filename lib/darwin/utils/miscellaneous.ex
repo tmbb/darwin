@@ -1,7 +1,7 @@
 defmodule Darwin.Utils.Miscellaneous do
   alias Darwin.ExToErl
 
-  @doc false
+  @moduledoc false
 
   def section_between_markers(path, marker) do
     contents = File.read!(path)

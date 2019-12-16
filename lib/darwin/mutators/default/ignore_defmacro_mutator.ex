@@ -1,8 +1,10 @@
 defmodule Darwin.Mutators.Default.IgnoreDefacroMutator do
+  @behaviour Darwin.Mutator
   @moduledoc """
   Don't mutate anything inside a macro definition.
   """
 
+  @impl true
   def mutate({:function, _line, atom_name, _arity, _clauses} = abstract_code, ctx) do
     string_name = Atom.to_string(atom_name)
 

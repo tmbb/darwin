@@ -1,9 +1,11 @@
 defmodule Darwin.Mutators.Default.OpLaxOrMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
+  @impl true
   def mutate(
         abstract_code =
           {:case, line, left,
@@ -31,7 +33,7 @@ defmodule Darwin.Mutators.Default.OpLaxOrMutator do
     {mutated_right, ctx} = Mutator.do_mutate(right, ctx)
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [mutated_left, mutated_right],

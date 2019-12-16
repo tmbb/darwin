@@ -1,4 +1,5 @@
 defmodule Darwin.Mutators.Default.IntegerMutator do
+  @behaviour Darwin.Mutator
   @moduledoc """
   Mutates a static integer.
   """
@@ -6,13 +7,14 @@ defmodule Darwin.Mutators.Default.IntegerMutator do
   alias Darwin.ActiveMutation
   alias Darwin.Mutator
 
+  @impl true
   def mutate({:integer, line, integer} = abstract_code, %Context{} = ctx) do
     %{module: module} = ctx
     {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [abstract_code],

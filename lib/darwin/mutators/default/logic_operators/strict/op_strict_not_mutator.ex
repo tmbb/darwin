@@ -1,9 +1,11 @@
 defmodule Darwin.Mutators.Default.OpStrictNotMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.ErlToEx
   require Darwin.Mutator, as: Mutator
 
+  @impl true
   def mutate(abstract_code = {:op, line, :not, arg}, ctx) do
     %{module: module} = ctx
     {mutated_arg, ctx} = Mutator.do_mutate(arg, ctx)
@@ -13,7 +15,7 @@ defmodule Darwin.Mutators.Default.OpStrictNotMutator do
     elixir_arg = ErlToEx.erl_to_ex(arg)
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [mutated_arg],

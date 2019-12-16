@@ -1,4 +1,5 @@
 defmodule Darwin.Mutators.Default.StringMutator do
+  @behaviour Darwin.Mutator
   @moduledoc """
   Mutates a static string (or *binary*, in erlang)
   """
@@ -7,6 +8,7 @@ defmodule Darwin.Mutators.Default.StringMutator do
   alias Darwin.Mutators.Default.CharlistMutator
   alias Darwin.Mutator
 
+  @impl true
   def mutate(
         {:bin, line1, [{:bin_element, _line2, {:string, _line3, charlist}, :default, :default}]} =
           abstract_code,
@@ -18,7 +20,7 @@ defmodule Darwin.Mutators.Default.StringMutator do
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [abstract_code],

@@ -2,7 +2,7 @@ defmodule Darwin.Utils.SafeSourcePath do
   @moduledoc false
 
   @doc """
-  Extracts a module path in asafe (but hacky!) way.
+  Extracts a module path in a safe (but hacky!) way.
   It might return `nil`
   """
   def source_path_for_module(module) do

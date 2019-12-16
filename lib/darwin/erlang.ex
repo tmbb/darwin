@@ -7,7 +7,7 @@ defmodule Darwin.Erlang do
   import ExUnit.Assertions
 
   @doc """
-  Parses a binary as Erlang into abstract code and replaces variable
+  Parses a literal binary as Erlang into abstract code and replaces variable
   occurrences according to the substitutions given as a keyword list.
   """
   defmacro interpolate_in_abstract_code!(bin, substitutions) do
@@ -42,6 +42,8 @@ defmodule Darwin.Erlang do
 
   @doc """
   Parses an expression into erlang abstract code
+
+  Raises if the binary is invalid erlang.
   """
   def expression!(bin) do
     charlist = String.to_charlist(bin)
@@ -52,6 +54,8 @@ defmodule Darwin.Erlang do
 
   @doc """
   Parses a string into a form list.
+
+  Raises if the binary is invalid erlang.
   """
   def forms!(bin) do
     charlist = String.to_charlist(bin)
@@ -116,7 +120,7 @@ defmodule Darwin.Erlang do
   end
 
   @doc """
-  gets the erlang source code from the BEAM file
+  Gets the erlang source code from the BEAM file
   """
   def beam_to_erlang_source(module) do
     filename = :code.which(module)
@@ -128,7 +132,7 @@ defmodule Darwin.Erlang do
   end
 
   @doc """
-  gets the erlang source code from the BEAM file
+  Gets the erlang source code from the BEAM file and writes it into a file.
   """
   def beam_to_erlang_source_file(module, file) do
     source = beam_to_erlang_source(module)

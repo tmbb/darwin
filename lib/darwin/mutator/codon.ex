@@ -11,6 +11,9 @@ defmodule Darwin.Mutator.Codon do
 
   @type t :: %__MODULE__{}
 
+  @doc """
+  Creates a new codon.
+  """
   def new(opts) do
     struct(__MODULE__, opts)
   end

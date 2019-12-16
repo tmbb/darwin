@@ -1,6 +1,10 @@
 defmodule Darwin.ExToErl do
   @moduledoc false
 
+  # ----------------------------------------------------------------------------------------
+  # Part of another package, extracted here to decouple it from the version available on Hex
+  # ----------------------------------------------------------------------------------------
+
   # Utilities to convert Elixir expressions into the corresponding Erlang.
 
   # This package is meant to be used as a learning tool or as part of development workflow.

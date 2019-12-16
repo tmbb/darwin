@@ -1,4 +1,5 @@
 defmodule Darwin.Mutators.Default.OpLaxNotMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.ActiveMutation
   alias Darwin.ErlToEx
@@ -29,7 +30,7 @@ defmodule Darwin.Mutators.Default.OpLaxNotMutator do
     {mutated_arg, ctx} = Mutator.do_mutate(arg, ctx)
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [mutated_arg],

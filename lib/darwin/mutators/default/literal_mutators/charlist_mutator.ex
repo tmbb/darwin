@@ -1,15 +1,17 @@
 defmodule Darwin.Mutators.Default.CharlistMutator do
+  @behaviour Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.Mutator
   alias Darwin.ActiveMutation
 
+  @impl true
   def mutate({:string, line, charlist} = abstract_code, %Context{} = ctx) do
     %{module: module} = ctx
     {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [abstract_code],

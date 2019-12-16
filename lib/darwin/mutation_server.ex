@@ -19,6 +19,9 @@ defmodule Darwin.MutationServer do
     Application.put_env(:darwin, :next_test_should_run?, false)
   end
 
+  @doc """
+  A test should run if no tests have failed until now.
+  """
   def should_this_test_run?() do
     mutation = ActiveMutation.get()
     should_run? = Application.get_env(:darwin, :next_test_should_run?)

@@ -1,4 +1,5 @@
 defmodule Darwin.Mutators.Default.AtomMutator do
+  @behaviour Darwin.Mutator
   @moduledoc """
   Mutates a static atom.
   """
@@ -6,13 +7,14 @@ defmodule Darwin.Mutators.Default.AtomMutator do
   alias Darwin.ActiveMutation
   alias Darwin.Mutator
 
+  @impl true
   def mutate({:atom, line, atom} = abstract_code, %Context{} = ctx) do
     %{module: module} = ctx
     {codon, ctx} = Context.new_codon(ctx, value: abstract_code, line: line)
     %{index: codon_index} = codon
 
     mutated_abstract_code =
-      Mutator.call_mutator(
+      Mutator.mutation_for_codon(
         {__MODULE__, :darwin_was_here},
         {module, codon_index},
         [abstract_code],
