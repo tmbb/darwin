@@ -60,6 +60,6 @@ random_integer(X1_@darwin, X2_@darwin) ->
                                 end};
                            (_) -> error
                        end],
-    'Elixir.Darwin.Mutator.GuardRewriter':execute_transformed_clauses(Clauses_@darwin,
-                                                                      {X1_@darwin,
-                                                                       X2_@darwin}).
+    'Elixir.Darwin.Mutator.Rewriters.ClauseRewriter':execute_transformed_clauses(Clauses_@darwin,
+                                                                                 {X1_@darwin,
+                                                                                 X2_@darwin}).

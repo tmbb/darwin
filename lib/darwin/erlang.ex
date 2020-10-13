@@ -5,6 +5,7 @@ defmodule Darwin.Erlang do
 
   require Logger
   import ExUnit.Assertions
+  alias Darwin.Erlang.AbstractCodeTransformer
 
   @doc """
   Parses a literal binary as Erlang into abstract code and replaces variable
@@ -39,6 +40,91 @@ defmodule Darwin.Erlang do
         :continue
     end
   end
+
+  @doc """
+  Add line numbers to literals (integers, floats, atoms and binaries).
+
+  The Elixir compiler strips location information from most atoms.
+  It builds an Erlang AST in which line numbers for all literals are zero.
+  This makes it harder to report the location of mutations.
+
+  Because some information is invariably lost, we can only approximte the true location
+  using heuristics...
+  """
+  def add_line_numbers_to_literals(erlang_abstract_code) do
+    initial_line_number = 1
+    AbstractCodeTransformer.transform(
+      erlang_abstract_code,
+      initial_line_number,
+      &maybe_replace_line_nr/2)
+  end
+
+  defp maybe_replace_line_nr(ast_node, last_line_nr) do
+    ast_line_nr = get_line_nr(ast_node)
+
+    cond do
+      # We couldn't even get a line number from the AST node.
+      # Return the node as it is and don't update the last line number.
+      # Continue to deeper nodes
+      is_nil(ast_line_nr) ->
+        {:cont, ast_node, last_line_nr}
+
+      # We have a new ast node with a line number that isn't zero.
+      # Return the node as it is and update the last line number
+      # Continue to deeper nodes
+      ast_line_nr != 0 ->
+        {:cont, ast_node, ast_line_nr}
+
+      # We have a literal node with the line number set to zero.
+      # We update the line number of the node and don't update the last line number
+      # Continue to deeper nodes
+      ast_line_nr == 0 ->
+        new_ast_node = maybe_put_line_nr(ast_node, last_line_nr)
+        {:cont, new_ast_node, last_line_nr}
+    end
+  end
+
+  def get_line_nr(ast_node) do
+    case ast_node do
+      tup when is_tuple(tup) and tuple_size(tup) >= 3 ->
+        annotations = elem(tup, 1)
+        case annotations do
+          line_nr when is_integer(line_nr) ->
+            line_nr
+
+          proplist when is_list(proplist) ->
+            Keyword.get(proplist, :location)
+
+          _other ->
+            nil
+        end
+
+      _other ->
+        nil
+    end
+  end
+
+  def maybe_put_line_nr(ast_node, line_nr) do
+    case ast_node do
+      tup when is_tuple(tup) and tuple_size(tup) >= 3 ->
+        annotations = elem(tup, 1)
+        case annotations do
+          old_line_nr when is_integer(old_line_nr) ->
+            put_elem(ast_node, 1, line_nr)
+
+          old_proplist when is_list(old_proplist) ->
+            new_proplist = Keyword.put(old_proplist, :location, line_nr)
+            put_elem(ast_node, 1, new_proplist)
+
+          _other ->
+            ast_node
+        end
+
+      _other ->
+        ast_node
+    end
+  end
+
 
   @doc """
   Parses an expression into erlang abstract code

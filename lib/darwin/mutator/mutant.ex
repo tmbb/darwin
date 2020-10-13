@@ -42,4 +42,11 @@ defmodule Darwin.Mutator.Mutant do
       mutant.module
     end)
   end
+
+  @spec group_by_line(list(t())) :: Map.t(integer(), list(t()))
+  def group_by_line(mutants) do
+    Enum.group_by(mutants, fn mutant ->
+      mutant.line
+    end)
+  end
 end

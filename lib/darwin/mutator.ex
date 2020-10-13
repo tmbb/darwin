@@ -1,6 +1,7 @@
 defmodule Darwin.Mutator do
   alias Darwin.Mutator.Context
   alias Darwin.Mutators.Default
+  alias Darwin.Erlang
   alias Darwin.Erlang.AbstractCode
   alias Darwin.Beam
 
@@ -82,7 +83,8 @@ defmodule Darwin.Mutator do
   """
   def mutate_module(module, mutators \\ Default.mutators()) do
     form_list = Beam.beam_to_abstract_code(module)
-    mutate(form_list, module, mutators)
+    {new_form_list, _line_nr} = Erlang.add_line_numbers_to_literals(form_list)
+    mutate(new_form_list, module, mutators)
   end
 
   @doc """
@@ -90,8 +92,29 @@ defmodule Darwin.Mutator do
   """
   def mutate_compile_and_load_module(module_name) do
     {mutated_form_list, ctx} = mutate_module(module_name)
+    debug_mutated(mutated_form_list, ctx)
     Beam.compile_and_load(mutated_form_list)
     ctx
+  end
+
+  @doc false
+  def debug_mutated(forms, ctx) do
+    debug_dir = "_darwin_debug/"
+    File.mkdir_p!(debug_dir)
+
+    forms_filename_elixir =
+      ctx.module
+      |> inspect()
+      |> Kernel.<>(".ex")
+
+    forms_file_path_elixir = Path.join(debug_dir, forms_filename_elixir)
+
+    printed_forms_elixir =
+      forms
+      |> inspect(limit: :infinity)
+      |> Code.format_string!()
+
+    File.write!(forms_file_path_elixir, printed_forms_elixir)
   end
 
   @doc """
@@ -100,7 +123,6 @@ defmodule Darwin.Mutator do
 
   A mutator `m` matches if `m.mutate/3` returns an {:ok, {abstract_code, ctx}} tuple.
   """
-  @spec mutate(AbstractCode.t(), Context.t()) :: mutator_result()
   def do_mutate(abstract_code, ctx) do
     %{mutators: mutators} = ctx
 

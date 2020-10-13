@@ -19,6 +19,7 @@ defmodule Darwin.TestCase do
   to avoid actually running new tests after at least one test has failed.
 
   ## Examples
+
       test "true is equal to true" do
         assert true == true
       end

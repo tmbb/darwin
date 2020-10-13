@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
     <link rel="stylesheet" href="assets/makeup.css">
     <style>
     .line:target {
       background-color: #ffa;
       transition: all 1s linear;
+    }
+
+    [data-collapsed=true] {
+      display: none;
     }
     </style>
 
@@ -19,45 +26,40 @@
   </head>
   <body>
     <div class="container">
-        <h1><code><%= inspect(@module) %></code> coverage report</h1>
+      <h1><code><%= inspect(@module) %></code> coverage report</h1>
+
+      <p>
+        This file contains a list of all lines of code for the module
+        with the mutants for each line below the line.
+      </p>
+
+      <%# Mutants in line 0 %>
+      <% mutants_for_line_zero = Map.get(@mutants, 0) %>
+      <%= if mutants_for_line_zero do %>
+        <div class="row">
+          <%= mutants_table(mutants_for_line_zero) %>
+        </div>
+      <% end %>
+
+    <%# Lines and the respective mutants %>
+      <%= for {line, line_nr} <- Enum.with_index(@highlighted_lines, 1) do %>
+        <code class="highlight" style="white-space:pre"><%= line %></code>
+        <% mutants_for_this_line = Map.get(@mutants, line_nr) %>
+        <%= if mutants_for_this_line do %>
+          <div class="row">
+            <%= mutants_table(mutants_for_this_line) %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
-    <div class="row">
-      <div class="col-md-7">
-        <table class="table table-hover">
-          <thead class=".thead-light">
-            <th></th>
-            <th>Mutation</th>
-            <th>Line</th>
-            <th>State</th>
-            <th>Original</th>
-            <th>Mutated</th>
-          </thead>
-          <tbody>
-            <%= for {mutant, index} <- Enum.with_index(@mutants) do %>
-              <%= if mutant.state == :survived do %>
-                <tr class="table-danger">
-              <% else %>
-                <tr class="table-default">
-              <% end %>
-                <% original_elixir = mutant.original_codon.value[:elixir] %>
-                <% mutated_elixir = mutant.mutation.mutated_codon[:elixir] %>
-                <td><%= inspect(index) %></td>
-                <td><%= mutant.mutation.name %></td>
-                <td><a href="#L<%= mutant.line %>"><%= mutant.line %></a></td>
-                <td><%= format_mutant_state(mutant) %></td>
-                <td><code><%= format_elixir(original_elixir) %></code></td>
-                <td><code><%= format_elixir(mutated_elixir) %></code></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col-md-5">
-        <code class="highlight"><pre><%= @highlighted %></pre><code>
-      </div>
-    </div>
+    <script>
+    function toggleTable(index) {
+      var el = document.querySelector("[data-table-id='" + index + "']");
+      var originalAttribute = el.getAttribute("data-collapsed")
+      el.setAttribute("data-collapsed", "false");
+    }
+    </script>
 
     <!-- Optional JavaScript -->
     <script src="assets/makeup.js"></script>

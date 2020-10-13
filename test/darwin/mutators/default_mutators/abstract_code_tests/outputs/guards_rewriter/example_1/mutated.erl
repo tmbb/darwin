@@ -6,8 +6,13 @@
 
 -export(['__info__'/1, f/1]).
 
--spec '__info__'(attributes | compile | functions |
-                 macros | md5 | module | deprecated) -> any().
+-spec '__info__'(attributes |
+                 compile |
+                 functions |
+                 macros |
+                 md5 |
+                 module |
+                deprecated) -> any().
 
 '__info__'(module) ->
     'Elixir.Darwin.DefaultMutators.AbstractCodeTests.GuardsRewriterTest.Example1_Module_Mutated';
@@ -77,5 +82,5 @@ f(X1_@darwin) ->
                        fun ({{_, 2}}) -> {ok, begin f3 end};
                            (_) -> error
                        end],
-    'Elixir.Darwin.Mutator.GuardRewriter':execute_transformed_clauses(Clauses_@darwin,
-                                                                      {X1_@darwin}).
+    'Elixir.Darwin.Mutator.Rewriters.ClauseRewriter':execute_transformed_clauses(Clauses_@darwin,
+                                                                                 {X1_@darwin}).

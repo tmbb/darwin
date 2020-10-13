@@ -4,6 +4,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
   import DarwinTest.Helpers
   alias Darwin.Erlang
 
+  @tag :skip
   test "module - single function" do
     {form_list, _ctx} =
       mutate_elixir_module(__MODULE__.Mod1, """
@@ -46,6 +47,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
            """
   end
 
+  @tag :skip
   test "module - two functions" do
     {form_list, _ctx} =
       mutate_elixir_module(__MODULE__.Mod2, """
@@ -108,6 +110,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
            """
   end
 
+  @tag :skip
   test "module - ignore macros" do
     {form_list, _ctx} =
       mutate_elixir_module(__MODULE__.Mod2, """

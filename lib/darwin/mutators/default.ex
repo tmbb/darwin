@@ -46,7 +46,8 @@ defmodule Darwin.Mutators.Default do
 
   alias Darwin.Mutators.Common.{
     BackupMutator,
-    GuardRewriterMutator
+    CaseStatementRewriterMutator,
+    FunctionDefinitionRewriterMutator
   }
 
   print_list = fn list ->
@@ -100,7 +101,8 @@ defmodule Darwin.Mutators.Default do
   ]
 
   @miscelaneous_mutators [
-    GuardRewriterMutator,
+    CaseStatementRewriterMutator,
+    FunctionDefinitionRewriterMutator,
     BackupMutator
   ]
 

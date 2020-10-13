@@ -15,23 +15,23 @@ defmodule Darwin.Reporters.HtmlReporter do
     [:assigns]
   )
 
+  EEx.function_from_file(
+    :defp,
+    :mutants_table,
+    "lib/darwin/reporters/html_reporter/templates/mutants_table.html.eex",
+    [:mutants]
+  )
+
   def make_output_dir(root) do
     File.mkdir_p!(@output_path)
     File.cp_r!(src_root_path(), root)
   end
 
   def format_elixir(ast) do
-    code =
-      ast
-      |> Macro.to_string()
-      |> Code.format_string!()
-      |> IO.iodata_to_binary()
-
-    # highlighted = Makeup.highlight_inner_html(code)
-
-    # "<code class=\"highlight\">#{highlighted}</code>"
-
-    code
+    ast
+    |> Macro.to_string()
+    |> Code.format_string!()
+    |> IO.iodata_to_binary()
   end
 
   defp format_mutant_state(%Mutant{} = mutant) do
@@ -60,7 +60,7 @@ defmodule Darwin.Reporters.HtmlReporter do
 
     lines =
       for {token_line, line_nr} <- Enum.with_index(token_lines, 1) do
-        [
+        iolist = [
           ~s[<a class="line" name="L],
           to_string(line_nr),
           ~s["><span>],
@@ -69,9 +69,11 @@ defmodule Darwin.Reporters.HtmlReporter do
           HTMLFormatter.format_inner_as_iolist(token_line, []),
           ~s[</span></a>\n]
         ]
+
+        IO.iodata_to_binary(iolist)
       end
 
-    IO.iodata_to_binary(lines)
+    lines
   end
 
   def run(code_paths, grouped_mutants) do
@@ -79,18 +81,19 @@ defmodule Darwin.Reporters.HtmlReporter do
     make_output_dir(@output_path)
 
     for {module, mutants} <- grouped_mutants do
+      mutants_grouped_by_line = Mutant.group_by_line(mutants)
       code_path = Map.get(code_paths, module)
 
       if code_path do
         if String.ends_with?(code_path, ".ex") do
           code = File.read!(code_path)
-          highlighted = highlight_lines(code)
+          highlighted_lines = highlight_lines(code)
 
           contents =
             layout_html(
               module: module,
-              highlighted: highlighted,
-              mutants: mutants
+              highlighted_lines: highlighted_lines,
+              mutants: mutants_grouped_by_line
             )
 
           base_path = inspect(module) <> ".html"

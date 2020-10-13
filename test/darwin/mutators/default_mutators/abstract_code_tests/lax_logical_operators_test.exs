@@ -6,6 +6,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
 
   doctest Darwin
 
+  @tag :skip
   test "operator: &&" do
     {abstract_code, ctx} = mutate_elixir("a && b")
     # Assert that we generate the correct erlang code.
@@ -18,6 +19,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
     assert Context.nr_of_mutations(ctx) == 3
   end
 
+  @tag :skip
   test "operator: ||" do
     {abstract_code, ctx} = mutate_elixir("a || b")
     # Assert that we generate the correct erlang code.
@@ -30,6 +32,7 @@ defmodule Darwin.DefaultMutators.AbstractCodeTests.LaxLogicalOperatorsTest do
     assert Context.nr_of_mutations(ctx) == 3
   end
 
+  @tag :skip
   test "operator: !" do
     {abstract_code, ctx} = mutate_elixir("!a")
     # Assert that we generate the correct erlang code.

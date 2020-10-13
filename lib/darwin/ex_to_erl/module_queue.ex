@@ -7,14 +7,14 @@ defmodule Darwin.ExToErl.ModuleQueue do
   @typep queue_t :: {[any], [any]}
 
   @typedoc """
-  The `%BlockingQueue` struct is used with the `Collectable` protocol.
+  The `%ModuleQueue` struct is used with the `Collectable` protocol.
 
   ## Examples
 
       input = ["Hello", "World"]
-      {:ok, pid} = BlockingQueue.start_link(5)
-      Enum.into(input, %BlockingQueue{pid: pid})
-      BlockingQueue.pop_stream(pid) |> Enum.take(2)  # should return input
+      {:ok, pid} = ModuleQueue.start_link(5)
+      Enum.into(input, %ModuleQueue{pid: pid})
+      ModuleQueue.pop_stream(pid) |> Enum.take(2)  # should return input
   """
   defstruct pid: nil
   @type t :: %__MODULE__{pid: pid()}
@@ -132,7 +132,7 @@ defmodule Darwin.ExToErl.ModuleQueue do
   @doc """
   Pushes a new item into the queue.  Blocks if the queue is full.
 
-  `pid` is the process ID of the BlockingQueue server.
+  `pid` is the process ID of the ModuleQueue server.
   `item` is the value to be pushed into the queue.  This can be anything.
   `timeout` (optional) is the timeout value passed to GenServer.call (does not impact how long pop will wait for a message from the queue)
   """
@@ -153,7 +153,7 @@ defmodule Darwin.ExToErl.ModuleQueue do
   Pops the least recently pushed item from the queue. Blocks if the queue is
   empty until an item is available.
 
-  `pid` is the process ID of the BlockingQueue server.
+  `pid` is the process ID of the ModuleQueue server.
   `timeout` (optional) is the timeout value passed to GenServer.call (does not impact how long pop will wait for a message from the queue)
   """
   @spec pop(integer) :: any
