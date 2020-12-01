@@ -2,22 +2,24 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
 
-  import DarwinTest.Helpers
+  import Darwin.TestHelpers
 
-  alias DarwinTest.Generators, as: Gen
+  alias Darwin.TestGenerators, as: Gen
   alias Darwin.ActiveMutation
   alias Darwin.Beam
 
   describe "module - single function ('+' operator):" do
     property "wrong module or codon" do
-      check all right_module <- Gen.module(prefix: __MODULE__),
-                right_codon <- Gen.codon(),
-                maybe_wrong_module <- Gen.module(prefix: __MODULE__),
-                maybe_wrong_codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon},
-                a <- one_of([float(), integer()]),
-                b <- one_of([float(), integer()]) do
+      check all(
+              right_module <- Gen.module(prefix: __MODULE__),
+              right_codon <- Gen.codon(),
+              maybe_wrong_module <- Gen.module(prefix: __MODULE__),
+              maybe_wrong_codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon},
+              a <- one_of([float(), integer()]),
+              b <- one_of([float(), integer()])
+            ) do
         # Mutate a module containing a simple elixir function
         {mutated_forms_list, _ctx} =
           mutate_elixir_module(right_module, """
@@ -36,11 +38,13 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
     end
 
     property "right codon, wrong mutations" do
-      check all right_module <- Gen.module(prefix: __MODULE__),
-                right_codon <- Gen.codon(),
-                wrong_mutation <- Gen.mutation(min: 3),
-                a <- one_of([float(), integer()]),
-                b <- one_of([float(), integer()]) do
+      check all(
+              right_module <- Gen.module(prefix: __MODULE__),
+              right_codon <- Gen.codon(),
+              wrong_mutation <- Gen.mutation(min: 3),
+              a <- one_of([float(), integer()]),
+              b <- one_of([float(), integer()])
+            ) do
         # Mutate a module containing a simple elixir function
         {mutated_forms_list, _ctx} =
           mutate_elixir_module(right_module, """
@@ -59,11 +63,13 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
     end
 
     property "Mutation 0 - replace by '-'" do
-      check all module <- Gen.module(prefix: __MODULE__),
-                codon = 0,
-                mutation = 0,
-                a <- one_of([float(), integer()]),
-                b <- one_of([float(), integer()]) do
+      check all(
+              module <- Gen.module(prefix: __MODULE__),
+              codon = 0,
+              mutation = 0,
+              a <- one_of([float(), integer()]),
+              b <- one_of([float(), integer()])
+            ) do
         # Mutate a module containing a simple elixir function
         {mutated_forms_list, _ctx} =
           mutate_elixir_module(module, """
@@ -82,11 +88,13 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
     end
 
     property "Mutation 1 - replace by '*'" do
-      check all module <- Gen.module(prefix: __MODULE__),
-                codon = 0,
-                mutation = 1,
-                a <- one_of([float(), integer()]),
-                b <- one_of([float(), integer()]) do
+      check all(
+              module <- Gen.module(prefix: __MODULE__),
+              codon = 0,
+              mutation = 1,
+              a <- one_of([float(), integer()]),
+              b <- one_of([float(), integer()])
+            ) do
         # Mutate a module containing a simple elixir function
         {mutated_forms_list, _ctx} =
           mutate_elixir_module(module, """
@@ -105,12 +113,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
     end
 
     property "Mutation 2 - replace by '/'" do
-      check all module <- Gen.module(prefix: __MODULE__),
-                codon = 0,
-                mutation = 2,
-                a <- one_of([float(), integer()]),
-                b <- one_of([float(), integer()]),
-                b != 0 do
+      check all(
+              module <- Gen.module(prefix: __MODULE__),
+              codon = 0,
+              mutation = 2,
+              a <- one_of([float(), integer()]),
+              b <- one_of([float(), integer()]),
+              b != 0
+            ) do
         # Mutate a module containing a simple elixir function
         {mutated_forms_list, _ctx} =
           mutate_elixir_module(module, """
@@ -131,11 +141,13 @@ defmodule Darwin.DefaultMutators.RuntimeTests.FullModuleTest do
 
   test "module - two functions" do
     # Compile the module and run the tests
-    check all module <- Gen.module(prefix: __MODULE__),
-              a <- one_of([float(), integer()]),
-              b <- one_of([float(), integer()]),
-              c <- one_of([float(), integer()]),
-              wrong_mutation <- Gen.mutation(min: 4) do
+    check all(
+            module <- Gen.module(prefix: __MODULE__),
+            a <- one_of([float(), integer()]),
+            b <- one_of([float(), integer()]),
+            c <- one_of([float(), integer()]),
+            wrong_mutation <- Gen.mutation(min: 4)
+          ) do
       # Mutate a module containing a simple elixir function
       {mutated_forms_list, _ctx} =
         mutate_elixir_module(module, """

@@ -10,7 +10,7 @@ defmodule Darwin.Erlang.AbstractCodeTransformer do
     map_reduce_forms(list, acc, fun)
   end
 
-  def transform(form, acc, fun) when not(is_list(form)) do
+  def transform(form, acc, fun) when not is_list(form) do
     handle_form(form, acc, fun)
   end
 
@@ -33,11 +33,10 @@ defmodule Darwin.Erlang.AbstractCodeTransformer do
       {:cont, new_form, new_acc} ->
         case new_form do
           {:clauses, clauses} ->
-            {transformed_clauses, newer_acc} =
-              map_reduce_forms(clauses, new_acc, fun)
+            {transformed_clauses, newer_acc} = map_reduce_forms(clauses, new_acc, fun)
 
-          new_form = {:clauses, transformed_clauses}
-          {new_form, newer_acc}
+            new_form = {:clauses, transformed_clauses}
+            {new_form, newer_acc}
         end
     end
   end
@@ -53,7 +52,7 @@ defmodule Darwin.Erlang.AbstractCodeTransformer do
   end
 
   defp handle_deeper_forms(form, acc, fun)
-      when is_tuple(form) and tuple_size(form) >= 3 do
+       when is_tuple(form) and tuple_size(form) >= 3 do
     # We ignore the first two elements of the tuple
     # (the first of them is the constructor and the second is the annotation
     # with the line number)

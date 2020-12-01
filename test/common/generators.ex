@@ -1,4 +1,4 @@
-defmodule DarwinTest.Generators do
+defmodule Darwin.TestGenerators do
   @doc """
   StreamData generators meant to be used when testing mutations.
   """

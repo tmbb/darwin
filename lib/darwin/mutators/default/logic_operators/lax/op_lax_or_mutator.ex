@@ -13,8 +13,8 @@ defmodule Darwin.Mutators.Default.OpLaxOrMutator do
              {:clause, _, [{:var, _, atom1}],
               [
                 [
-                  {:op, _, :orelse, {:op, _, :"=:=", {:var, _, atom2}, {:atom, _, nil}},
-                   {:op, _, :"=:=", {:var, _, atom3}, {:atom, _, false}}}
+                  {:op, _, :orelse, {:op, _, :"=:=", {:var, _, atom2}, {:atom, _, false}},
+                   {:op, _, :"=:=", {:var, _, atom3}, {:atom, _, nil}}}
                 ]
               ], [right]},
              {:clause, _, [{:var, _, atom4}], [], [{:var, _, atom5}]}

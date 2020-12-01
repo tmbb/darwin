@@ -2,7 +2,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
   alias Darwin.ActiveMutation
-  alias DarwinTest.Generators, as: Gen
+  alias Darwin.TestGenerators, as: Gen
 
   alias Darwin.Mutators.Default.{
     OpStrictNotMutator,
@@ -18,12 +18,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
   describe "operator 'not':" do
     property "wrong module or codon" do
       # If the module and the codon are wrong, the function is compatible
-      check all right_module <- Gen.module(),
-                right_codon <- Gen.codon(),
-                maybe_wrong_module <- Gen.module(),
-                maybe_wrong_codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+      check all(
+              right_module <- Gen.module(),
+              right_codon <- Gen.codon(),
+              maybe_wrong_module <- Gen.module(),
+              maybe_wrong_codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+            ) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
           assert OpStrictNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                    not true
@@ -44,12 +46,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
 
     # TODO: fix this!
     property "right codon, wrong mutations" do
-      check all right_module <- Gen.module(),
-                right_codon <- Gen.codon(),
-                maybe_wrong_module <- Gen.module(),
-                maybe_wrong_codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+      check all(
+              right_module <- Gen.module(),
+              right_codon <- Gen.codon(),
+              maybe_wrong_module <- Gen.module(),
+              maybe_wrong_codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+            ) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
           assert OpStrictNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                    not true
@@ -69,8 +73,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 0 - remove negation" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon() do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon()
+            ) do
         ActiveMutation.with_mutation({module, codon, 0}, fn ->
           assert OpStrictNotMutator.darwin_was_here(module, codon, true) == true
           assert OpStrictNotMutator.darwin_was_here(module, codon, false) == false
@@ -80,8 +86,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 1 - replace by `true`" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon() do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon()
+            ) do
         ActiveMutation.with_mutation({module, codon, 1}, fn ->
           assert OpStrictNotMutator.darwin_was_here(module, codon, true) == true
           assert OpStrictNotMutator.darwin_was_here(module, codon, false) == true
@@ -91,8 +99,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 2 - replace by `false`" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon() do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon()
+            ) do
         ActiveMutation.with_mutation({module, codon, 2}, fn ->
           assert OpStrictNotMutator.darwin_was_here(module, codon, true) == false
           assert OpStrictNotMutator.darwin_was_here(module, codon, false) == false
@@ -104,12 +114,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
 
   describe "operator 'and':" do
     property "wrong module or codon" do
-      check all right_module <- Gen.module(),
-                right_codon <- Gen.codon(),
-                maybe_wrong_module <- Gen.module(),
-                maybe_wrong_codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+      check all(
+              right_module <- Gen.module(),
+              right_codon <- Gen.codon(),
+              maybe_wrong_module <- Gen.module(),
+              maybe_wrong_codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+            ) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
           assert OpStrictAndMutator.darwin_was_here(
                    maybe_wrong_module,
@@ -152,10 +164,12 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "right codon, wrong mutations" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                mutation > 2 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              mutation > 2
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == (true and true)
 
@@ -179,9 +193,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 0 - replace with `or`" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 0 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 0
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == (true or true)
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == (true or false)
@@ -201,9 +217,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 1 - replace by `true`" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 1 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 1
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == true
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == true
@@ -219,9 +237,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 2 - replace by `false`" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 2 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 2
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, true) == false
           assert OpStrictAndMutator.darwin_was_here(module, codon, true, false) == false
@@ -239,12 +259,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
 
   describe "operator 'or':" do
     property "wrong module or codon" do
-      check all right_module <- Gen.module(),
-                right_codon <- Gen.codon(),
-                maybe_wrong_module <- Gen.module(),
-                maybe_wrong_codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+      check all(
+              right_module <- Gen.module(),
+              right_codon <- Gen.codon(),
+              maybe_wrong_module <- Gen.module(),
+              maybe_wrong_codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+            ) do
         ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
           assert OpStrictOrMutator.darwin_was_here(
                    maybe_wrong_module,
@@ -287,10 +309,12 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "right codon, wrong mutations" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation <- Gen.mutation(),
-                mutation > 2 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation <- Gen.mutation(),
+              mutation > 2
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == (true or true)
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == (true or false)
@@ -310,9 +334,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     test "Mutation 0 - replace with 'and'" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 0 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 0
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == (true and true)
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == (true and false)
@@ -332,9 +358,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 1 - replace by 'true'" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 1 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 1
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == true
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == true
@@ -350,9 +378,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.StrictLogicalOperatorsTest do
     end
 
     property "Mutation 2 - replace by 'false'" do
-      check all module <- Gen.module(),
-                codon <- Gen.codon(),
-                mutation = 2 do
+      check all(
+              module <- Gen.module(),
+              codon <- Gen.codon(),
+              mutation = 2
+            ) do
         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, true) == false
           assert OpStrictOrMutator.darwin_was_here(module, codon, true, false) == false

@@ -12,8 +12,8 @@ defmodule Darwin.Mutators.Default.OpLaxNotMutator do
              {:clause, _, [{:var, _, atom1}],
               [
                 [
-                  {:op, _, :orelse, {:op, _, :"=:=", {:var, _, atom2}, {:atom, _, nil}},
-                   {:op, _, :"=:=", {:var, _, atom3}, {:atom, _, false}}}
+                  {:op, _, :orelse, {:op, _, :"=:=", {:var, _, atom2}, {:atom, _, false}},
+                   {:op, _, :"=:=", {:var, _, atom3}, {:atom, _, nil}}}
                 ]
               ], [{:atom, _, true}]},
              {:clause, _, [{:var, _, :_}], [], [{:atom, _, false}]}

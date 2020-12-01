@@ -8,10 +8,11 @@ defmodule Darwin.Erlang do
   alias Darwin.Erlang.AbstractCodeTransformer
 
   @doc """
-  Parses a literal binary as Erlang into abstract code and replaces variable
+  Parses a compile-time binary as Erlang into abstract code and replaces variable
   occurrences according to the substitutions given as a keyword list.
   """
-  defmacro interpolate_in_abstract_code!(bin, substitutions) do
+  defmacro interpolate_in_abstract_code!(arg, substitutions) do
+    {bin, []} = Code.eval_quoted(arg)
     # Parse the expression out of the binary
     erlang_abstract_code = forms!(bin)
     escaped_erlang_abstract_code = Macro.escape(erlang_abstract_code)
@@ -22,6 +23,55 @@ defmodule Darwin.Erlang do
         unquote(escaped_erlang_abstract_code)
       )
     end
+  end
+
+  # TODO: explain this
+  defmacro e!(bin, substitutions) do
+    # Parse the expression out of the binary
+    erlang_abstract_code = expression!(bin)
+
+    unhygienic_substitutions =
+      for {name, quoted_value} <- substitutions do
+        unquoted = {:unquote, [], [destroy_variable_hygiene(quoted_value)]}
+        {name, unquoted}
+      end
+
+    {processed, _substitutions} =
+      AbstractCodeTransformer.transform(
+        erlang_abstract_code,
+        unhygienic_substitutions,
+        &process_abstract_code/2
+      )
+
+    Macro.escape(processed, unquote: true)
+  end
+
+  @unquoted_underscore {:unquote, [], [quote(do: _)]}
+
+  defp process_abstract_code({:var, _line, name}, substitutions) do
+    case Keyword.fetch(substitutions, name) do
+      {:ok, value} ->
+        {:halt, value, substitutions}
+
+      :error ->
+        {:halt, {:var, @unquoted_underscore, name}, substitutions}
+    end
+  end
+
+  defp process_abstract_code(tuple, substitutions)
+       when tuple_size(tuple) >= 2 and is_integer(elem(tuple, 1)) do
+    {:cont, put_elem(tuple, 1, @unquoted_underscore), substitutions}
+  end
+
+  defp process_abstract_code(other, substitutions) do
+    {:cont, other, substitutions}
+  end
+
+  defp destroy_variable_hygiene(ast) do
+    Macro.postwalk(ast, fn
+      {atom, meta, module} when is_atom(module) -> {atom, meta, nil}
+      other -> other
+    end)
   end
 
   @doc false
@@ -53,10 +103,12 @@ defmodule Darwin.Erlang do
   """
   def add_line_numbers_to_literals(erlang_abstract_code) do
     initial_line_number = 1
+
     AbstractCodeTransformer.transform(
       erlang_abstract_code,
       initial_line_number,
-      &maybe_replace_line_nr/2)
+      &maybe_replace_line_nr/2
+    )
   end
 
   defp maybe_replace_line_nr(ast_node, last_line_nr) do
@@ -88,6 +140,7 @@ defmodule Darwin.Erlang do
     case ast_node do
       tup when is_tuple(tup) and tuple_size(tup) >= 3 ->
         annotations = elem(tup, 1)
+
         case annotations do
           line_nr when is_integer(line_nr) ->
             line_nr
@@ -108,6 +161,7 @@ defmodule Darwin.Erlang do
     case ast_node do
       tup when is_tuple(tup) and tuple_size(tup) >= 3 ->
         annotations = elem(tup, 1)
+
         case annotations do
           old_line_nr when is_integer(old_line_nr) ->
             put_elem(ast_node, 1, line_nr)
@@ -124,7 +178,6 @@ defmodule Darwin.Erlang do
         ast_node
     end
   end
-
 
   @doc """
   Parses an expression into erlang abstract code

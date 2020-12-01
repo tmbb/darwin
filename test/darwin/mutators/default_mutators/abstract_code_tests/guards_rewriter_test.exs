@@ -1,6 +1,6 @@
 defmodule Darwin.DefaultMutators.AbstractCodeTests.GuardsRewriterTest do
   use ExUnit.Case
-  import DarwinTest.Helpers
+  import Darwin.TestHelpers
   alias Darwin.Erlang
 
   @outputs "test/darwin/mutators/default_mutators/abstract_code_tests/outputs/guards_rewriter/"

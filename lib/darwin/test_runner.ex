@@ -114,9 +114,13 @@ defmodule Darwin.TestRunner do
   def mutate_modules(modules_to_mutate) do
     module_names_to_mutate = for {module_name, _opts} <- modules_to_mutate, do: module_name
 
-    Task.async_stream(module_names_to_mutate, fn module_name ->
-      Mutator.mutate_compile_and_load_module(module_name)
-    end)
+    Task.async_stream(
+      module_names_to_mutate,
+      fn module_name ->
+        Mutator.mutate_compile_and_load_module(module_name)
+      end,
+      timeout: 60_000
+    )
     |> Enum.to_list()
     |> Enum.map(fn {:ok, result} -> result end)
   end

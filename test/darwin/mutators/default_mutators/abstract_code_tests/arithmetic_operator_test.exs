@@ -1,6 +1,6 @@
 defmodule Darwin.DefaultMutators.AbstractCodeTests.ArithmeticOperatorsTest do
   use ExUnit.Case, async: true
-  import DarwinTest.Helpers
+  import Darwin.TestHelpers
 
   alias Darwin.Erlang
   alias Darwin.Mutator.Context

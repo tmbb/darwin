@@ -1,5 +1,6 @@
 defmodule Darwin.ErlToEx do
   @moduledoc false
+  import Darwin.Erlang, only: [e!: 2]
 
   @ellipse quote(do: ...)
 
@@ -33,10 +34,16 @@ defmodule Darwin.ErlToEx do
     {ex_op, [], [ex_left, ex_right]}
   end
 
+  def erl_to_ex({:atom, _meta, true}), do: quote(do: true)
+  def erl_to_ex({:atom, _meta, false}), do: quote(do: false)
+  def erl_to_ex({:atom, _meta, nil}), do: quote(do: nil)
+
   def erl_to_ex({:atom, _meta, atom}), do: atom
   def erl_to_ex({:string, _meta, charlist}), do: charlist
   def erl_to_ex({:integer, _meta, integer}), do: integer
   def erl_to_ex({:float, _meta, float}), do: float
+
+  def erl_to_ex({nil, _line}), do: quote(do: [])
 
   def erl_to_ex({:bin, _meta, patterns}) do
     patterns_ex = Enum.map(patterns, &erl_to_ex/1)
@@ -50,6 +57,71 @@ defmodule Darwin.ErlToEx do
   end
 
   def erl_to_ex({:bin_element, _meta, _value, _size, _type}), do: @ellipse
+
+  @func_names_arity_1 [
+    :is_boolean,
+    :is_float,
+    :is_function,
+    :is_integer,
+    :is_list,
+    :is_number,
+    :is_pid,
+    :is_port,
+    :is_record,
+    :is_reference,
+    :is_tuple
+  ]
+
+  @func_names_arity_2 [
+    :is_function
+  ]
+
+  def erl_to_ex(e!("erlang:element(N, T).", N: {:integer, _, n}, T: arg)) do
+    ex_n = n - 1
+    ex_arg = erl_to_ex(arg)
+
+    quote do
+      elem(unquote(ex_arg), unquote(ex_n))
+    end
+  end
+
+  def erl_to_ex(e!("erlang:element(N + 1, T).", N: n, T: arg)) do
+    ex_n = erl_to_ex(n)
+    ex_arg = erl_to_ex(arg)
+
+    quote do
+      elem(unquote(ex_arg), unquote(ex_n))
+    end
+  end
+
+  def erl_to_ex({
+        :call,
+        _,
+        {:remote, _, {:atom, _, :erlang}, {:atom, _, name}},
+        [arg]
+      })
+      when name in @func_names_arity_1 do
+    ex_arg = erl_to_ex(arg)
+
+    quote do
+      unquote(name)(unquote(ex_arg))
+    end
+  end
+
+  def erl_to_ex({
+        :call,
+        _,
+        {:remote, _, {:atom, _, :erlang}, {:atom, _, name}},
+        [arg1, arg2]
+      })
+      when name in @func_names_arity_2 do
+    ex_arg1 = erl_to_ex(arg1)
+    ex_arg2 = erl_to_ex(arg2)
+
+    quote do
+      unquote(name)(unquote(ex_arg1), unquote(ex_arg2))
+    end
+  end
 
   def erl_to_ex({:call, _line1, {:remote, _, m, f}, args}) when is_list(args) do
     args_ex = Enum.map(args, &erl_to_ex/1)

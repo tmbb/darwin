@@ -1,4 +1,4 @@
-defmodule Darwin.Mutator.Rewriters.ClauseRewriter do
+defmodule Darwin.Mutator.Rewriters.CaseClauseRewriter do
   alias Darwin.Mutator
   alias Darwin.Mutator.Context
   alias Darwin.Erlang
@@ -86,29 +86,22 @@ defmodule Darwin.Mutator.Rewriters.ClauseRewriter do
     pattern_tuple = {:tuple, 0, patterns}
     block = {:block, 0, mutated_body}
 
-    dummy_argument = AbstractCode.unshadowable_variable()
-
     mutated_abstract_code =
       Erlang.interpolate_in_abstract_code!(
         """
-        fun (DummyArgument) ->
-          case DummyArgument of
-            PatternTuple ->
-              case (try GuardsMatch
-                    catch
-                      error:_ -> false
-                    end) of
-                true -> {ok, Body};
-                false -> error
-              end;
-
-            _ -> error
-          end
+        fun (Arguments) ->
+          case (try GuardsMatch
+                catch
+                  error:_ -> false
+                end) of
+            true -> {ok, Body};
+            false -> error
+          end;
+            (_) -> error
         end.
         """,
-        DummyArgument: dummy_argument,
         GuardsMatch: guards_match,
-        PatternTuple: pattern_tuple,
+        Arguments: pattern_tuple,
         Body: block
       )
 
@@ -124,23 +117,15 @@ defmodule Darwin.Mutator.Rewriters.ClauseRewriter do
     pattern_tuple = {:tuple, 0, patterns}
     block = {:block, 0, mutated_body}
 
-    dummy_argument = AbstractCode.unshadowable_variable()
-
     mutated_abstract_code =
       Erlang.interpolate_in_abstract_code!(
         """
-        fun (DummyArgument) ->
-          case DummyArgument of
-            PatternTuple ->
-              {ok, Body};
-
-            _ ->
-              error
-          end
+        fun (Arguments) ->
+            {ok, Body};
+            (_) -> error
         end.
         """,
-        DummyArgument: dummy_argument,
-        PatternTuple: pattern_tuple,
+        Arguments: pattern_tuple,
         Body: block
       )
 

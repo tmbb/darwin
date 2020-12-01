@@ -49,8 +49,8 @@ defmodule Darwin.Mutators.Default.AtomMutator do
     end
   end
 
-  defp runtime_replace_atom(atom) when atom == :darwin_was_here, do: :darwin_was_here
-  defp runtime_replace_atom(_atom), do: :darwin_wasnt_here
+  defp runtime_replace_atom(atom) when atom == :darwin_was_here, do: :darwin_wasnt_here
+  defp runtime_replace_atom(_atom), do: :darwin_was_here
 
   defp abstract_code_replace_atom({:atom, line, atom}) do
     {:atom, line, runtime_replace_atom(atom)}

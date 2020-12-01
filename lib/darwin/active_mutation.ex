@@ -107,7 +107,7 @@ defmodule Darwin.ActiveMutation do
       defmodule Darwin.DefaultMutators.RuntimeTests.ArithmeticOperatorsTest do
         use ExUnit.Case, async: true
         use ExUnitProperties
-        alias DarwinTest.Generators, as: Gen
+        alias Darwin.TestGenerators, as: Gen
         alias Darwin.ActiveMutation
 
         property "Mutation 0 - replace by '+'" do
@@ -120,7 +120,7 @@ defmodule Darwin.ActiveMutation do
             # Run the anonymous function with the given mutation
             # The mutation is active for this process only
             # which means we can run other tests in parallel
-            ActiveMutation.with_mutation({module, codon, mutation}, fn ->
+         ActiveMutation.with_mutation({module, codon, mutation}, fn ->
               assert OpSubMutator.darwin_was_here(module, codon, a, b) == a + b
             end)
           end
@@ -135,14 +135,37 @@ defmodule Darwin.ActiveMutation do
     result =
       try do
         fun.()
-      after
-        # Clean the process dictionary and raise the exception
-        Process.delete(@pdict_key)
+      rescue
+        exception ->
+          # Clean the process dictionary and raise the exception.
+          # This preserves the original stack trace
+          Process.delete(@pdict_key)
+          reraise exception, __STACKTRACE__
       end
 
-    # Clean the process dictionary
+    # If everything went well, we now delete the mutation
+    # from the process dictionary.
     Process.delete(@pdict_key)
+
     # Now that we're done, return the result
     result
   end
+
+  @doc """
+  TODO
+  """
+  def pdict_aware_get() do
+    case :erlang.get(@pdict_key) do
+      :undefined ->
+        get()
+
+      tuple ->
+        tuple
+    end
+  end
+
+  @doc """
+  TODO
+  """
+  def default_mutation?(tuple), do: tuple == @default_mutation
 end

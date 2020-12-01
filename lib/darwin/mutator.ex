@@ -99,14 +99,27 @@ defmodule Darwin.Mutator do
 
   @doc false
   def debug_mutated(forms, ctx) do
+    unmutated_form_list = Beam.beam_to_abstract_code(ctx.module)
     debug_dir = "_darwin_debug/"
     File.mkdir_p!(debug_dir)
 
     forms_filename_elixir =
       ctx.module
       |> inspect()
-      |> Kernel.<>(".ex")
+      |> Kernel.<>("__mutated.ex")
 
+    original_erlang_filename =
+      ctx.module
+      |> inspect()
+      |> Kernel.<>("__original.erl")
+
+    mutated_erlang_filename =
+      ctx.module
+      |> inspect()
+      |> Kernel.<>("__mutated.erl")
+
+    mutated_erlang_path = Path.join(debug_dir, mutated_erlang_filename)
+    original_erlang_path = Path.join(debug_dir, original_erlang_filename)
     forms_file_path_elixir = Path.join(debug_dir, forms_filename_elixir)
 
     printed_forms_elixir =
@@ -114,7 +127,12 @@ defmodule Darwin.Mutator do
       |> inspect(limit: :infinity)
       |> Code.format_string!()
 
+    mutated_erlang_source = Erlang.pprint_forms(forms)
+    original_erlang_source = Erlang.pprint_forms(unmutated_form_list)
+
     File.write!(forms_file_path_elixir, printed_forms_elixir)
+    File.write!(mutated_erlang_path, mutated_erlang_source)
+    File.write!(original_erlang_path, original_erlang_source)
   end
 
   @doc """

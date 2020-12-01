@@ -1,11 +1,12 @@
-defmodule Darwin.Mutators.Common.FunctionDefinitionRewriterMutator do
+defmodule Darwin.Mutators.Common.AnonymousFunctionMutator do
   @behaviour Darwin.Mutator
   alias Darwin.Erlang.AbstractCode
-  alias Darwin.Mutator.Rewriters.ClauseRewriterWithoutVariableShadowing
+  alias Darwin.Mutator.Rewriters.ClauseRewriterWithVariableShadowing
   require Darwin.Erlang, as: Erlang
 
   @impl true
-  def mutate({:function, _line, _atom_name, _arity, _clauses} = abstract_code, ctx) do
+  def mutate({:function, _line, _atom_name, _arity, clauses} = abstract_code, ctx)
+      when is_list(clauses) and length(clauses) >= 1 do
     {mutated_function, ctx} = rewrite_function(abstract_code, ctx)
 
     {:ok, {mutated_function, ctx}}
@@ -21,21 +22,28 @@ defmodule Darwin.Mutators.Common.FunctionDefinitionRewriterMutator do
     end
   end
 
-  def rewrite_function({:function, line, f, arity, clauses}, ctx) do
+  def rewrite_function({:fun, line, clauses}, ctx) do
     # A function with several clauses will be rewritten into a function
     # with a single clause.
-    #
+
+    # To build the function, we need to extract the arity of the function from
+    # one of the function clauses.
+    # All clauses must have the same arity - this is enforced by the Erlang compiler!
+    [first_clause | _clauses] = clauses
+    {:clause, _line, arguments, _guards, _body} = first_clause
+    arity = length(arguments)
+
     # The single clause must accept any arguments that respect the arity,
     # and the pattern and guard matching will be done in the body if this function
     # We need to create new arguments for this function, which what we do with
     #
-    # the `dummy_aruments/1` function.
+    # the `dummy_arguments/1` function.
     # There arguments are normal variables, which will match everything,
     # just like we wanted.
     arguments = dummy_arguments(arity)
     arguments_tuple = AbstractCode.encode_tuple(arguments)
     # Convert the clauses into anonymous functions
-    {functions, ctx} = ClauseRewriterWithoutVariableShadowing.clauses_to_functions(clauses, ctx)
+    {functions, ctx} = ClauseRewriterWithVariableShadowing.clauses_to_functions(clauses, ctx)
     # Encode the list of functions as a compile-time erlag list which we can splice
     # into the Erlang abstract code.
     function_list = AbstractCode.encode_list(functions)
@@ -43,7 +51,7 @@ defmodule Darwin.Mutators.Common.FunctionDefinitionRewriterMutator do
     body =
       Erlang.interpolate_in_abstract_code!(
         """
-        'Elixir.Darwin.Mutator.Rewriters.ClauseRewriterWithoutVariableShadowing':execute_transformed_function_clauses(
+        'Elixir.Darwin.Mutator.Rewriters.ClauseRewriterWithShadowing':execute_transformed_function_clauses(
           Functions,
           ArgumentsTuple
         ).
@@ -57,10 +65,8 @@ defmodule Darwin.Mutators.Common.FunctionDefinitionRewriterMutator do
 
     # And we can also build the full function definition for the mutated function
     mutated_function = {
-      :function,
+      :fun,
       line,
-      f,
-      arity,
       [clause]
     }
 

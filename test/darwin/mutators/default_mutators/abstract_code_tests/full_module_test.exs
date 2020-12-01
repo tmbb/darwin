@@ -1,7 +1,7 @@
 defmodule Darwin.DefaultMutators.AbstractCodeTests.FullModuleTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
-  import DarwinTest.Helpers
+  import Darwin.TestHelpers
   alias Darwin.Erlang
 
   @tag :skip

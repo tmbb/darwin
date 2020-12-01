@@ -135,6 +135,13 @@ defmodule Darwin.Mutator.Context do
   end
 
   @doc """
+  Sets the mutators for the current context.
+  """
+  def set_mutators(%__MODULE__{} = ctx, mutators) do
+    %{ctx | mutators: mutators}
+  end
+
+  @doc """
   Merges several contexts.
 
   Each module is mutated in its own context.

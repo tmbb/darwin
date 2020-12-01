@@ -44,7 +44,7 @@ defmodule Darwin.Erlang.AbstractCode do
   @doc """
   Encodes an erlang variable
   """
-  def encode_variable(atom, opts) when is_atom(atom) do
+  def encode_variable(atom, opts \\ []) when is_atom(atom) do
     line = Keyword.get(opts, :line, 0)
     {:var, line, atom}
   end
@@ -66,5 +66,24 @@ defmodule Darwin.Erlang.AbstractCode do
   def encode_list([item | items], opts) do
     line = Keyword.get(opts, :line, 0)
     {:cons, line, item, encode_list(items, opts)}
+  end
+
+  def encode_equals(left, right, opts \\ []) do
+    line = Keyword.get(opts, :line, 0)
+    {:op, line, :==, left, right}
+  end
+
+  @characters Enum.into(?0..?9, []) ++ Enum.into(?a..?z, []) ++ Enum.into(?A..?Z, [])
+
+  def unshadowable_variable() do
+    suffix =
+      1..16
+      |> Enum.map(fn _ -> Enum.random(@characters) end)
+      |> IO.iodata_to_binary()
+
+    variable_name = String.to_atom("_@darwin__" <> suffix)
+    variable = encode_variable(variable_name)
+
+    variable
   end
 end

@@ -2,7 +2,7 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
   alias Darwin.ActiveMutation
-  alias DarwinTest.Generators, as: Gen
+  alias Darwin.TestGenerators, as: Gen
 
   alias Darwin.Mutators.Default.{
     OpLaxNotMutator,
@@ -16,12 +16,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
 
   property "operator '!': wrong module || codon" do
     # If the module and the codon are wrong, the function is compatible
-    check all right_module <- Gen.module(),
-              right_codon <- Gen.codon(),
-              maybe_wrong_module <- Gen.module(),
-              maybe_wrong_codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+    check all(
+            right_module <- Gen.module(),
+            right_codon <- Gen.codon(),
+            maybe_wrong_module <- Gen.module(),
+            maybe_wrong_codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+          ) do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
         assert OpLaxNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                  !true
@@ -40,12 +42,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
 
   # TODO: fix this!
   property "operator '!': right codon, wrong mutations" do
-    check all right_module <- Gen.module(),
-              right_codon <- Gen.codon(),
-              maybe_wrong_module <- Gen.module(),
-              maybe_wrong_codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+    check all(
+            right_module <- Gen.module(),
+            right_codon <- Gen.codon(),
+            maybe_wrong_module <- Gen.module(),
+            maybe_wrong_codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+          ) do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
         assert OpLaxNotMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true) ==
                  not true
@@ -63,8 +67,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '!': Mutation 0 - remove negation" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon() do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon()
+          ) do
       ActiveMutation.with_mutation({module, codon, 0}, fn ->
         assert OpLaxNotMutator.darwin_was_here(module, codon, true) == true
         assert OpLaxNotMutator.darwin_was_here(module, codon, false) == false
@@ -74,8 +80,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '!': Mutation 1 - replace by `true`" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon() do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon()
+          ) do
       ActiveMutation.with_mutation({module, codon, 1}, fn ->
         assert OpLaxNotMutator.darwin_was_here(module, codon, true) == true
         assert OpLaxNotMutator.darwin_was_here(module, codon, false) == true
@@ -85,8 +93,10 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '!': Mutation 2 - replace by `false`" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon() do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon()
+          ) do
       ActiveMutation.with_mutation({module, codon, 2}, fn ->
         assert OpLaxNotMutator.darwin_was_here(module, codon, true) == false
         assert OpLaxNotMutator.darwin_was_here(module, codon, false) == false
@@ -96,12 +106,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '&&': wrong module or codon" do
-    check all right_module <- Gen.module(),
-              right_codon <- Gen.codon(),
-              maybe_wrong_module <- Gen.module(),
-              maybe_wrong_codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+    check all(
+            right_module <- Gen.module(),
+            right_codon <- Gen.codon(),
+            maybe_wrong_module <- Gen.module(),
+            maybe_wrong_codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+          ) do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
         assert OpLaxAndMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, true) ==
                  true
@@ -130,10 +142,12 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '&&': right codon, wrong mutations" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              mutation > 2 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            mutation > 2
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == false
@@ -172,9 +186,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '&&': Mutation 0 - replace with `||`" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 0 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 0
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == true
@@ -197,9 +213,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '&&': Mutation 1 - replace by `true`" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 1 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 1
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == true
@@ -215,9 +233,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '&&': Mutation 2 - replace by `false`" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 2 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 2
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, true) == false
         assert OpLaxAndMutator.darwin_was_here(module, codon, true, false) == false
@@ -233,12 +253,14 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '||': wrong module or codon" do
-    check all right_module <- Gen.module(),
-              right_codon <- Gen.codon(),
-              maybe_wrong_module <- Gen.module(),
-              maybe_wrong_codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon} do
+    check all(
+            right_module <- Gen.module(),
+            right_codon <- Gen.codon(),
+            maybe_wrong_module <- Gen.module(),
+            maybe_wrong_codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            {maybe_wrong_module, maybe_wrong_codon} != {right_module, right_codon}
+          ) do
       ActiveMutation.with_mutation({right_module, right_codon, mutation}, fn ->
         assert OpLaxOrMutator.darwin_was_here(maybe_wrong_module, maybe_wrong_codon, true, true) ==
                  true
@@ -263,10 +285,12 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '||': right codon, wrong mutations" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation <- Gen.mutation(),
-              mutation > 2 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation <- Gen.mutation(),
+            mutation > 2
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == true
@@ -288,9 +312,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '||': Mutation 0 - replace with '&&'" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 0 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 0
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == false
@@ -319,9 +345,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '||': Mutation 1 - replace by 'true'" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 1 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 1
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == true
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == true
@@ -337,9 +365,11 @@ defmodule Darwin.DefaultMutators.RuntimeTests.LaxLogicalOperatorsTest do
   end
 
   property "operator '||': Mutation 2 - replace by 'false'" do
-    check all module <- Gen.module(),
-              codon <- Gen.codon(),
-              mutation = 2 do
+    check all(
+            module <- Gen.module(),
+            codon <- Gen.codon(),
+            mutation = 2
+          ) do
       ActiveMutation.with_mutation({module, codon, mutation}, fn ->
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, true) == false
         assert OpLaxOrMutator.darwin_was_here(module, codon, true, false) == false

@@ -25,6 +25,7 @@ defmodule Darwin.Mutators.Default do
     # Literal Mutators
     CharlistMutator,
     StringMutator,
+    BooleanMutator,
     AtomMutator,
     IntegerMutator,
 
@@ -86,6 +87,9 @@ defmodule Darwin.Mutators.Default do
   @literal_mutators [
     StringMutator,
     CharlistMutator,
+    # The `BooleanMutator` must come before `AtomMutator`
+    # because booleans are atoms!
+    BooleanMutator,
     AtomMutator,
     IntegerMutator
   ]
@@ -101,8 +105,8 @@ defmodule Darwin.Mutators.Default do
   ]
 
   @miscelaneous_mutators [
-    CaseStatementRewriterMutator,
     FunctionDefinitionRewriterMutator,
+    CaseStatementRewriterMutator,
     BackupMutator
   ]
 
